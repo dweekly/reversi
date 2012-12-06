@@ -26,9 +26,9 @@ OthelloSideType _currentPlayer;
     self = [super initWithCoder:coder];
     
     // load piece images for display
-    _whitepiece = [UIImage imageNamed:@"whitestone.gif"];
-    _blackpiece = [UIImage imageNamed:@"blackstone.gif"];
-    _felt = [UIImage imageNamed:@"felt.jpg"];
+    _whitepiece = [UIImage imageNamed:@"whitestone-40"];
+    _blackpiece = [UIImage imageNamed:@"blackstone-40"];
+    _felt = [UIImage imageNamed:@"felt"];
     
     // start the board empty
     [self initBoard];
@@ -54,6 +54,8 @@ OthelloSideType _currentPlayer;
     // the user, white, goes first. (TODO: actually tell the user this.)
     _currentPlayer = kOthelloWhite;
     
+    // now that we've updated board state, it needs to be redrawn.
+    [self setNeedsDisplay];
 }
 
 
@@ -75,6 +77,7 @@ OthelloSideType _currentPlayer;
 // after the game is acknowledged as being over, this is called and a new game is started.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    NSLog(@"Acknowledged end-of-game. Starting a new one!");
     [self initBoard];
 }
 
@@ -300,10 +303,10 @@ OthelloSideType _currentPlayer;
         for(j=0;j<8;j++){
             OthelloSideType space = _boardState[i][j];
             if(space == kOthelloWhite){
-                [_whitepiece drawAtPoint:CGPointMake((40.0 * i) + 5.0, (40.0 * j) + 5.0) blendMode:kCGBlendModeNormal alpha:1.0];
+                [_whitepiece drawAtPoint:CGPointMake((40.0 * i), (40.0 * j)) blendMode:kCGBlendModeNormal alpha:1.0];
             }
             if(space == kOthelloBlack){
-                [_blackpiece drawAtPoint:CGPointMake((40.0 * i) + 5.0, (40.0 * j) + 5.0) blendMode:kCGBlendModeNormal alpha:1.0];
+                [_blackpiece drawAtPoint:CGPointMake((40.0 * i), (40.0 * j)) blendMode:kCGBlendModeNormal alpha:1.0];
             }
         }
     }
