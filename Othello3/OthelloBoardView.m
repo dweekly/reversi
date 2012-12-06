@@ -16,9 +16,12 @@ typedef enum {
     kOthelloBlack
 } OthelloSideType;
 
+typedef enum {
+    kOthelloAlertGameOver = 1
+} OthelloAlerts;
+
 OthelloSideType _boardState[8][8];
 OthelloSideType _currentPlayer;
-
 
 // This code is run first, when the object wakes up from the XIB
 - (id)initWithCoder:(NSCoder*)coder
@@ -30,11 +33,87 @@ OthelloSideType _currentPlayer;
     _blackpiece = [UIImage imageNamed:@"blackstone-40"];
     _felt = [UIImage imageNamed:@"felt"];
     
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"welcome" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioWelcomePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    [_audioWelcomePlayer play];
+
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"thpp" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioThppPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"whoop" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioWhoopPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"yay" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioYayPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"boo" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioBooPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"no" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioNOPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"holdon2" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioHoldOnPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"holdon2" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioHoldOnPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"tie" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioTiePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"youlost" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioYouLostPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"computerlost" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioComputerLostPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"newgame" ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audioNewGamePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
+    
     // start the board empty
     [self initBoard];
     
     return self;
 }
+
 
 
 // initialize the board to a "beginning game" state
@@ -77,7 +156,8 @@ OthelloSideType _currentPlayer;
 // after the game is acknowledged as being over, this is called and a new game is started.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"Acknowledged end-of-game. Starting a new one!");
+    assert([alertView tag] == kOthelloAlertGameOver);
+    [_audioNewGamePlayer play];
     [self initBoard];
 }
 
@@ -97,15 +177,19 @@ OthelloSideType _currentPlayer;
     NSString *msg;
     if(black > white){
         msg = @"The computer won!";
+        [_audioYouLostPlayer play];
     }
     if(white > black){
         msg = @"You beat the computer!";
+        [_audioComputerLostPlayer play];
     }
     if(white == black){
         msg = @"You tied with the computer!";
+        [_audioTiePlayer play];
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert setTag:kOthelloAlertGameOver];
     [alert show];
 }
 
@@ -129,10 +213,10 @@ OthelloSideType _currentPlayer;
             } else {
                 // skip the computer move, let the human move again.
                 NSLog(@"Computer cannot move, skipping robot move. :'(");
+                [_audioBooPlayer play];
             }
         } else {
             // the computer CAN move. let it make a decision.
-            NSLog(@"Computer's turn now.");
             _currentPlayer = kOthelloBlack;
             // in 800ms, calculate the computer's move. for now, show the user's move.
             [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(computerTurn) userInfo:nil repeats:NO];
@@ -147,12 +231,12 @@ OthelloSideType _currentPlayer;
                 return;
             } else {
                 NSLog(@"Human can't move, skipping the mortal. :-D");
+                [_audioYayPlayer play];
                 // in 800ms, calculate the computer's move. for now, show the user's move.
                 [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(computerTurn) userInfo:nil repeats:NO];
             }
         } else {
             // the human can move, let them do so.
-            NSLog(@"Human's turn now.");
             _currentPlayer = kOthelloWhite;
         }
     }
@@ -166,8 +250,7 @@ OthelloSideType _currentPlayer;
     // first, let's check to see if it's the user's turn right now
     if(_currentPlayer != kOthelloWhite){
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"It's not your turn." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        [_audioHoldOnPlayer play];
         return;
     }
     
@@ -180,9 +263,9 @@ OthelloSideType _currentPlayer;
     if([self testMove:kOthelloWhite row:i col:j doMove:true ] == 0){
         // the projected move is inadmissable / would capture no pieces.
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You can't move there." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        [_audioNOPlayer play];
     } else {
+        [_audioThppPlayer play];
         [self nextTurn];
     }
 }
@@ -216,6 +299,7 @@ OthelloSideType _currentPlayer;
     assert(captured);
     
     // okay, we're all done with our turn now.
+    [_audioWhoopPlayer play];
     [self nextTurn];
 }
 
@@ -261,7 +345,7 @@ OthelloSideType _currentPlayer;
                     if(steps > 1){
                         // we've gone at least one step, capture the ray.
                         totalCaptured += steps-1;
-                        NSLog(@"Found a valid ray capture from %d, %d on ray %d, %d (steps %d)", i, j, dx, dy, steps);
+                        // NSLog(@"Found a valid ray capture from %d, %d on ray %d, %d (steps %d)", i, j, dx, dy, steps);
                         if(doMove) { // okay, let's actually execute on this
                             while(steps--){
                                 _boardState[i + (dx*steps)][j + (dy*steps)] = whoseMove;

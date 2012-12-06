@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OthelloBoardView.h"
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet OthelloBoardView *othelloBoard;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

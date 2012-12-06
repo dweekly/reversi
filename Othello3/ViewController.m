@@ -16,8 +16,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
+    [super viewDidLoad]; // 160,217
+    [_othelloBoard setFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
     
 }
 

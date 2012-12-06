@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB497B3116708BC500EBCAFE /* thpp.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3016708BC500EBCAFE /* thpp.wav */; };
+		DB497B3316708D0200EBCAFE /* whoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3216708D0200EBCAFE /* whoop.wav */; };
+		DB497B3516708D9900EBCAFE /* yay.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3416708D9900EBCAFE /* yay.wav */; };
+		DB497B3716708DBA00EBCAFE /* boo.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3616708DBA00EBCAFE /* boo.wav */; };
+		DB497B3916708ED400EBCAFE /* no.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3816708ED400EBCAFE /* no.wav */; };
+		DB497B3D1670902D00EBCAFE /* holdon2.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3C1670902D00EBCAFE /* holdon2.wav */; };
+		DB497B3F1670910500EBCAFE /* computerlost.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3E1670910500EBCAFE /* computerlost.wav */; };
+		DB497B411670914000EBCAFE /* youlost.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B401670914000EBCAFE /* youlost.wav */; };
+		DB497B431670916600EBCAFE /* tie.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B421670916600EBCAFE /* tie.wav */; };
+		DB497B451670920B00EBCAFE /* newgame.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B441670920B00EBCAFE /* newgame.wav */; };
 		DB8A3FA01670074A00AF45F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3F9F1670074A00AF45F9 /* UIKit.framework */; };
 		DB8A3FA21670074A00AF45F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA11670074A00AF45F9 /* Foundation.framework */; };
 		DB8A3FA41670074A00AF45F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA31670074A00AF45F9 /* CoreGraphics.framework */; };
@@ -44,6 +54,7 @@
 		DB8A402A16706E9800AF45F9 /* blackstone-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A402816706E9800AF45F9 /* blackstone-40@2x.png */; };
 		DB8A402D16706F6800AF45F9 /* whitestone-40.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A402B16706F6800AF45F9 /* whitestone-40.png */; };
 		DB8A402E16706F6800AF45F9 /* whitestone-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A402C16706F6800AF45F9 /* whitestone-40@2x.png */; };
+		DB8A40301670790200AF45F9 /* welcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB8A402F1670790200AF45F9 /* welcome.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +68,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB497B3016708BC500EBCAFE /* thpp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thpp.wav; sourceTree = "<group>"; };
+		DB497B3216708D0200EBCAFE /* whoop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whoop.wav; sourceTree = "<group>"; };
+		DB497B3416708D9900EBCAFE /* yay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = yay.wav; sourceTree = "<group>"; };
+		DB497B3616708DBA00EBCAFE /* boo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boo.wav; sourceTree = "<group>"; };
+		DB497B3816708ED400EBCAFE /* no.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no.wav; sourceTree = "<group>"; };
+		DB497B3C1670902D00EBCAFE /* holdon2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = holdon2.wav; sourceTree = "<group>"; };
+		DB497B3E1670910500EBCAFE /* computerlost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = computerlost.wav; sourceTree = "<group>"; };
+		DB497B401670914000EBCAFE /* youlost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = youlost.wav; sourceTree = "<group>"; };
+		DB497B421670916600EBCAFE /* tie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tie.wav; sourceTree = "<group>"; };
+		DB497B441670920B00EBCAFE /* newgame.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newgame.wav; sourceTree = "<group>"; };
 		DB8A3F9B1670074A00AF45F9 /* Othello3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Othello3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8A3F9F1670074A00AF45F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DB8A3FA11670074A00AF45F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,6 +122,7 @@
 		DB8A402816706E9800AF45F9 /* blackstone-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackstone-40@2x.png"; sourceTree = "<group>"; };
 		DB8A402B16706F6800AF45F9 /* whitestone-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitestone-40.png"; sourceTree = "<group>"; };
 		DB8A402C16706F6800AF45F9 /* whitestone-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitestone-40@2x.png"; sourceTree = "<group>"; };
+		DB8A402F1670790200AF45F9 /* welcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = welcome.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +214,17 @@
 		DB8A3FA61670074A00AF45F9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DB497B441670920B00EBCAFE /* newgame.wav */,
+				DB497B421670916600EBCAFE /* tie.wav */,
+				DB497B401670914000EBCAFE /* youlost.wav */,
+				DB497B3E1670910500EBCAFE /* computerlost.wav */,
+				DB497B3C1670902D00EBCAFE /* holdon2.wav */,
+				DB497B3816708ED400EBCAFE /* no.wav */,
+				DB497B3616708DBA00EBCAFE /* boo.wav */,
+				DB497B3416708D9900EBCAFE /* yay.wav */,
+				DB497B3216708D0200EBCAFE /* whoop.wav */,
+				DB497B3016708BC500EBCAFE /* thpp.wav */,
+				DB8A402F1670790200AF45F9 /* welcome.wav */,
 				DB8A402B16706F6800AF45F9 /* whitestone-40.png */,
 				DB8A402C16706F6800AF45F9 /* whitestone-40@2x.png */,
 				DB8A402716706E9800AF45F9 /* blackstone-40.png */,
@@ -321,6 +354,17 @@
 				DB8A402A16706E9800AF45F9 /* blackstone-40@2x.png in Resources */,
 				DB8A402D16706F6800AF45F9 /* whitestone-40.png in Resources */,
 				DB8A402E16706F6800AF45F9 /* whitestone-40@2x.png in Resources */,
+				DB8A40301670790200AF45F9 /* welcome.wav in Resources */,
+				DB497B3116708BC500EBCAFE /* thpp.wav in Resources */,
+				DB497B3316708D0200EBCAFE /* whoop.wav in Resources */,
+				DB497B3516708D9900EBCAFE /* yay.wav in Resources */,
+				DB497B3716708DBA00EBCAFE /* boo.wav in Resources */,
+				DB497B3916708ED400EBCAFE /* no.wav in Resources */,
+				DB497B3D1670902D00EBCAFE /* holdon2.wav in Resources */,
+				DB497B3F1670910500EBCAFE /* computerlost.wav in Resources */,
+				DB497B411670914000EBCAFE /* youlost.wav in Resources */,
+				DB497B431670916600EBCAFE /* tie.wav in Resources */,
+				DB497B451670920B00EBCAFE /* newgame.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,10 +515,14 @@
 		DB8A3FD81670074A00AF45F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Weekly (XPCNQ9499C)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Othello3/Othello3-Prefix.pch";
 				INFOPLIST_FILE = "Othello3/Othello3-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2702DD67-6C1F-4AE0-8093-BE810ED170C9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -482,10 +530,14 @@
 		DB8A3FD91670074A00AF45F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Weekly (XPCNQ9499C)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Othello3/Othello3-Prefix.pch";
 				INFOPLIST_FILE = "Othello3/Othello3-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2702DD67-6C1F-4AE0-8093-BE810ED170C9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -543,6 +595,7 @@
 				DB8A3FD91670074A00AF45F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB8A3FDA1670074A00AF45F9 /* Build configuration list for PBXNativeTarget "Othello3Tests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +604,7 @@
 				DB8A3FDC1670074A00AF45F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
