@@ -12,13 +12,17 @@ The AI is still extremely rudimentary; it simply picks a valid
 move that will result in taking the most number of pieces in
 the next move.
 
-There's not yet any GameCenter integration, sounds, music, two
-player network mode, or anything. It's all quite basic, but it
-works. :)
+There isn't GameCenter integration, music, two player / network
+mode, or anything. It's all quite basic, but it works. :)
+
+v0.01 (Dec 5, 2012)
+ - basic version working, rudimentary AI, iPhone 5 only
+
+v0.02 (Dec 6, 2012)
+ - added crude sound effects, now works on iPhone4/4S
 
 TODOs:
  - sophisticated minmix AI with multilevel lookahead
- - sound effects
  - music
  - animations
  - GameCenter / multiplayer
