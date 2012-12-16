@@ -187,6 +187,7 @@
         msg = @"You tied with the computer!";
         [_audioTiePlayer play];
     }
+    [TestFlight passCheckpoint:@"Completed a game!"];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK"otherButtonTitles:nil];
     [alert setTag:kOthelloAlertGameOver];
@@ -245,28 +246,30 @@
 // The user has attempted a move, it may or may not be legal or their turn.
 - (bool)attemptPlayerMove:(int)i col:(int)j
 {
-    
     // first, let's check to see if it's the user's turn right now
     if(_currentPlayer != kOthelloWhite){
+        NSLog(@"Player attempted to move at %d, %d but wasn't player's turn.", i, j);
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [_audioHoldOnPlayer play];
         return false;
     }
     
-    if([self testMove:kOthelloWhite row:i col:j doMove:true ] == 0){
+    // attempt to actually make the move.
+    int captured = [self testMove:kOthelloWhite row:i col:j doMove:true];
+    if(captured == 0){
         // the projected move is inadmissable / would capture no pieces.
+        NSLog(@"Player attempted to move at %d, %d but move was not permitted.", i, j);
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [_audioNOPlayer play];
         return false;
-    
-    } else {
-        // cool, the move is admissable, make the next turn happen
-        [_audioThppPlayer play];
-        [self nextTurn];
-        return true;
     }
+    
+    // the move is admissable and was made, make the next turn happen
+    NSLog(@"Player moved successfully at %d, %d capturing %d pieces.", i, j, captured);
+    [_audioThppPlayer play];
+    [self nextTurn];
+    return true;
 }
-
 
 
 - (id)init
@@ -283,7 +286,6 @@
     _audioComputerLostPlayer = [self getPlayerForSound:@"computerlost"];
     _audioNewGamePlayer = [self getPlayerForSound:@"newgame"];
 
-    
     // welcome the player
     [_audioWelcomePlayer play];
     

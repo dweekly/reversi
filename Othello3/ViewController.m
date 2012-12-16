@@ -17,14 +17,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad]; // 160,217
-    [_othelloBoard setFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
-    
+    // [_othelloBoard setFrame:CGRectMake(0.0, 0.0, 320.0, 320.0)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)feedback:(id)sender {
+    [TestFlight openFeedbackView];
 }
 
 @end

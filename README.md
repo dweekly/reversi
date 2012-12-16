@@ -30,6 +30,14 @@ v0.04 (Dec 15, 2012)
  - verified working with iPad retina, added default loading images.
  - updated felt textures
  - fixed bug which made dumb AI even dumber, whoops.
+ 
+v0.05 (Dec 15, 2012)
+ - Refactored logic from UIView object
+ - Added Flurry integration
+
+v0.06 (Dec 16, 2012)
+ - Added TestFlight (though this does significantly slow 1st load)
+ - Better refactoring without crazy timing issues.
 
 TODOs:
  - sophisticated minmix AI with multilevel lookahead

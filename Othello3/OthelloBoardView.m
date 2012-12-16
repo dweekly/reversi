@@ -36,6 +36,7 @@
         _felt = [UIImage imageNamed:@"felt"];
     }
     
+    // fetch the app so we get get at the game object.
     _app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     return self;
@@ -44,9 +45,6 @@
 
 // The user touched the game board to attempt a move
 - (void) touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
-    
-    // XXX HACK FIXME this is an awkward hack, but we need to wire up the game's boardview to ourselves.
-    _app.game.boardView = self;
     
 	// Retrieve the touch point
 	CGPoint pt = [[touches anyObject] locationInView:self];

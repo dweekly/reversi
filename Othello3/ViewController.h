@@ -11,7 +11,8 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)feedback:(id)sender;
+
 @property (weak, nonatomic) IBOutlet OthelloBoardView *othelloBoard;
-@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

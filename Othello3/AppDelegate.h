@@ -10,6 +10,9 @@
 
 #import "AudioStreamer.h"
 #import "OthelloGameController.h"
+#import "TestFlight.h"
+
+#define TESTING 1
 
 @class ViewController;
 @class AudioStreamer;
