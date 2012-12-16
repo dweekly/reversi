@@ -42,7 +42,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         _whitepiece = [UIImage imageNamed:@"whitestone-85"];
         _blackpiece = [UIImage imageNamed:@"blackstone-85"];
-        _felt = [UIImage imageNamed:@"felt-680"];
+        _felt = [UIImage imageNamed:@"felt-iPad"];
     } else {
         _whitepiece = [UIImage imageNamed:@"whitestone-40"];
         _blackpiece = [UIImage imageNamed:@"blackstone-40"];

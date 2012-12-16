@@ -22,9 +22,13 @@ v0.02 (Dec 6, 2012)
  - added crude sound effects, now works on iPhone4/4S
 
 v0.03 (Dec 15, 2012)
- - added iPad support
+ - added iPad support & hi-res stones
  - added code for Shoutcast music streaming via AudioStreamer library (but is annoying, so disabled)
  - code tidying
+ 
+v0.04 (Dec 15, 2012)
+ - verified working with iPad retina, added default loading images.
+ - updated felt textures
 
 TODOs:
  - sophisticated minmix AI with multilevel lookahead
