@@ -10,104 +10,60 @@
 
 @implementation OthelloBoardView
 
-typedef enum {
-    kOthelloNone,
-    kOthelloWhite,
-    kOthelloBlack
-} OthelloSideType;
 
-typedef enum {
-    kOthelloAlertGameOver = 1
-} OthelloAlerts;
+// fetch a playable object for a sound file
+- (AVAudioPlayer *)getPlayerForSound:(NSString *)soundFile
+{
+    AVAudioPlayer *p;
+    NSString *path = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"wav"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSError *error;
+    p = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    if(!p){
+        NSLog(@"Error in getPlayerForSound: %@ %@", error, [error userInfo]);
+    }
+    return p;
+}
 
-OthelloSideType _boardState[8][8];
-OthelloSideType _currentPlayer;
 
 // This code is run first, when the object wakes up from the XIB
 - (id)initWithCoder:(NSCoder*)coder
 {
     self = [super initWithCoder:coder];
     
-    // load piece images for display
-    _whitepiece = [UIImage imageNamed:@"whitestone-40"];
-    _blackpiece = [UIImage imageNamed:@"blackstone-40"];
-    _felt = [UIImage imageNamed:@"felt"];
+    // calculate the size of each cell in our view
+    _cellSize = [self bounds].size.height / 8.0;
+
+    // assert we're a square view.
+    assert([self bounds].size.height == [self bounds].size.width);
     
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"welcome" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioWelcomePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    
+    // load piece images for display
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        _whitepiece = [UIImage imageNamed:@"whitestone-85"];
+        _blackpiece = [UIImage imageNamed:@"blackstone-85"];
+        _felt = [UIImage imageNamed:@"felt-680"];
+    } else {
+        _whitepiece = [UIImage imageNamed:@"whitestone-40"];
+        _blackpiece = [UIImage imageNamed:@"blackstone-40"];
+        _felt = [UIImage imageNamed:@"felt"];
     }
+    
+    _audioWelcomePlayer = [self getPlayerForSound:@"welcome"];
+    _audioThppPlayer = [self getPlayerForSound:@"thpp"];
+    _audioWhoopPlayer = [self getPlayerForSound:@"whoop"];
+    _audioYayPlayer = [self getPlayerForSound:@"yay"];
+    _audioBooPlayer = [self getPlayerForSound:@"boo"];
+    _audioNOPlayer = [self getPlayerForSound:@"no"];
+    _audioHoldOnPlayer = [self getPlayerForSound:@"holdon2"];
+    _audioTiePlayer = [self getPlayerForSound:@"tie"];
+    _audioYouLostPlayer = [self getPlayerForSound:@"youlost"];
+    _audioComputerLostPlayer = [self getPlayerForSound:@"computerlost"];
+    _audioNewGamePlayer = [self getPlayerForSound:@"newgame"];
+
+    // welcome the player
     [_audioWelcomePlayer play];
 
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"thpp" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioThppPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"whoop" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioWhoopPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"yay" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioYayPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"boo" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioBooPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"no" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioNOPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"holdon2" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioHoldOnPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"holdon2" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioHoldOnPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"tie" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioTiePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"youlost" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioYouLostPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"computerlost" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioComputerLostPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"newgame" ofType:@"wav"];
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audioNewGamePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    }
-    
     // start the board empty
     [self initBoard];
     
@@ -187,10 +143,12 @@ OthelloSideType _currentPlayer;
         msg = @"You tied with the computer!";
         [_audioTiePlayer play];
     }
-    
+
+    // note - it looks like ARC doesn't actually clean up after UIAlertViews very well?
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert setTag:kOthelloAlertGameOver];
     [alert show];
+
 }
 
 
@@ -258,8 +216,8 @@ OthelloSideType _currentPlayer;
 	CGPoint pt = [[touches anyObject] locationInView:self];
     
     // let's figure out what grid-spot they touched in.
-    int i = (int)(pt.x / 40.0);
-    int j = (int)(pt.y / 40.0);
+    int i = (int)(pt.x / _cellSize);
+    int j = (int)(pt.y / _cellSize);
     if([self testMove:kOthelloWhite row:i col:j doMove:true ] == 0){
         // the projected move is inadmissable / would capture no pieces.
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -376,33 +334,30 @@ OthelloSideType _currentPlayer;
     for(i=0;i<8;i++){
         
         // draw vertical lines of grid
-        CGContextMoveToPoint(context, (40.0 * i), 0);
-        CGContextAddLineToPoint(context, (40.0 * i), 320.0);
+        CGContextMoveToPoint(context, _cellSize * i, 0);
+        CGContextAddLineToPoint(context, _cellSize * i, _cellSize * 8.0);
 
         // draw horizontal lines of grid
-        CGContextMoveToPoint(context, 0, (40.0 * i));
-        CGContextAddLineToPoint(context, 320.0, (40.0 * i));
+        CGContextMoveToPoint(context, 0, _cellSize * i);
+        CGContextAddLineToPoint(context, _cellSize * 8.0, _cellSize * i);
 
         // render piece in this square
         for(j=0;j<8;j++){
             OthelloSideType space = _boardState[i][j];
             if(space == kOthelloWhite){
-                [_whitepiece drawAtPoint:CGPointMake((40.0 * i), (40.0 * j)) blendMode:kCGBlendModeNormal alpha:1.0];
+                [_whitepiece drawAtPoint:CGPointMake(_cellSize * i, _cellSize * j) blendMode:kCGBlendModeNormal alpha:1.0];
             }
             if(space == kOthelloBlack){
-                [_blackpiece drawAtPoint:CGPointMake((40.0 * i), (40.0 * j)) blendMode:kCGBlendModeNormal alpha:1.0];
+                [_blackpiece drawAtPoint:CGPointMake(_cellSize * i, _cellSize * j) blendMode:kCGBlendModeNormal alpha:1.0];
             }
         }
     }
 
-    // draw vertical lines of grid
-    CGContextMoveToPoint(context, (40.0 * 8), 0);
-    CGContextAddLineToPoint(context, (40.0 * 8), 320.0);
-    
-    // draw horizontal lines of grid
-    CGContextMoveToPoint(context, 0, (40.0 * 8));
-    CGContextAddLineToPoint(context, 320.0, (40.0 * 8));
-
+    // draw last part of bounding box
+    CGContextMoveToPoint(context, _cellSize * 8.0, 0);
+    CGContextAddLineToPoint(context, _cellSize * 8.0, _cellSize * 8.0);
+    CGContextMoveToPoint(context, 0, _cellSize * 8.0);
+    CGContextAddLineToPoint(context, _cellSize * 8.0, _cellSize * 8.0);
     
     // actually render gridlines
     CGContextStrokePath(context);

@@ -10,7 +10,24 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
+
+typedef enum {
+    kOthelloNone,
+    kOthelloWhite,
+    kOthelloBlack
+} OthelloSideType;
+
+typedef enum {
+    kOthelloAlertGameOver = 1
+} OthelloAlerts;
+
+
 @interface OthelloBoardView : UIView <UIAlertViewDelegate>
+{
+    OthelloSideType _boardState[8][8];
+    OthelloSideType _currentPlayer;
+    CGFloat _cellSize;
+}
 
 @property (strong, nonatomic) UIImage *blackpiece;
 @property (strong, nonatomic) UIImage *whitepiece;
@@ -26,4 +43,6 @@
 @property (strong, nonatomic) AVAudioPlayer *audioYouLostPlayer;
 @property (strong, nonatomic) AVAudioPlayer *audioComputerLostPlayer;
 @property (strong, nonatomic) AVAudioPlayer *audioNewGamePlayer;
+
 @end
+

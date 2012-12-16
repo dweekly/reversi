@@ -21,8 +21,14 @@ v0.01 (Dec 5, 2012)
 v0.02 (Dec 6, 2012)
  - added crude sound effects, now works on iPhone4/4S
 
+v0.03 (Dec 15, 2012)
+ - added iPad support
+ - added code for Shoutcast music streaming via AudioStreamer library (but is annoying, so disabled)
+ - code tidying
+
 TODOs:
  - sophisticated minmix AI with multilevel lookahead
- - music
+ - welcome screen with instructions
+ - support rotation
  - animations
  - GameCenter / multiplayer

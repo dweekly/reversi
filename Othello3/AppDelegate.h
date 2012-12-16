@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AudioStreamer.h"
+
 @class ViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    AudioStreamer *_streamer;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

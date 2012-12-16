@@ -23,6 +23,14 @@
     }
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    /*
+    // let's kick off some music!
+    NSURL *url = [NSURL URLWithString:@"http://live.streamhosting.ch:8010/"];
+	_streamer = [[AudioStreamer alloc] initWithURL:url];
+    [_streamer start];
+     */
+    
     return YES;
 }
 
