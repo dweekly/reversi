@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "Flurry.h"
 #import "ViewController.h"
 
 @implementation AppDelegate
@@ -15,6 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
@@ -23,6 +24,11 @@
     }
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    // Add Flurry analytics.
+    [Flurry startSession:@"5XRJ5TGT3DMQTYHH5VVS"];
+    
+    _game = [[OthelloGameController alloc] init];
     
     /*
     // let's kick off some music!

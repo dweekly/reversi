@@ -9,16 +9,17 @@
 #import <UIKit/UIKit.h>
 
 #import "AudioStreamer.h"
+#import "OthelloGameController.h"
 
 @class ViewController;
+@class AudioStreamer;
+@class OthelloGameController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-{
-    AudioStreamer *_streamer;
-}
 
+@property (readonly) AudioStreamer *streamer;
+@property (readonly) OthelloGameController *game;
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) ViewController *viewController;
 
 @end

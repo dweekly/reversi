@@ -7,42 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AudioToolbox/AudioToolbox.h>
-#import <AVFoundation/AVFoundation.h>
+#import "AppDelegate.h"
 
+@class AppDelegate;
 
-typedef enum {
-    kOthelloNone,
-    kOthelloWhite,
-    kOthelloBlack
-} OthelloSideType;
-
-typedef enum {
-    kOthelloAlertGameOver = 1
-} OthelloAlerts;
-
-
-@interface OthelloBoardView : UIView <UIAlertViewDelegate>
+@interface OthelloBoardView : UIView
 {
-    OthelloSideType _boardState[8][8];
-    OthelloSideType _currentPlayer;
     CGFloat _cellSize;
 }
 
+@property (readwrite) AppDelegate *app;
 @property (strong, nonatomic) UIImage *blackpiece;
 @property (strong, nonatomic) UIImage *whitepiece;
 @property (strong, nonatomic) UIImage *felt;
-@property (strong, nonatomic) AVAudioPlayer *audioWelcomePlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioThppPlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioWhoopPlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioYayPlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioBooPlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioNOPlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioHoldOnPlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioTiePlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioYouLostPlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioComputerLostPlayer;
-@property (strong, nonatomic) AVAudioPlayer *audioNewGamePlayer;
 
 @end
 
