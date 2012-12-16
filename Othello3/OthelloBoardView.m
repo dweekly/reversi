@@ -240,11 +240,13 @@
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
             int here_captured = [self testMove:kOthelloBlack row:i col:j doMove:false];
-            // todo: descend via minmax to explore counter-moves
-            if (here_captured > best_captured) {
-                best_captured = here_captured;
-                best_i = i;
-                best_j = j;
+            if(here_captured > 0){ // valid move
+                // todo: descend via minmax to explore counter-moves
+                if (here_captured > best_captured) {
+                    best_captured = here_captured;
+                    best_i = i;
+                    best_j = j;
+                }
             }
         }
     }
@@ -263,7 +265,7 @@
 
 
 // compute whether a given move is valid, and, possibly, do it.
-- (bool)testMove:(OthelloSideType)whoseMove row:(int)i col:(int)j doMove:(bool)doMove
+- (int)testMove:(OthelloSideType)whoseMove row:(int)i col:(int)j doMove:(bool)doMove
 {
     assert(i >= 0);
     assert(i < 8);

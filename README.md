@@ -3,7 +3,7 @@ isreveR
 
 A Reversi iOS Game.
 
-I wrote this in a few hours as my first iOS application to teach
+I intially wrote this in a few hours as my first iOS application
 myself iOS programming. This is probably NOT a good place for you
 to teach yourself how to code for iOS because I probably did
 everything wrong.
@@ -29,6 +29,7 @@ v0.03 (Dec 15, 2012)
 v0.04 (Dec 15, 2012)
  - verified working with iPad retina, added default loading images.
  - updated felt textures
+ - fixed bug which made dumb AI even dumber, whoops.
 
 TODOs:
  - sophisticated minmix AI with multilevel lookahead
