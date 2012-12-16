@@ -8,6 +8,10 @@
 
 #import "OthelloGameController.h"
 
+// add our AIs!
+#import "AI_FirstValid.h"
+#import "AI_SimpleGreedy.h"
+
 @implementation OthelloGameController
 
 
@@ -64,29 +68,15 @@
 // the computer needs to calculate and make its move.
 - (void)computerTurn
 {
-    // for every permissible move on the board, calculate the number of pieces captured.
-    // simple algorithm weights # pieces captured (TODO: extra weight for sides + corners)
     int best_i = -1;
     int best_j = -1;
-    int best_captured = 0;
-    for(int i=0; i<8; i++){
-        for(int j=0; j<8; j++){
-            int here_captured = [self testMove:kOthelloBlack row:i col:j doMove:false];
-            if(here_captured > 0){ // valid move
-                // todo: descend via minmax to explore counter-moves
-                if (here_captured > best_captured) {
-                    best_captured = here_captured;
-                    best_i = i;
-                    best_j = j;
-                }
-            }
-        }
-    }
     
-    // ensure a valid move exists (we shouldn't have been allowed to move otherwise)
-    assert(best_captured);
-    
+    // Call out to our AI here!
+    [_ai computerTurn:&best_i j:&best_j];
+
     // make the move and ensure it was actually valid.
+    assert(best_i >= 0 && best_i < 8);
+    assert(best_j >= 0 && best_j < 8);
     int captured = [self testMove:kOthelloBlack row:best_i col:best_j doMove:true];
     assert(captured);
     
@@ -196,7 +186,7 @@
 
 
 // someone just finished their move. check to see whose move is next or if the game is over.
-- (void) nextTurn
+- (void)nextTurn
 {
     [_boardView setNeedsDisplay];
     
@@ -274,6 +264,11 @@
 
 - (id)init
 {
+    self = [super init];
+    
+    // pick which A.I. we're going to use
+    _ai = [[AI_SimpleGreedy alloc] initWithGame:self];
+    
     _audioWelcomePlayer = [self getPlayerForSound:@"welcome"];
     _audioThppPlayer = [self getPlayerForSound:@"thpp"];
     _audioWhoopPlayer = [self getPlayerForSound:@"whoop"];

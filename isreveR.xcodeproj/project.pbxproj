@@ -17,6 +17,8 @@
 		DB1208B0167DAB2A0068FD6A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */; };
 		DB1208B3167DB3DB0068FD6A /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208B1167DB3DB0068FD6A /* libTestFlight.a */; };
 		DB1208B6167DB8650068FD6A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208B5167DB8650068FD6A /* libz.dylib */; };
+		DB2F0701167E590400A22C8E /* AI_FirstValid.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0700167E590400A22C8E /* AI_FirstValid.m */; };
+		DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */; };
 		DB497B3116708BC500EBCAFE /* thpp.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3016708BC500EBCAFE /* thpp.wav */; };
 		DB497B3316708D0200EBCAFE /* whoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3216708D0200EBCAFE /* whoop.wav */; };
 		DB497B3516708D9900EBCAFE /* yay.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3416708D9900EBCAFE /* yay.wav */; };
@@ -98,6 +100,10 @@
 		DB1208B1167DB3DB0068FD6A /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		DB1208B2167DB3DB0068FD6A /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		DB1208B5167DB8650068FD6A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DB2F06FF167E590400A22C8E /* AI_FirstValid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_FirstValid.h; sourceTree = "<group>"; };
+		DB2F0700167E590400A22C8E /* AI_FirstValid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_FirstValid.m; sourceTree = "<group>"; };
+		DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_SimpleGreedy.h; sourceTree = "<group>"; };
+		DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_SimpleGreedy.m; sourceTree = "<group>"; };
 		DB497B3016708BC500EBCAFE /* thpp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thpp.wav; sourceTree = "<group>"; };
 		DB497B3216708D0200EBCAFE /* whoop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whoop.wav; sourceTree = "<group>"; };
 		DB497B3416708D9900EBCAFE /* yay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = yay.wav; sourceTree = "<group>"; };
@@ -290,6 +296,10 @@
 				DB8A3FE0167009E200AF45F9 /* OthelloBoardView.m */,
 				DB1208A8167D8A2E0068FD6A /* OthelloGameController.h */,
 				DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */,
+				DB2F06FF167E590400A22C8E /* AI_FirstValid.h */,
+				DB2F0700167E590400A22C8E /* AI_FirstValid.m */,
+				DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */,
+				DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */,
 				DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */,
 				DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */,
 			);
@@ -546,6 +556,8 @@
 				DB8A3FB91670074A00AF45F9 /* ViewController.m in Sources */,
 				DB8A3FE1167009E200AF45F9 /* OthelloBoardView.m in Sources */,
 				DB1208AA167D8A2E0068FD6A /* OthelloGameController.m in Sources */,
+				DB2F0701167E590400A22C8E /* AI_FirstValid.m in Sources */,
+				DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,16 +20,26 @@ typedef enum {
     kOthelloAlertGameOver = 1
 } OthelloAlerts;
 
-
+@class OthelloGameController;
 @class OthelloBoardView;
+
+
+// define how we'll interact with AIs.
+@protocol AIDelegate
+- (id)initWithGame:(OthelloGameController *)game;
+- (int)computerTurn:(int *)best_i j:(int *)best_j;
+@end
+
 
 @interface OthelloGameController : NSObject <UIAlertViewDelegate>
 {
     @public OthelloSideType _boardState[8][8];
     @public OthelloSideType _currentPlayer;
+    id <AIDelegate> _ai;
 }
 
 - (bool)attemptPlayerMove:(int)i col:(int)j;
+- (int)testMove:(OthelloSideType)whoseMove row:(int)i col:(int)j doMove:(bool)doMove;
 
 @property (readwrite) OthelloBoardView *boardView;
 @property (strong, nonatomic) AVAudioPlayer *audioWelcomePlayer;
