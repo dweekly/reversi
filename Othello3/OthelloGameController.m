@@ -25,7 +25,7 @@
     NSError *error;
     p = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
     if(!p){
-        NSLog(@"Error in getPlayerForSound: %@ %@", error, [error userInfo]);
+        CLS_LOG(@"Error in getPlayerForSound: %@ %@", error, [error userInfo]);
     }
     return p;
 }
@@ -127,8 +127,7 @@
                 if(ray_cell == whoseMove){
                     if(steps > 1){
                         // we've gone at least one step, capture the ray.
-                        totalCaptured += steps-1;
-                        // NSLog(@"Found a valid ray capture from %d, %d on ray %d, %d (steps %d)", i, j, dx, dy, steps);
+                        totalCaptured += steps - 1;
                         if(doMove) { // okay, let's actually execute on this
                             while(steps--){
                                 _boardState[i + (dx*steps)][j + (dy*steps)] = whoseMove;
@@ -198,12 +197,12 @@
             // AND the human can't make another move...
             if(![self canMove:kOthelloWhite]){
                 // the game is over, since nobody can move.
-                NSLog(@"Game over, no moves left.");
+                CLS_LOG(@"Game over, no moves left.");
                 [self gameOver];
                 return;
             } else {
                 // skip the computer move, let the human move again.
-                NSLog(@"Computer cannot move, skipping robot move. :'(");
+                CLS_LOG(@"Computer cannot move, skipping robot move. :'(");
                 [_audioBooPlayer play];
             }
         } else {
@@ -217,11 +216,11 @@
         if(![self canMove:kOthelloWhite]){
             // and the computer can't make another move.
             if(![self canMove:kOthelloBlack]){
-                NSLog(@"Game over, no moves left.");
+                CLS_LOG(@"Game over, no moves left.");
                 [self gameOver];
                 return;
             } else {
-                NSLog(@"Human can't move, skipping the mortal. :-D");
+                CLS_LOG(@"Human can't move, skipping the mortal. :-D");
                 [_audioYayPlayer play];
                 // in 800ms, calculate the computer's move. for now, show the user's move.
                 [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(computerTurn) userInfo:nil repeats:NO];
@@ -239,7 +238,7 @@
 {
     // first, let's check to see if it's the user's turn right now
     if(_currentPlayer != kOthelloWhite){
-        NSLog(@"Player attempted to move at %d, %d but wasn't player's turn.", i, j);
+        CLS_LOG(@"Player attempted to move at %d, %d but wasn't player's turn.", i, j);
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [_audioHoldOnPlayer play];
         return false;
@@ -249,14 +248,14 @@
     int captured = [self testMove:kOthelloWhite row:i col:j doMove:true];
     if(captured == 0){
         // the projected move is inadmissable / would capture no pieces.
-        NSLog(@"Player attempted to move at %d, %d but move was not permitted.", i, j);
+        CLS_LOG(@"Player attempted to move at %d, %d but move was not permitted.", i, j);
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [_audioNOPlayer play];
         return false;
     }
     
     // the move is admissable and was made, make the next turn happen
-    NSLog(@"Player moved successfully at %d, %d capturing %d pieces.", i, j, captured);
+    CLS_LOG(@"Player moved successfully at %d, %d capturing %d pieces.", i, j, captured);
     [_audioThppPlayer play];
     [self nextTurn];
     return true;
@@ -280,7 +279,7 @@
             break;
         }
         default: {
-            NSLog(@"Asked to switch to unknown AI %d", name);
+            CLS_LOG(@"Asked to switch to unknown AI %d", name);
             assert(false);
         }
     }

@@ -15,17 +15,25 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+
+#ifdef FLURRY
     // Add Flurry analytics.
     [Flurry startSession:@"5XRJ5TGT3DMQTYHH5VVS"];
+#endif
     
-    // Add TestFlight
+#ifdef CRASHLYTICS
+    // Add Crashlytics
+    [Crashlytics startWithAPIKey:@"1832bc892086bfad3ad1d6f83d5deba876746cb1"];
+#endif
+
 #ifdef TESTFLIGHT
+    // Add TestFlight
 #ifdef  TESTING
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     [TestFlight takeOff:@"7f8e5fb9bd5c08bfd5157d9014b2e510_MTY2ODg5MjAxMi0xMi0xNiAwMjo0ODo0MC40NzIwNDU"];
 #endif
+    
     // create the game object!
     _game = [[OthelloGameController alloc] init];
     

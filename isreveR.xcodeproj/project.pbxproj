@@ -76,6 +76,7 @@
 		DBCE59B116717B8A0022E0A0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */; };
 		DBCE59B316717BB00022E0A0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DBFC7AC616716C5600629011 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBFC7AC516716C5600629011 /* README.md */; };
+		DBFE50E2167FE3D1009B8C16 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		DBCE59AF16717B8A0022E0A0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		DBFC7AC516716C5600629011 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				DB8A3FA41670074A00AF45F9 /* CoreGraphics.framework in Frameworks */,
 				DB1208AE167D9DBB0068FD6A /* libFlurry.a in Frameworks */,
 				DB1208B3167DB3DB0068FD6A /* libTestFlight.a in Frameworks */,
+				DBFE50E2167FE3D1009B8C16 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +290,7 @@
 		DB8A3F9E1670074A00AF45F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */,
 				DB2F070A167E78C400A22C8E /* StoreKit.framework */,
 				DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */,
 				DBCE59AC167179350022E0A0 /* CFNetwork.framework */,
@@ -430,6 +434,7 @@
 				DB8A3F971670074A00AF45F9 /* Sources */,
 				DB8A3F981670074A00AF45F9 /* Frameworks */,
 				DB8A3F991670074A00AF45F9 /* Resources */,
+				DBFE50E0167FE37F009B8C16 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -559,6 +564,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		DBFE50E0167FE37F009B8C16 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 1832bc892086bfad3ad1d6f83d5deba876746cb1";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -691,6 +710,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: David Weekly (XPCNQ9499C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Weekly (XPCNQ9499C)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Othello3/isreveR-Prefix.pch";
 				INFOPLIST_FILE = "Othello3/isreveR-Info.plist";
@@ -711,6 +734,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: David Weekly";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Weekly";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Othello3/isreveR-Prefix.pch";
 				INFOPLIST_FILE = "Othello3/isreveR-Info.plist";

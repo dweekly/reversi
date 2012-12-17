@@ -35,7 +35,7 @@
     }
     
     // we should have been able to find SOME move!
-    NSLog(@"WTH, couldn't find a move.");
+    CLS_LOG(@"WTH, couldn't find a move.");
     assert(false);
 }
 

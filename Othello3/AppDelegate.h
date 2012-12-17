@@ -6,14 +6,23 @@
 //  Copyright (c) 2012 David E. Weekly. All rights reserved.
 //
 
+#define CRASHLYTICS 1
+#define FLURRY 1
+// #define TESTFLIGHT 1
+// #define TESTING 1
+
 #import <UIKit/UIKit.h>
+
+#ifdef CRASHLYTICS
+#import <Crashlytics/Crashlytics.h>
+#else
+#define CLS_LOG NSLog
+#endif
 
 #import "AudioStreamer.h"
 #import "OthelloGameController.h"
 #import "TestFlight.h"
 
-// #define TESTFLIGHT 1
-// #define TESTING 1
 
 @class ViewController;
 @class AudioStreamer;
