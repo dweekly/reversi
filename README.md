@@ -36,11 +36,16 @@ v0.05 (Dec 15, 2012)
  - Added Flurry integration
 
 v0.06 (Dec 16, 2012)
- - Added TestFlight (though this does significantly slow 1st load)
+ - Added TestFlight (though this does slow 1st load)
  - Better refactoring without crazy timing issues.
-
+ - Added modularity to allow for different AIs
+ - Smoother, subtler board lines
+ 
+v0.07 (Dec 16, 2012)
+ - Add in-app purchasing for more advanced AI
+ 
 TODOs:
- - sophisticated minmix AI with multilevel lookahead
+ - Allow for user selection of different AIs
  - welcome screen with instructions
  - support rotation
  - animations

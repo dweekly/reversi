@@ -11,6 +11,7 @@
 // add our AIs!
 #import "AI_FirstValid.h"
 #import "AI_SimpleGreedy.h"
+#import "AI_Minimax.h"
 
 @implementation OthelloGameController
 
@@ -261,13 +262,48 @@
     return true;
 }
 
+- (void)switchToAI:(AIType)name
+{
+    _ai = nil;
+    switch(name){
+        case kAIFirstValid: {
+            _ai = [[AI_FirstValid alloc] initWithGame:self];
+            break;
+        }
+        case kAISimpleGreedy: {
+            _ai = [[AI_SimpleGreedy alloc] initWithGame:self];
+            break;
+        }
+        case kAIMinimax: {
+            // verify we're allowed to use minimax / is unlocked
+            _ai = [[AI_Minimax alloc] initWithGame:self];
+            break;
+        }
+        default: {
+            NSLog(@"Asked to switch to unknown AI %d", name);
+            assert(false);
+        }
+    }
+}
+
+// enables a given (premium/unlockable) AI.
+- (void)unlockAI:(AIType)name
+{
+    // TODO: store permanently that the given AI is now allowed!
+
+    // switch to that AI right now
+    [self switchToAI:name];
+}
 
 - (id)init
 {
     self = [super init];
+
+    // TODO: check to see if we have access to the Minimax AI
+    // ...if yes, fire it up and set it as our AI.
     
     // pick which A.I. we're going to use
-    _ai = [[AI_SimpleGreedy alloc] initWithGame:self];
+    [self switchToAI:kAISimpleGreedy];
     
     _audioWelcomePlayer = [self getPlayerForSound:@"welcome"];
     _audioThppPlayer = [self getPlayerForSound:@"thpp"];

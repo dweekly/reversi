@@ -12,7 +12,8 @@
 #import "OthelloGameController.h"
 #import "TestFlight.h"
 
-#define TESTING 1
+// #define TESTFLIGHT 1
+// #define TESTING 1
 
 @class ViewController;
 @class AudioStreamer;

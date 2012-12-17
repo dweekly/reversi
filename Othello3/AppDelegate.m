@@ -20,11 +20,12 @@
     [Flurry startSession:@"5XRJ5TGT3DMQTYHH5VVS"];
     
     // Add TestFlight
-#ifdef TESTING
+#ifdef TESTFLIGHT
+#ifdef  TESTING
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     [TestFlight takeOff:@"7f8e5fb9bd5c08bfd5157d9014b2e510_MTY2ODg5MjAxMi0xMi0xNiAwMjo0ODo0MC40NzIwNDU"];
-    
+#endif
     // create the game object!
     _game = [[OthelloGameController alloc] init];
     

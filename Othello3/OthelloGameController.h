@@ -30,6 +30,11 @@ typedef enum {
 - (int)computerTurn:(int *)best_i j:(int *)best_j;
 @end
 
+typedef enum {
+    kAIFirstValid = 1,
+    kAISimpleGreedy = 2,
+    kAIMinimax = 3
+} AIType;
 
 @interface OthelloGameController : NSObject <UIAlertViewDelegate>
 {
@@ -40,6 +45,7 @@ typedef enum {
 
 - (bool)attemptPlayerMove:(int)i col:(int)j;
 - (int)testMove:(OthelloSideType)whoseMove row:(int)i col:(int)j doMove:(bool)doMove;
+- (void)unlockAI:(AIType)name;
 
 @property (readwrite) OthelloBoardView *boardView;
 @property (strong, nonatomic) AVAudioPlayer *audioWelcomePlayer;

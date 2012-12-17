@@ -19,6 +19,8 @@
 		DB1208B6167DB8650068FD6A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208B5167DB8650068FD6A /* libz.dylib */; };
 		DB2F0701167E590400A22C8E /* AI_FirstValid.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0700167E590400A22C8E /* AI_FirstValid.m */; };
 		DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */; };
+		DB2F0709167E630300A22C8E /* AI_Minimax.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0708167E630300A22C8E /* AI_Minimax.m */; };
+		DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2F070A167E78C400A22C8E /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DB497B3116708BC500EBCAFE /* thpp.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3016708BC500EBCAFE /* thpp.wav */; };
 		DB497B3316708D0200EBCAFE /* whoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3216708D0200EBCAFE /* whoop.wav */; };
 		DB497B3516708D9900EBCAFE /* yay.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB497B3416708D9900EBCAFE /* yay.wav */; };
@@ -104,6 +106,9 @@
 		DB2F0700167E590400A22C8E /* AI_FirstValid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_FirstValid.m; sourceTree = "<group>"; };
 		DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_SimpleGreedy.h; sourceTree = "<group>"; };
 		DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_SimpleGreedy.m; sourceTree = "<group>"; };
+		DB2F0707167E630300A22C8E /* AI_Minimax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_Minimax.h; sourceTree = "<group>"; };
+		DB2F0708167E630300A22C8E /* AI_Minimax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_Minimax.m; sourceTree = "<group>"; };
+		DB2F070A167E78C400A22C8E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DB497B3016708BC500EBCAFE /* thpp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thpp.wav; sourceTree = "<group>"; };
 		DB497B3216708D0200EBCAFE /* whoop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whoop.wav; sourceTree = "<group>"; };
 		DB497B3416708D9900EBCAFE /* yay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = yay.wav; sourceTree = "<group>"; };
@@ -173,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */,
 				DB1208B6167DB8650068FD6A /* libz.dylib in Frameworks */,
 				DB1208B0167DAB2A0068FD6A /* SystemConfiguration.framework in Frameworks */,
 				DBCE59AD167179350022E0A0 /* CFNetwork.framework in Frameworks */,
@@ -243,6 +249,19 @@
 			name = TestFlight;
 			sourceTree = "<group>";
 		};
+		DB2F0706167E62A100A22C8E /* AIs */ = {
+			isa = PBXGroup;
+			children = (
+				DB2F06FF167E590400A22C8E /* AI_FirstValid.h */,
+				DB2F0700167E590400A22C8E /* AI_FirstValid.m */,
+				DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */,
+				DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */,
+				DB2F0707167E630300A22C8E /* AI_Minimax.h */,
+				DB2F0708167E630300A22C8E /* AI_Minimax.m */,
+			);
+			name = AIs;
+			sourceTree = "<group>";
+		};
 		DB8A3F901670074A00AF45F9 = {
 			isa = PBXGroup;
 			children = (
@@ -268,7 +287,7 @@
 		DB8A3F9E1670074A00AF45F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DB1208B5167DB8650068FD6A /* libz.dylib */,
+				DB2F070A167E78C400A22C8E /* StoreKit.framework */,
 				DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */,
 				DBCE59AC167179350022E0A0 /* CFNetwork.framework */,
 				DB8A40011670353F00AF45F9 /* AudioToolbox.framework */,
@@ -278,6 +297,7 @@
 				DB8A3FA11670074A00AF45F9 /* Foundation.framework */,
 				DB8A3FA31670074A00AF45F9 /* CoreGraphics.framework */,
 				DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */,
+				DB1208B5167DB8650068FD6A /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -296,12 +316,7 @@
 				DB8A3FE0167009E200AF45F9 /* OthelloBoardView.m */,
 				DB1208A8167D8A2E0068FD6A /* OthelloGameController.h */,
 				DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */,
-				DB2F06FF167E590400A22C8E /* AI_FirstValid.h */,
-				DB2F0700167E590400A22C8E /* AI_FirstValid.m */,
-				DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */,
-				DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */,
-				DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */,
-				DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */,
+				DB2F0706167E62A100A22C8E /* AIs */,
 			);
 			name = src;
 			path = Othello3;
@@ -310,6 +325,8 @@
 		DB8A3FA61670074A00AF45F9 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */,
+				DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */,
 				DBFC7AC316716C0900629011 /* icons */,
 				DB1208A6167D82840068FD6A /* screens */,
 				DBFC7ACB1671701B00629011 /* sfx */,
@@ -558,6 +575,7 @@
 				DB1208AA167D8A2E0068FD6A /* OthelloGameController.m in Sources */,
 				DB2F0701167E590400A22C8E /* AI_FirstValid.m in Sources */,
 				DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */,
+				DB2F0709167E630300A22C8E /* AI_Minimax.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,8 +720,8 @@
 					"\"$(SRCROOT)/Othello3\"",
 				);
 				PRODUCT_NAME = isreveR;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "902C06BB-E898-4DDB-9E84-CA5BB6254690";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "902C06BB-E898-4DDB-9E84-CA5BB6254690";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

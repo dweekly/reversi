@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
+
 #import "OthelloBoardView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 - (IBAction)feedback:(id)sender;
+- (IBAction)upgrade:(id)sender;
 
 @property (weak, nonatomic) IBOutlet OthelloBoardView *othelloBoard;
 
