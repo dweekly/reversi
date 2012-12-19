@@ -56,3 +56,4 @@ TODOs:
  - support rotation
  - animations
  - GameCenter / multiplayer
+ - Allow for 3rd parties to sell AIs(!)

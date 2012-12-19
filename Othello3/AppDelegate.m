@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Flurry.h"
-#import "ViewController.h"
+#import "GameViewController.h"
 
 @implementation AppDelegate
 
@@ -46,16 +46,16 @@
     
     // load the root view controller and show it.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
+        self.viewController = [[GameViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
     } else {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+        self.viewController = [[GameViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
     }
 
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
     // let game object know about the board view so it can refresh the board as needed.
-    _game.boardView = self.viewController.othelloBoard;
+    _game.boardViewController = self.viewController;
     
     return YES;
 }

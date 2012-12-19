@@ -25,9 +25,9 @@
 		DB8A3FAA1670074A00AF45F9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FA81670074A00AF45F9 /* InfoPlist.strings */; };
 		DB8A3FAC1670074A00AF45F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FAB1670074A00AF45F9 /* main.m */; };
 		DB8A3FB01670074A00AF45F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FAF1670074A00AF45F9 /* AppDelegate.m */; };
-		DB8A3FB91670074A00AF45F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FB81670074A00AF45F9 /* ViewController.m */; };
-		DB8A3FBC1670074A00AF45F9 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */; };
-		DB8A3FBF1670074A00AF45F9 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */; };
+		DB8A3FB91670074A00AF45F9 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FB81670074A00AF45F9 /* GameViewController.m */; };
+		DB8A3FBC1670074A00AF45F9 /* GameViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBA1670074A00AF45F9 /* GameViewController_iPhone.xib */; };
+		DB8A3FBF1670074A00AF45F9 /* GameViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBD1670074A00AF45F9 /* GameViewController_iPad.xib */; };
 		DB8A3FC71670074A00AF45F9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */; };
 		DB8A3FC81670074A00AF45F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3F9F1670074A00AF45F9 /* UIKit.framework */; };
 		DB8A3FC91670074A00AF45F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA11670074A00AF45F9 /* Foundation.framework */; };
@@ -77,6 +77,7 @@
 		DBFE511016817A69009B8C16 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1208A4167D81E00068FD6A /* Default.png */; };
 		DBFE511116817A7B009B8C16 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB991CD1167D631A006CED4E /* Default@2x.png */; };
 		DBFE511216817A9F009B8C16 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DB12089E167D652B0068FD6A /* Default-Portrait@2x~ipad.png */; };
+		DBFE511416818589009B8C16 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE511316818589009B8C16 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,10 +121,10 @@
 		DB8A3FAD1670074A00AF45F9 /* isreveR-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "isreveR-Prefix.pch"; sourceTree = "<group>"; };
 		DB8A3FAE1670074A00AF45F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DB8A3FAF1670074A00AF45F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DB8A3FB71670074A00AF45F9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DB8A3FB81670074A00AF45F9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		DB8A3FBB1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		DB8A3FBE1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		DB8A3FB71670074A00AF45F9 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		DB8A3FB81670074A00AF45F9 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		DB8A3FBB1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GameViewController_iPhone.xib; sourceTree = "<group>"; };
+		DB8A3FBE1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GameViewController_iPad.xib; sourceTree = "<group>"; };
 		DB8A3FC51670074A00AF45F9 /* isreveRTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = isreveRTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DB8A3FCE1670074A00AF45F9 /* isreveRTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "isreveRTests-Info.plist"; sourceTree = "<group>"; };
@@ -173,6 +174,7 @@
 		DBFE510616817226009B8C16 /* youlost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = youlost.mp3; sourceTree = "<group>"; };
 		DBFE510816817250009B8C16 /* boo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boo.mp3; sourceTree = "<group>"; };
 		DBFE510A16817267009B8C16 /* welcome.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = welcome.mp3; sourceTree = "<group>"; };
+		DBFE511316818589009B8C16 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFE511416818589009B8C16 /* GameKit.framework in Frameworks */,
 				DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */,
 				DB1208B6167DB8650068FD6A /* libz.dylib in Frameworks */,
 				DB1208B0167DAB2A0068FD6A /* SystemConfiguration.framework in Frameworks */,
@@ -290,6 +293,7 @@
 		DB8A3F9E1670074A00AF45F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBFE511316818589009B8C16 /* GameKit.framework */,
 				DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */,
 				DB2F070A167E78C400A22C8E /* StoreKit.framework */,
 				DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */,
@@ -314,8 +318,8 @@
 				DBCE59B216717B8E0022E0A0 /* AudioStreamer */,
 				DB8A3FAE1670074A00AF45F9 /* AppDelegate.h */,
 				DB8A3FAF1670074A00AF45F9 /* AppDelegate.m */,
-				DB8A3FB71670074A00AF45F9 /* ViewController.h */,
-				DB8A3FB81670074A00AF45F9 /* ViewController.m */,
+				DB8A3FB71670074A00AF45F9 /* GameViewController.h */,
+				DB8A3FB81670074A00AF45F9 /* GameViewController.m */,
 				DB8A3FDF167009E200AF45F9 /* OthelloBoardView.h */,
 				DB8A3FE0167009E200AF45F9 /* OthelloBoardView.m */,
 				DB1208A8167D8A2E0068FD6A /* OthelloGameController.h */,
@@ -329,8 +333,8 @@
 		DB8A3FA61670074A00AF45F9 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */,
-				DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */,
+				DB8A3FBA1670074A00AF45F9 /* GameViewController_iPhone.xib */,
+				DB8A3FBD1670074A00AF45F9 /* GameViewController_iPad.xib */,
 				DBFC7AC316716C0900629011 /* icons */,
 				DB1208A6167D82840068FD6A /* screens */,
 				DBFC7ACB1671701B00629011 /* sfx */,
@@ -497,8 +501,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB8A3FAA1670074A00AF45F9 /* InfoPlist.strings in Resources */,
-				DB8A3FBC1670074A00AF45F9 /* ViewController_iPhone.xib in Resources */,
-				DB8A3FBF1670074A00AF45F9 /* ViewController_iPad.xib in Resources */,
+				DB8A3FBC1670074A00AF45F9 /* GameViewController_iPhone.xib in Resources */,
+				DB8A3FBF1670074A00AF45F9 /* GameViewController_iPad.xib in Resources */,
 				DB8A4011167063D200AF45F9 /* Icon-Small-50@2x.png in Resources */,
 				DB8A4012167063D200AF45F9 /* Icon-Small-50.png in Resources */,
 				DB8A4013167063D200AF45F9 /* Icon-Small@2x.png in Resources */,
@@ -589,7 +593,7 @@
 				DBCE59B316717BB00022E0A0 /* AudioStreamer.m in Sources */,
 				DB8A3FAC1670074A00AF45F9 /* main.m in Sources */,
 				DB8A3FB01670074A00AF45F9 /* AppDelegate.m in Sources */,
-				DB8A3FB91670074A00AF45F9 /* ViewController.m in Sources */,
+				DB8A3FB91670074A00AF45F9 /* GameViewController.m in Sources */,
 				DB8A3FE1167009E200AF45F9 /* OthelloBoardView.m in Sources */,
 				DB1208AA167D8A2E0068FD6A /* OthelloGameController.m in Sources */,
 				DB2F0701167E590400A22C8E /* AI_FirstValid.m in Sources */,
@@ -626,20 +630,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */ = {
+		DB8A3FBA1670074A00AF45F9 /* GameViewController_iPhone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DB8A3FBB1670074A00AF45F9 /* en */,
 			);
-			name = ViewController_iPhone.xib;
+			name = GameViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
-		DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */ = {
+		DB8A3FBD1670074A00AF45F9 /* GameViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DB8A3FBE1670074A00AF45F9 /* en */,
 			);
-			name = ViewController_iPad.xib;
+			name = GameViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 		DB8A3FCF1670074A00AF45F9 /* InfoPlist.strings */ = {

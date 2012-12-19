@@ -1,22 +1,24 @@
 //
-//  ViewController.m
+//  GameViewController.m
 //  Othello3
 //
 //  Created by David E. Weekly on 12/5/12.
 //  Copyright (c) 2012 David E. Weekly. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GameViewController.h"
 
-@interface ViewController ()
+@interface GameViewController ()
 
 @end
 
-@implementation ViewController
+@implementation GameViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.gameStatus setText:@"Your turn!"];
 
     // ensure we observe any activity on the payment queue (for IAPs)
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
@@ -92,6 +94,7 @@
                     CLS_LOG(@"User chickened out of in-app purchase :(");
                 } else {
                     CLS_LOG(@"Surprise payment error %@", transaction.error);
+                    [self.gameStatus setText:@"There was an error upgrading, sorry."];
                 }
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 // remove wait view here
@@ -151,4 +154,10 @@
     }
 }
 
+- (void)viewDidUnload {
+    [self setAiPicker:nil];
+    [self setAiLabel:nil];
+    [self setGameStatus:nil];
+    [super viewDidUnload];
+}
 @end
