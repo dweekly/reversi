@@ -8,7 +8,7 @@
 
 #define CRASHLYTICS 1
 #define FLURRY 1
-// #define TESTFLIGHT 1
+#define TESTFLIGHT 1
 // #define TESTING 1
 
 #import <UIKit/UIKit.h>

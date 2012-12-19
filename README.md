@@ -43,9 +43,15 @@ v0.06 (Dec 16, 2012)
  
 v0.07 (Dec 16, 2012)
  - Add in-app purchasing for more advanced AI
- 
+
+v0.08 (Dec 18, 2012)
+ - Apply MP3 compression to reduce overall bundle size (23M -> 17M)
+ - Target iOS 5.0 to cover a wider range of users
+ - Update screenshots
+
 TODOs:
  - Allow for user selection of different AIs
+ - Visual feedback on move status, turn, upgrading of AI
  - welcome screen with instructions
  - support rotation
  - animations

@@ -35,6 +35,13 @@
     [TestFlight openFeedbackView];
 }
 
+
+// The user asked for more info, so let's send them to the website.
+- (IBAction)infoClick:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://gastonlabs.com/isrever/"]];
+}
+
+
 ////////////////// PAYMENTS / UPGRADING CODE BELOW /////////////////////
 
 // PURCHASE STEP #4: the payment queue is returned from Apple with completed transactions
@@ -50,6 +57,8 @@
 
                 // unlock is in transaction.payment.productIdentifier
                 assert([transaction.payment.productIdentifier isEqualToString:@"com.gastonlabs.isreveR.AI_Minimax"]);
+                
+                CLS_LOG(@"In-app purchase completed!!!");
                 
                 UIAlertView *tmp = [[UIAlertView alloc]
                                     initWithTitle:@"AI Unlocked"
@@ -80,9 +89,9 @@
                 
             case SKPaymentTransactionStateFailed: {
                 if(transaction.error.code == SKErrorPaymentCancelled){
-                    NSLog(@"User chickened out of in-app purchase :(");
+                    CLS_LOG(@"User chickened out of in-app purchase :(");
                 } else {
-                    NSLog(@"Surprise payment error %@", transaction.error);
+                    CLS_LOG(@"Surprise payment error %@", transaction.error);
                 }
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 // remove wait view here
@@ -90,7 +99,7 @@
             }
                 
             default: {
-                NSLog(@"Unknown transaction state: %d",transaction.transactionState);
+                CLS_LOG(@"Unknown transaction state: %d",transaction.transactionState);
                 break;
             }
         }
@@ -104,12 +113,12 @@
     // ensure we got back exactly one product back.
     int count = [response.products count];
     if (count == 0) {
-        NSLog(@"Looks like we didn't have anything more to buy?");
+        CLS_LOG(@"Looks like we didn't have anything more to buy?");
         return;
     }
     assert(count == 1);
     if(count != 1){
-        NSLog(@"Too many eligible products??");
+        CLS_LOG(@"Too many eligible products??");
         return;
     }
     

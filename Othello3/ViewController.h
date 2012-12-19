@@ -15,6 +15,7 @@
 
 - (IBAction)feedback:(id)sender;
 - (IBAction)upgrade:(id)sender;
+- (IBAction)infoClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet OthelloBoardView *othelloBoard;
 

@@ -20,7 +20,16 @@
 - (AVAudioPlayer *)getPlayerForSound:(NSString *)soundFile
 {
     AVAudioPlayer *p;
-    NSString *path = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"wav"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"mp3"];
+    if(!path){
+        CLS_LOG(@"Couldn't find MP3 for %@, looking for .wav",soundFile);
+        path = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"wav"];
+    }
+    if(!path){
+        CLS_LOG(@"Couldn't find WAV resource either!!");
+        assert(false);
+        return nil;
+    }
     NSURL *url = [NSURL fileURLWithPath:path];
     NSError *error;
     p = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
@@ -288,6 +297,8 @@
 // enables a given (premium/unlockable) AI.
 - (void)unlockAI:(AIType)name
 {
+    CLS_LOG(@"Unlocking AI %d", name);
+
     // TODO: store permanently that the given AI is now allowed!
 
     // switch to that AI right now
@@ -310,7 +321,7 @@
     _audioYayPlayer = [self getPlayerForSound:@"yay"];
     _audioBooPlayer = [self getPlayerForSound:@"boo"];
     _audioNOPlayer = [self getPlayerForSound:@"no"];
-    _audioHoldOnPlayer = [self getPlayerForSound:@"holdon2"];
+    _audioHoldOnPlayer = [self getPlayerForSound:@"holdon"];
     _audioTiePlayer = [self getPlayerForSound:@"tie"];
     _audioYouLostPlayer = [self getPlayerForSound:@"youlost"];
     _audioComputerLostPlayer = [self getPlayerForSound:@"computerlost"];
