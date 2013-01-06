@@ -8,9 +8,11 @@
 
 #import "AppDelegate.h"
 #import "Flurry.h"
-#import "GameViewController.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -46,9 +48,9 @@
     
     // load the root view controller and show it.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[GameViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
+        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
     } else {
-        self.viewController = [[GameViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
     }
 
     self.window.rootViewController = self.viewController;

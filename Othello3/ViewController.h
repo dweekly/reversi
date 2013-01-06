@@ -1,5 +1,5 @@
 //
-//  GameViewController.h
+//  ViewController.h
 //  Othello3
 //
 //  Created by David E. Weekly on 12/5/12.
@@ -13,15 +13,18 @@
 
 @class OthelloBoardView;
 
-@interface GameViewController : UIViewController <SKProductsRequestDelegate, SKPaymentTransactionObserver>
+@interface ViewController : UIViewController <SKProductsRequestDelegate, SKPaymentTransactionObserver, GKTurnBasedMatchmakerViewControllerDelegate>
+{
+    GKTurnBasedMatch *_match;
+}
 
 - (IBAction)feedback:(id)sender;
 - (IBAction)upgrade:(id)sender;
 - (IBAction)infoClick:(id)sender;
+- (IBAction)playHuman:(id)sender;
 
 @property (weak, nonatomic) IBOutlet OthelloBoardView *othelloBoard;
-@property (strong, nonatomic) IBOutlet UIPickerView *aiPicker;
-@property (weak, nonatomic) IBOutlet UILabel *aiLabel;
-@property (weak, nonatomic) IBOutlet UILabel *gameStatus;
+@property (weak, nonatomic) IBOutlet UILabel *opponentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
 @end

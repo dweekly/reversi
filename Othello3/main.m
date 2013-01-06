@@ -10,8 +10,16 @@
 
 #import "AppDelegate.h"
 
+
+void uncaughtExceptionHandler(NSException *exception) {
+    CLS_LOG(@"Uncaught Exception!! %@", exception);
+    CLS_LOG(@"Stack Trace: %@", [exception callStackSymbols]);
+    // Internal error reporting
+}
+
 int main(int argc, char *argv[])
 {
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }

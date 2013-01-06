@@ -56,7 +56,7 @@
     
     _currentPlayer = kOthelloWhite;
     
-    [_boardViewController.gameStatus setText:@"Your turn!"];
+    [_boardViewController.statusLabel setText:@"Your turn!"];
 
     [_boardViewController.othelloBoard setNeedsDisplay];
 }
@@ -208,20 +208,20 @@
             if(![self canMove:kOthelloWhite]){
                 // the game is over, since nobody can move.
                 CLS_LOG(@"Game over, no moves left.");
-                [_boardViewController.gameStatus setText:@"Game over."];
+                [_boardViewController.statusLabel setText:@"Game over."];
                 [self gameOver];
                 return;
             } else {
                 // skip the computer move, let the human move again.
                 CLS_LOG(@"Computer cannot move, skipping robot move. :'(");
-                [_boardViewController.gameStatus setText:@"I can't move; go again!"];
+                [_boardViewController.statusLabel setText:@"I can't move; go again!"];
                 [_audioBooPlayer play];
             }
         } else {
             // the computer CAN move. let it make a decision.
             _currentPlayer = kOthelloBlack;
             // in 800ms, calculate the computer's move. for now, show the user's move.
-            [_boardViewController.gameStatus setText:@"I'm thinking..."];
+            [_boardViewController.statusLabel setText:@"I'm thinking..."];
             [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(computerTurn) userInfo:nil repeats:NO];
         }
     } else { // the computer just went.
@@ -230,12 +230,12 @@
             // and the computer can't make another move.
             if(![self canMove:kOthelloBlack]){
                 CLS_LOG(@"Game over, no moves left.");
-                [_boardViewController.gameStatus setText:@"Game over."];
+                [_boardViewController.statusLabel setText:@"Game over."];
                 [self gameOver];
                 return;
             } else {
                 CLS_LOG(@"Human can't move, skipping the mortal. :-D");
-                [_boardViewController.gameStatus setText:@"You can't move; my turn again!"];
+                [_boardViewController.statusLabel setText:@"You can't move; my turn again!"];
                 [_audioYayPlayer play];
                 // in 800ms, calculate the computer's move. for now, show the user's move.
                 [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(computerTurn) userInfo:nil repeats:NO];
@@ -243,7 +243,7 @@
         } else {
             // the human can move, let them do so.
             _currentPlayer = kOthelloWhite;
-            [_boardViewController.gameStatus setText:@"Your turn!"];
+            [_boardViewController.statusLabel setText:@"Your turn!"];
         }
     }
 }
@@ -255,7 +255,7 @@
     // first, let's check to see if it's the user's turn right now
     if(_currentPlayer != kOthelloWhite){
         CLS_LOG(@"Player attempted to move at %d, %d but wasn't player's turn.", i, j);
-        [_boardViewController.gameStatus setText:@"Not your turn yet!"];
+        [_boardViewController.statusLabel setText:@"Not your turn yet!"];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [_audioHoldOnPlayer play];
         return false;
@@ -266,7 +266,7 @@
     if(captured == 0){
         // the projected move is inadmissable / would capture no pieces.
         CLS_LOG(@"Player attempted to move at %d, %d but move was not permitted.", i, j);
-        [_boardViewController.gameStatus setText:@"You can't move there."];
+        [_boardViewController.statusLabel setText:@"You can't move there."];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [_audioNOPlayer play];
         return false;

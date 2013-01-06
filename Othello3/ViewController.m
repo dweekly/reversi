@@ -1,29 +1,29 @@
 //
-//  GameViewController.m
+//  ViewController.m
 //  Othello3
 //
 //  Created by David E. Weekly on 12/5/12.
 //  Copyright (c) 2012 David E. Weekly. All rights reserved.
 //
 
-#import "GameViewController.h"
+#import "ViewController.h"
 
-@interface GameViewController ()
+@interface ViewController ()
 
 @end
 
-@implementation GameViewController
+@implementation ViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self.gameStatus setText:@"Your turn!"];
+    [self.statusLabel setText:@"Your turn!"];
 
     // ensure we observe any activity on the payment queue (for IAPs)
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
 
-    // check IAP, if already made, remove upgrade button
+    // TODO: check IAP, if already made, remove upgrade button
     // If IAP not present, check for restore purchase?
 }
 
@@ -41,6 +41,54 @@
 // The user asked for more info, so let's send them to the website.
 - (IBAction)infoClick:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://gastonlabs.com/isrever/"]];
+}
+
+////////// GAMECENTER MATCHING //////////
+
+// Delegate callback: the player quit the match
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match
+{
+    CLS_LOG(@"The player has quit this match. %@",match);
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // set outcome for player
+    // call participantQuitInTurnWithOutcome:nextParticipant:matchData:completionHandler:
+    
+}
+
+// Delegate callback: a match was found!
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match
+{
+    CLS_LOG(@"We found a match, yay! %@",match);
+    [self dismissViewControllerAnimated:YES completion:nil];
+    _match = match;
+}
+
+// Delegate callback: we failed to find a match.
+- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error
+{
+    CLS_LOG(@"Issue with setting up gamecenter match: %@",error);
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// Delegate callback: the user cancelled setting up a match.
+- (void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController
+{
+    CLS_LOG(@"User cancelled setting up gamecenter match.");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// UI button press: the user has indicated they'd like to play against a human
+- (IBAction)playHuman:(id)sender {
+    CLS_LOG(@"User requested new gamecenter match.");
+
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.minPlayers = 2;
+    request.maxPlayers = 2;
+    
+    GKTurnBasedMatchmakerViewController *mmvc = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
+    mmvc.turnBasedMatchmakerDelegate = self;
+    
+    [self presentViewController:mmvc animated:YES completion:nil];
 }
 
 
@@ -94,7 +142,7 @@
                     CLS_LOG(@"User chickened out of in-app purchase :(");
                 } else {
                     CLS_LOG(@"Surprise payment error %@", transaction.error);
-                    [self.gameStatus setText:@"There was an error upgrading, sorry."];
+                    [self.statusLabel setText:@"There was an error upgrading, sorry."];
                 }
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 // remove wait view here
@@ -155,9 +203,8 @@
 }
 
 - (void)viewDidUnload {
-    [self setAiPicker:nil];
-    [self setAiLabel:nil];
-    [self setGameStatus:nil];
+    [self setOpponentLabel:nil];
+    [self setStatusLabel:nil];
     [super viewDidUnload];
 }
 @end

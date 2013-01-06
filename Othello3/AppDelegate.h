@@ -25,7 +25,7 @@
 #import "TestFlight.h"
 
 
-@class GameViewController;
+@class ViewController;
 @class AudioStreamer;
 @class OthelloGameController;
 
@@ -34,6 +34,6 @@
 @property (readonly) AudioStreamer *streamer;
 @property (readonly) OthelloGameController *game;
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) GameViewController *viewController;
+@property (strong, nonatomic) ViewController *viewController;
 
 @end
