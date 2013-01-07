@@ -13,15 +13,12 @@
 
 @class OthelloBoardView;
 
-@interface ViewController : UIViewController <SKProductsRequestDelegate, SKPaymentTransactionObserver, GKTurnBasedMatchmakerViewControllerDelegate>
+@interface GameBoardViewController : UIViewController
 {
     GKTurnBasedMatch *_match;
 }
 
-- (IBAction)feedback:(id)sender;
-- (IBAction)upgrade:(id)sender;
-- (IBAction)infoClick:(id)sender;
-- (IBAction)playHuman:(id)sender;
+- (IBAction)resign:(id)sender;
 
 @property (weak, nonatomic) IBOutlet OthelloBoardView *othelloBoard;
 @property (weak, nonatomic) IBOutlet UILabel *opponentLabel;

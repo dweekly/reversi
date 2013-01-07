@@ -18,15 +18,24 @@
 		DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */; };
 		DB2F0709167E630300A22C8E /* AI_Minimax.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0708167E630300A22C8E /* AI_Minimax.m */; };
 		DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2F070A167E78C400A22C8E /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DB35E1EA169A826000B4393B /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35E1E8169A826000B4393B /* WelcomeViewController.m */; };
+		DB35E1EB169A826000B4393B /* WelcomeViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35E1E9169A826000B4393B /* WelcomeViewController_iPhone.xib */; };
+		DB35E1ED169A82F400B4393B /* WelcomeViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35E1EC169A82F400B4393B /* WelcomeViewController_iPad.xib */; };
+		DB35E1F5169A9AA100B4393B /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35E1F3169A9AA100B4393B /* AboutViewController.m */; };
+		DB35E1F6169A9AA100B4393B /* AboutViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35E1F4169A9AA100B4393B /* AboutViewController_iPhone.xib */; };
+		DB35E1F9169A9AE700B4393B /* AboutViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35E1F8169A9AE700B4393B /* AboutViewController_iPad.xib */; };
+		DB35E1FD169B73F000B4393B /* OpponentSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35E1FB169B73F000B4393B /* OpponentSelectViewController.m */; };
+		DB35E1FE169B73F000B4393B /* OpponentSelectViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35E1FC169B73F000B4393B /* OpponentSelectViewController_iPhone.xib */; };
+		DB35E201169B742300B4393B /* OpponentSelectViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35E200169B742300B4393B /* OpponentSelectViewController_iPad.xib */; };
 		DB8A3FA01670074A00AF45F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3F9F1670074A00AF45F9 /* UIKit.framework */; };
 		DB8A3FA21670074A00AF45F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA11670074A00AF45F9 /* Foundation.framework */; };
 		DB8A3FA41670074A00AF45F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA31670074A00AF45F9 /* CoreGraphics.framework */; };
 		DB8A3FAA1670074A00AF45F9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FA81670074A00AF45F9 /* InfoPlist.strings */; };
 		DB8A3FAC1670074A00AF45F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FAB1670074A00AF45F9 /* main.m */; };
 		DB8A3FB01670074A00AF45F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FAF1670074A00AF45F9 /* AppDelegate.m */; };
-		DB8A3FB91670074A00AF45F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FB81670074A00AF45F9 /* ViewController.m */; };
-		DB8A3FBC1670074A00AF45F9 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */; };
-		DB8A3FBF1670074A00AF45F9 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */; };
+		DB8A3FB91670074A00AF45F9 /* GameBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FB81670074A00AF45F9 /* GameBoardViewController.m */; };
+		DB8A3FBC1670074A00AF45F9 /* GameBoardViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBA1670074A00AF45F9 /* GameBoardViewController_iPhone.xib */; };
+		DB8A3FBF1670074A00AF45F9 /* GameBoardViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBD1670074A00AF45F9 /* GameBoardViewController_iPad.xib */; };
 		DB8A3FC71670074A00AF45F9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */; };
 		DB8A3FC81670074A00AF45F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3F9F1670074A00AF45F9 /* UIKit.framework */; };
 		DB8A3FC91670074A00AF45F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA11670074A00AF45F9 /* Foundation.framework */; };
@@ -107,6 +116,18 @@
 		DB2F0707167E630300A22C8E /* AI_Minimax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_Minimax.h; sourceTree = "<group>"; };
 		DB2F0708167E630300A22C8E /* AI_Minimax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_Minimax.m; sourceTree = "<group>"; };
 		DB2F070A167E78C400A22C8E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DB35E1E7169A826000B4393B /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		DB35E1E8169A826000B4393B /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		DB35E1E9169A826000B4393B /* WelcomeViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController_iPhone.xib; sourceTree = "<group>"; };
+		DB35E1EC169A82F400B4393B /* WelcomeViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController_iPad.xib; sourceTree = "<group>"; };
+		DB35E1F2169A9AA100B4393B /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		DB35E1F3169A9AA100B4393B /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		DB35E1F4169A9AA100B4393B /* AboutViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController_iPhone.xib; sourceTree = "<group>"; };
+		DB35E1F8169A9AE700B4393B /* AboutViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController_iPad.xib; sourceTree = "<group>"; };
+		DB35E1FA169B73F000B4393B /* OpponentSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpponentSelectViewController.h; sourceTree = "<group>"; };
+		DB35E1FB169B73F000B4393B /* OpponentSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpponentSelectViewController.m; sourceTree = "<group>"; };
+		DB35E1FC169B73F000B4393B /* OpponentSelectViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpponentSelectViewController_iPhone.xib; sourceTree = "<group>"; };
+		DB35E200169B742300B4393B /* OpponentSelectViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpponentSelectViewController_iPad.xib; sourceTree = "<group>"; };
 		DB8A3F9B1670074A00AF45F9 /* isreveR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isreveR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8A3F9F1670074A00AF45F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DB8A3FA11670074A00AF45F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,10 +138,10 @@
 		DB8A3FAD1670074A00AF45F9 /* isreveR-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "isreveR-Prefix.pch"; sourceTree = "<group>"; };
 		DB8A3FAE1670074A00AF45F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DB8A3FAF1670074A00AF45F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DB8A3FB71670074A00AF45F9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DB8A3FB81670074A00AF45F9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		DB8A3FBB1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		DB8A3FBE1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		DB8A3FB71670074A00AF45F9 /* GameBoardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameBoardViewController.h; sourceTree = "<group>"; };
+		DB8A3FB81670074A00AF45F9 /* GameBoardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameBoardViewController.m; sourceTree = "<group>"; };
+		DB8A3FBB1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GameBoardViewController_iPhone.xib; sourceTree = "<group>"; };
+		DB8A3FBE1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GameBoardViewController_iPad.xib; sourceTree = "<group>"; };
 		DB8A3FC51670074A00AF45F9 /* isreveRTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = isreveRTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DB8A3FCE1670074A00AF45F9 /* isreveRTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "isreveRTests-Info.plist"; sourceTree = "<group>"; };
@@ -224,9 +245,11 @@
 		DB1208A7167D82C50068FD6A /* project */ = {
 			isa = PBXGroup;
 			children = (
+				DB8A3FAB1670074A00AF45F9 /* main.m */,
+				DB8A3FAE1670074A00AF45F9 /* AppDelegate.h */,
+				DB8A3FAF1670074A00AF45F9 /* AppDelegate.m */,
 				DB8A3FA71670074A00AF45F9 /* isreveR-Info.plist */,
 				DB8A3FA81670074A00AF45F9 /* InfoPlist.strings */,
-				DB8A3FAB1670074A00AF45F9 /* main.m */,
 				DB8A3FAD1670074A00AF45F9 /* isreveR-Prefix.pch */,
 			);
 			name = project;
@@ -239,7 +262,8 @@
 				DB1208AC167D9DBB0068FD6A /* Flurry.h */,
 				DB1208AD167D9DBB0068FD6A /* libFlurry.a */,
 			);
-			path = Flurry;
+			name = Flurry;
+			path = Othello3/Flurry;
 			sourceTree = "<group>";
 		};
 		DB1208B4167DB3E00068FD6A /* TestFlight */ = {
@@ -249,9 +273,10 @@
 				DB1208B2167DB3DB0068FD6A /* TestFlight.h */,
 			);
 			name = TestFlight;
+			path = Othello3;
 			sourceTree = "<group>";
 		};
-		DB2F0706167E62A100A22C8E /* AIs */ = {
+		DB2F0706167E62A100A22C8E /* ai */ = {
 			isa = PBXGroup;
 			children = (
 				DB2F06FF167E590400A22C8E /* AI_FirstValid.h */,
@@ -261,7 +286,94 @@
 				DB2F0707167E630300A22C8E /* AI_Minimax.h */,
 				DB2F0708167E630300A22C8E /* AI_Minimax.m */,
 			);
-			name = AIs;
+			name = ai;
+			path = Othello3;
+			sourceTree = "<group>";
+		};
+		DB35E1EE169A84A600B4393B /* welcome */ = {
+			isa = PBXGroup;
+			children = (
+				DB35E1E7169A826000B4393B /* WelcomeViewController.h */,
+				DB35E1E8169A826000B4393B /* WelcomeViewController.m */,
+				DB35E1E9169A826000B4393B /* WelcomeViewController_iPhone.xib */,
+				DB35E1EC169A82F400B4393B /* WelcomeViewController_iPad.xib */,
+			);
+			name = welcome;
+			sourceTree = "<group>";
+		};
+		DB35E1EF169A84BF00B4393B /* game */ = {
+			isa = PBXGroup;
+			children = (
+				DB8A3FB71670074A00AF45F9 /* GameBoardViewController.h */,
+				DB8A3FB81670074A00AF45F9 /* GameBoardViewController.m */,
+				DB8A3FBA1670074A00AF45F9 /* GameBoardViewController_iPhone.xib */,
+				DB8A3FBD1670074A00AF45F9 /* GameBoardViewController_iPad.xib */,
+				DB35E202169B7AE400B4393B /* board */,
+				DB35E203169B7AEA00B4393B /* logic */,
+			);
+			name = game;
+			sourceTree = "<group>";
+		};
+		DB35E1F0169A84C700B4393B /* views */ = {
+			isa = PBXGroup;
+			children = (
+				DB35E1F7169A9AA600B4393B /* about */,
+				DB35E1FF169B73F400B4393B /* opponent select */,
+				DB35E1EE169A84A600B4393B /* welcome */,
+				DB35E1EF169A84BF00B4393B /* game */,
+			);
+			name = views;
+			path = Othello3;
+			sourceTree = "<group>";
+		};
+		DB35E1F1169A84E700B4393B /* 3rdparty */ = {
+			isa = PBXGroup;
+			children = (
+				DB1208B4167DB3E00068FD6A /* TestFlight */,
+				DB1208AB167D9DBB0068FD6A /* Flurry */,
+				DBCE59B216717B8E0022E0A0 /* AudioStreamer */,
+			);
+			name = 3rdparty;
+			sourceTree = "<group>";
+		};
+		DB35E1F7169A9AA600B4393B /* about */ = {
+			isa = PBXGroup;
+			children = (
+				DB35E1F2169A9AA100B4393B /* AboutViewController.h */,
+				DB35E1F3169A9AA100B4393B /* AboutViewController.m */,
+				DB35E1F4169A9AA100B4393B /* AboutViewController_iPhone.xib */,
+				DB35E1F8169A9AE700B4393B /* AboutViewController_iPad.xib */,
+			);
+			name = about;
+			sourceTree = "<group>";
+		};
+		DB35E1FF169B73F400B4393B /* opponent select */ = {
+			isa = PBXGroup;
+			children = (
+				DB35E1FA169B73F000B4393B /* OpponentSelectViewController.h */,
+				DB35E1FB169B73F000B4393B /* OpponentSelectViewController.m */,
+				DB35E1FC169B73F000B4393B /* OpponentSelectViewController_iPhone.xib */,
+				DB35E200169B742300B4393B /* OpponentSelectViewController_iPad.xib */,
+			);
+			name = "opponent select";
+			sourceTree = "<group>";
+		};
+		DB35E202169B7AE400B4393B /* board */ = {
+			isa = PBXGroup;
+			children = (
+				DB8A3FDF167009E200AF45F9 /* OthelloBoardView.h */,
+				DB8A3FE0167009E200AF45F9 /* OthelloBoardView.m */,
+			);
+			name = board;
+			sourceTree = "<group>";
+		};
+		DB35E203169B7AEA00B4393B /* logic */ = {
+			isa = PBXGroup;
+			children = (
+				DB1208A8167D8A2E0068FD6A /* OthelloGameController.h */,
+				DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */,
+			);
+			name = logic;
 			sourceTree = "<group>";
 		};
 		DB8A3F901670074A00AF45F9 = {
@@ -270,23 +382,26 @@
 				DBFC7AC516716C5600629011 /* README.md */,
 				DB1208A7167D82C50068FD6A /* project */,
 				DB8A3FA61670074A00AF45F9 /* assets */,
+				DB2F0706167E62A100A22C8E /* ai */,
+				DB35E1F0169A84C700B4393B /* views */,
 				DB8A3FA51670074A00AF45F9 /* src */,
 				DB8A3FCC1670074A00AF45F9 /* tests */,
-				DB8A3F9E1670074A00AF45F9 /* Frameworks */,
-				DB8A3F9C1670074A00AF45F9 /* Products */,
+				DB8A3F9E1670074A00AF45F9 /* frameworks */,
+				DB35E1F1169A84E700B4393B /* 3rdparty */,
+				DB8A3F9C1670074A00AF45F9 /* products */,
 			);
 			sourceTree = "<group>";
 		};
-		DB8A3F9C1670074A00AF45F9 /* Products */ = {
+		DB8A3F9C1670074A00AF45F9 /* products */ = {
 			isa = PBXGroup;
 			children = (
 				DB8A3F9B1670074A00AF45F9 /* isreveR.app */,
 				DB8A3FC51670074A00AF45F9 /* isreveRTests.octest */,
 			);
-			name = Products;
+			name = products;
 			sourceTree = "<group>";
 		};
-		DB8A3F9E1670074A00AF45F9 /* Frameworks */ = {
+		DB8A3F9E1670074A00AF45F9 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				DBFE511316818589009B8C16 /* GameKit.framework */,
@@ -303,24 +418,12 @@
 				DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */,
 				DB1208B5167DB8650068FD6A /* libz.dylib */,
 			);
-			name = Frameworks;
+			name = frameworks;
 			sourceTree = "<group>";
 		};
 		DB8A3FA51670074A00AF45F9 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				DB1208B4167DB3E00068FD6A /* TestFlight */,
-				DB1208AB167D9DBB0068FD6A /* Flurry */,
-				DBCE59B216717B8E0022E0A0 /* AudioStreamer */,
-				DB8A3FAE1670074A00AF45F9 /* AppDelegate.h */,
-				DB8A3FAF1670074A00AF45F9 /* AppDelegate.m */,
-				DB8A3FB71670074A00AF45F9 /* ViewController.h */,
-				DB8A3FB81670074A00AF45F9 /* ViewController.m */,
-				DB8A3FDF167009E200AF45F9 /* OthelloBoardView.h */,
-				DB8A3FE0167009E200AF45F9 /* OthelloBoardView.m */,
-				DB1208A8167D8A2E0068FD6A /* OthelloGameController.h */,
-				DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */,
-				DB2F0706167E62A100A22C8E /* AIs */,
 			);
 			name = src;
 			path = Othello3;
@@ -329,8 +432,6 @@
 		DB8A3FA61670074A00AF45F9 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */,
-				DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */,
 				DBFC7AC316716C0900629011 /* icons */,
 				DB1208A6167D82840068FD6A /* screens */,
 				DBFC7ACB1671701B00629011 /* sfx */,
@@ -367,6 +468,7 @@
 				DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */,
 			);
 			name = AudioStreamer;
+			path = Othello3;
 			sourceTree = "<group>";
 		};
 		DBFC7AC316716C0900629011 /* icons */ = {
@@ -481,7 +583,7 @@
 				en,
 			);
 			mainGroup = DB8A3F901670074A00AF45F9;
-			productRefGroup = DB8A3F9C1670074A00AF45F9 /* Products */;
+			productRefGroup = DB8A3F9C1670074A00AF45F9 /* products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -497,8 +599,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB8A3FAA1670074A00AF45F9 /* InfoPlist.strings in Resources */,
-				DB8A3FBC1670074A00AF45F9 /* ViewController_iPhone.xib in Resources */,
-				DB8A3FBF1670074A00AF45F9 /* ViewController_iPad.xib in Resources */,
+				DB8A3FBC1670074A00AF45F9 /* GameBoardViewController_iPhone.xib in Resources */,
+				DB8A3FBF1670074A00AF45F9 /* GameBoardViewController_iPad.xib in Resources */,
 				DB8A4011167063D200AF45F9 /* Icon-Small-50@2x.png in Resources */,
 				DB8A4012167063D200AF45F9 /* Icon-Small-50.png in Resources */,
 				DB8A4013167063D200AF45F9 /* Icon-Small@2x.png in Resources */,
@@ -534,6 +636,12 @@
 				DBFE510916817250009B8C16 /* boo.mp3 in Resources */,
 				DBFE510B16817267009B8C16 /* welcome.mp3 in Resources */,
 				DBA31E871684FE490026AFE9 /* Default-568h@2x.png in Resources */,
+				DB35E1EB169A826000B4393B /* WelcomeViewController_iPhone.xib in Resources */,
+				DB35E1ED169A82F400B4393B /* WelcomeViewController_iPad.xib in Resources */,
+				DB35E1F6169A9AA100B4393B /* AboutViewController_iPhone.xib in Resources */,
+				DB35E1F9169A9AE700B4393B /* AboutViewController_iPad.xib in Resources */,
+				DB35E1FE169B73F000B4393B /* OpponentSelectViewController_iPhone.xib in Resources */,
+				DB35E201169B742300B4393B /* OpponentSelectViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,12 +693,15 @@
 				DBCE59B316717BB00022E0A0 /* AudioStreamer.m in Sources */,
 				DB8A3FAC1670074A00AF45F9 /* main.m in Sources */,
 				DB8A3FB01670074A00AF45F9 /* AppDelegate.m in Sources */,
-				DB8A3FB91670074A00AF45F9 /* ViewController.m in Sources */,
+				DB8A3FB91670074A00AF45F9 /* GameBoardViewController.m in Sources */,
 				DB8A3FE1167009E200AF45F9 /* OthelloBoardView.m in Sources */,
 				DB1208AA167D8A2E0068FD6A /* OthelloGameController.m in Sources */,
 				DB2F0701167E590400A22C8E /* AI_FirstValid.m in Sources */,
 				DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */,
 				DB2F0709167E630300A22C8E /* AI_Minimax.m in Sources */,
+				DB35E1EA169A826000B4393B /* WelcomeViewController.m in Sources */,
+				DB35E1F5169A9AA100B4393B /* AboutViewController.m in Sources */,
+				DB35E1FD169B73F000B4393B /* OpponentSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,20 +733,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DB8A3FBA1670074A00AF45F9 /* ViewController_iPhone.xib */ = {
+		DB8A3FBA1670074A00AF45F9 /* GameBoardViewController_iPhone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DB8A3FBB1670074A00AF45F9 /* en */,
 			);
-			name = ViewController_iPhone.xib;
+			name = GameBoardViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
-		DB8A3FBD1670074A00AF45F9 /* ViewController_iPad.xib */ = {
+		DB8A3FBD1670074A00AF45F9 /* GameBoardViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DB8A3FBE1670074A00AF45F9 /* en */,
 			);
-			name = ViewController_iPad.xib;
+			name = GameBoardViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 		DB8A3FCF1670074A00AF45F9 /* InfoPlist.strings */ = {

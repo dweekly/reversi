@@ -21,19 +21,29 @@
 #endif
 
 #import "AudioStreamer.h"
-#import "OthelloGameController.h"
 #import "TestFlight.h"
 
+#import "OthelloGameController.h"
+#import "WelcomeViewController.h"
+#import "AboutViewController.h"
+#import "OpponentSelectViewController.h"
+#import "GameBoardViewController.h"
 
-@class ViewController;
-@class AudioStreamer;
 @class OthelloGameController;
+@class WelcomeViewController;
+@class AboutViewController;
+@class OpponentSelectViewController;
+@class GameBoardViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (readonly) AudioStreamer *streamer;
 @property (readonly) OthelloGameController *game;
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) ViewController *viewController;
+
+@property (strong, nonatomic) WelcomeViewController *welcomeViewController;
+@property (strong, nonatomic) AboutViewController *aboutViewController;
+@property (strong, nonatomic) OpponentSelectViewController *opponentViewController;
+@property (strong, nonatomic) GameBoardViewController *gameBoardViewController;
 
 @end

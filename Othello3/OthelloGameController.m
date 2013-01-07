@@ -157,6 +157,16 @@
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     assert([alertView tag] == kOthelloAlertGameOver);
+    
+    CLSLog(@"Game confirmed ended, returning to opponent selection screen.");
+    
+    // dismiss the game to return to the opponent selection screen.
+    [_boardViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+// start a new game.
+- (void) newGame
+{
     [_audioNewGamePlayer play];
     [self initBoard];
 }
@@ -189,7 +199,7 @@
     }
     [TestFlight passCheckpoint:@"Completed a game!"];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK"otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert setTag:kOthelloAlertGameOver];
     [alert show];
 }
@@ -317,6 +327,10 @@
 - (id)init
 {
     self = [super init];
+    
+    // fetch the game board view controller from the app.
+    AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    _boardViewController = app.gameBoardViewController;
 
     // TODO: check to see if we have access to the Minimax AI
     // ...if yes, fire it up and set it as our AI.
@@ -337,7 +351,7 @@
     _audioNewGamePlayer = [self getPlayerForSound:@"newgame"];
 
     // welcome the player
-    [_audioWelcomePlayer play];
+  //  [_audioWelcomePlayer play];
     
     // start the board empty
     [self initBoard];

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "OthelloBoardView.h"
-#import "ViewController.h"
+#import "GameBoardViewController.h"
 
 typedef enum {
     kOthelloNone,
@@ -23,7 +23,7 @@ typedef enum {
 
 @class OthelloGameController;
 @class OthelloBoardView;
-@class ViewController;
+@class GameBoardViewController;
 
 
 // define how we'll interact with AIs.
@@ -48,8 +48,10 @@ typedef enum {
 - (bool)attemptPlayerMove:(int)i col:(int)j;
 - (int)testMove:(OthelloSideType)whoseMove row:(int)i col:(int)j doMove:(bool)doMove;
 - (void)unlockAI:(AIType)name;
+- (void)switchToAI:(AIType)name;
+- (void)newGame;
 
-@property (readwrite) ViewController *boardViewController;
+@property (readwrite) GameBoardViewController *boardViewController;
 @property (strong, nonatomic) AVAudioPlayer *audioWelcomePlayer;
 @property (strong, nonatomic) AVAudioPlayer *audioThppPlayer;
 @property (strong, nonatomic) AVAudioPlayer *audioWhoopPlayer;

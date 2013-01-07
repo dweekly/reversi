@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Flurry.h"
-#import "ViewController.h"
 
 @implementation AppDelegate
 
@@ -36,8 +35,6 @@
     [TestFlight takeOff:@"7f8e5fb9bd5c08bfd5157d9014b2e510_MTY2ODg5MjAxMi0xMi0xNiAwMjo0ODo0MC40NzIwNDU"];
 #endif
     
-    // create the game object!
-    _game = [[OthelloGameController alloc] init];
     
     /*
     // let's kick off some music!
@@ -45,19 +42,29 @@
 	_streamer = [[AudioStreamer alloc] initWithURL:url];
     [_streamer start];
      */
-    
+
+     
     // load the root view controller and show it.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
+        self.welcomeViewController = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController_iPhone" bundle:nil];
+        self.aboutViewController = [[AboutViewController alloc] initWithNibName:@"AboutViewController_iPhone" bundle:nil];
+        self.opponentViewController = [[OpponentSelectViewController alloc] initWithNibName:@"OpponentSelectViewController_iPhone" bundle:nil];
+        self.gameBoardViewController = [[GameBoardViewController alloc] initWithNibName:@"GameBoardViewController_iPhone" bundle:nil];
     } else {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
+        self.welcomeViewController = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController_iPad" bundle:nil];
+        self.aboutViewController = [[AboutViewController alloc] initWithNibName:@"AboutViewController_iPad" bundle:nil];
+        self.opponentViewController = [[OpponentSelectViewController alloc] initWithNibName:@"OpponentSelectViewController_iPad" bundle:nil];
+        self.gameBoardViewController = [[GameBoardViewController alloc] initWithNibName:@"GameBoardViewController_iPad" bundle:nil];
     }
 
-    self.window.rootViewController = self.viewController;
+    self.window.rootViewController = self.welcomeViewController;
     [self.window makeKeyAndVisible];
 
+    // create the game object!
+    _game = [[OthelloGameController alloc] init];
+    
     // let game object know about the board view so it can refresh the board as needed.
-    _game.boardViewController = self.viewController;
+    _game.boardViewController = self.gameBoardViewController;
     
     return YES;
 }

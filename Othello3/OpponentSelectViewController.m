@@ -1,30 +1,37 @@
 //
-//  ViewController.m
-//  Othello3
+//  OpponentSelectViewController.m
+//  isreveR
 //
-//  Created by David E. Weekly on 12/5/12.
-//  Copyright (c) 2012 David E. Weekly. All rights reserved.
+//  Created by David E. Weekly on 1/7/13.
+//  Copyright (c) 2013 David E. Weekly. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "OpponentSelectViewController.h"
 
-@interface ViewController ()
+@interface OpponentSelectViewController ()
 
 @end
 
-@implementation ViewController
+@implementation OpponentSelectViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.statusLabel setText:@"Your turn!"];
 
+    _app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     // ensure we observe any activity on the payment queue (for IAPs)
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
 
-    // TODO: check IAP, if already made, remove upgrade button
-    // If IAP not present, check for restore purchase?
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,15 +40,40 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)feedback:(id)sender {
-    [TestFlight openFeedbackView];
+
+- (void)startGame
+{
+    [_app.game newGame];
+    _app.gameBoardViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:_app.gameBoardViewController animated:YES completion:NULL];
 }
 
 
-// The user asked for more info, so let's send them to the website.
-- (IBAction)infoClick:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://gastonlabs.com/isrever/"]];
+- (IBAction)playEasyComputer:(id)sender {
+    [_app.game switchToAI:kAIFirstValid];
+    [self startGame];
 }
+
+- (IBAction)playMediumComputer:(id)sender {
+    [_app.game switchToAI:kAISimpleGreedy];
+    [self startGame];
+}
+
+- (IBAction)playHardComputer:(id)sender {
+    // TODO: check for / perform paid upgrade.
+    [_app.game switchToAI:kAIMinimax];
+    [self startGame];
+}
+
+- (IBAction)backToMenu:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
+
 
 ////////// GAMECENTER MATCHING //////////
 
@@ -60,7 +92,7 @@
 {
     CLS_LOG(@"We found a match, yay! %@",match);
     [self dismissViewControllerAnimated:YES completion:nil];
-    _match = match;
+    //_match = match;
 }
 
 // Delegate callback: we failed to find a match.
@@ -80,7 +112,7 @@
 // UI button press: the user has indicated they'd like to play against a human
 - (IBAction)playHuman:(id)sender {
     CLS_LOG(@"User requested new gamecenter match.");
-
+    
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     request.minPlayers = 2;
     request.maxPlayers = 2;
@@ -104,7 +136,7 @@
             }
                 
             case SKPaymentTransactionStatePurchased: {
-
+                
                 // unlock is in transaction.payment.productIdentifier
                 assert([transaction.payment.productIdentifier isEqualToString:@"com.gastonlabs.isreveR.AI_Minimax"]);
                 
@@ -117,11 +149,11 @@
                                     cancelButtonTitle:nil
                                     otherButtonTitles:@"Ok", nil];
                 [tmp show];
-
+                
                 // Actually unlock the minimax AI
                 AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 [app.game unlockAI:kAIMinimax];
-                 
+                
                 // once we've delivered/stored the purchase,
                 // finalize the transaction and remove it from the queue
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
@@ -142,8 +174,17 @@
                     CLS_LOG(@"User chickened out of in-app purchase :(");
                 } else {
                     CLS_LOG(@"Surprise payment error %@", transaction.error);
-                    [self.statusLabel setText:@"There was an error upgrading, sorry."];
+                    
+                    UIAlertView *tmp = [[UIAlertView alloc]
+                                        initWithTitle:@"Upgrade Error"
+                                        message:@"There was an error with your purchase, apologies."
+                                        delegate:nil
+                                        cancelButtonTitle:nil
+                                        otherButtonTitles:@"Ok", nil];
+                    [tmp show];
+
                 }
+                
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 // remove wait view here
                 break;
@@ -202,9 +243,5 @@
     }
 }
 
-- (void)viewDidUnload {
-    [self setOpponentLabel:nil];
-    [self setStatusLabel:nil];
-    [super viewDidUnload];
-}
+
 @end
