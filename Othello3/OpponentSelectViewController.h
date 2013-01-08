@@ -16,6 +16,9 @@
 @class AppDelegate;
 
 @interface OpponentSelectViewController : UIViewController <SKProductsRequestDelegate, SKPaymentTransactionObserver>
+{
+    bool paymentInProgress;
+}
 
 @property (readwrite) AppDelegate *app;
 @property (weak, nonatomic) IBOutlet UIButton *playHardComputerButton;

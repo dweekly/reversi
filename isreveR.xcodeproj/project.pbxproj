@@ -69,6 +69,7 @@
 		DBCE59AD167179350022E0A0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE59AC167179350022E0A0 /* CFNetwork.framework */; };
 		DBCE59B116717B8A0022E0A0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */; };
 		DBCE59B316717BB00022E0A0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DBF4689B169C817F0078B709 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF4689A169C817F0078B709 /* CoreLocation.framework */; };
 		DBFC7AC616716C5600629011 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBFC7AC516716C5600629011 /* README.md */; };
 		DBFE50E2167FE3D1009B8C16 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */; };
 		DBFE50F5168171AC009B8C16 /* computerlost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFE50F4168171AC009B8C16 /* computerlost.mp3 */; };
@@ -178,6 +179,7 @@
 		DBCE59AC167179350022E0A0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DBCE59AF16717B8A0022E0A0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		DBF4689A169C817F0078B709 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DBFC7AC516716C5600629011 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		DBFE50F4168171AC009B8C16 /* computerlost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = computerlost.mp3; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBF4689B169C817F0078B709 /* CoreLocation.framework in Frameworks */,
 				DBFE511416818589009B8C16 /* GameKit.framework in Frameworks */,
 				DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */,
 				DB1208B6167DB8650068FD6A /* libz.dylib in Frameworks */,
@@ -404,6 +407,7 @@
 		DB8A3F9E1670074A00AF45F9 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBF4689A169C817F0078B709 /* CoreLocation.framework */,
 				DBFE511316818589009B8C16 /* GameKit.framework */,
 				DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */,
 				DB2F070A167E78C400A22C8E /* StoreKit.framework */,

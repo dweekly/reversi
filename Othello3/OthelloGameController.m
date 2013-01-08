@@ -7,6 +7,7 @@
 //
 
 #import "OthelloGameController.h"
+#import "Flurry.h"
 
 // add our AIs!
 #import "AI_FirstValid.h"
@@ -192,17 +193,20 @@
     
     switch(ai){
         case kAIFirstValid: {
+            [Flurry logEvent:@"Easy AI Match"];
             _ai = [[AI_FirstValid alloc] initWithGame:self];
             [self nameSide:kOthelloBlack as:@"Easy AI"];
             break;
         }
         case kAISimpleGreedy: {
+            [Flurry logEvent:@"Medium AI Match"];
             _ai = [[AI_SimpleGreedy alloc] initWithGame:self];
             [self nameSide:kOthelloBlack as:@"Medium AI"];
             break;
         }
         case kAIMinimax: {
             assert([[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]);
+            [Flurry logEvent:@"Expert AI Match"];
             _ai = [[AI_Minimax alloc] initWithGame:self];
             [self nameSide:kOthelloBlack as:@"Expert AI"];
             break;
@@ -212,7 +216,8 @@
             assert(false);
         }
     }
-
+    [Flurry logEvent:@"Match" timed:YES];
+    
     [self setStatus:@"Your turn!"];
     [self initBoard];
 }
@@ -317,16 +322,19 @@
             userOutcome = GKTurnBasedMatchOutcomeLost;
             opponentOutcome = GKTurnBasedMatchOutcomeWon;
             if(!_match) [_audioYouLostPlayer play];
+            [Flurry logEvent:@"Game lost"];
         } else if(userPieces > opponentPieces) {
             msg = @"You win!";
             userOutcome = GKTurnBasedMatchOutcomeWon;
             opponentOutcome = GKTurnBasedMatchOutcomeLost;
             if(!_match) [_audioComputerLostPlayer play];
+            [Flurry logEvent:@"Game won"];
         } else {
             msg = @"You tied.";
             userOutcome = GKTurnBasedMatchOutcomeTied;
             opponentOutcome = GKTurnBasedMatchOutcomeTied;
             if(!_match) [_audioTiePlayer play];
+            [Flurry logEvent:@"Game tied"];
         }
     }
         
@@ -355,6 +363,8 @@
         // TODO: note locally whether the user won or lost vs which A.I.
         [TestFlight passCheckpoint:@"Completed a game against an AI opponent!"];
     }
+
+    [Flurry endTimedEvent:@"Match" withParameters:nil];
     
     // Popup to display the results of the game before we transition back to opponent selection.
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -366,6 +376,9 @@
 // user wishes to resign the current game (auto-loses)
 - (void) resign
 {
+    [Flurry logEvent:@"Game resigned"];
+    [Flurry endTimedEvent:@"Match" withParameters:nil];
+
     if(_match) {
         if(userSide == gameState.currentPlayer){
             [_match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit nextParticipants:[self nextParticipants] turnTimeout:GKTurnTimeoutDefault matchData:[self matchData] completionHandler:

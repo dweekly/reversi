@@ -7,9 +7,11 @@
 //
 
 #define CRASHLYTICS 1
-//#define FLURRY 1
+#define FLURRY 1
+//#define GAMECENTER
 //#define TESTFLIGHT 1
-// #define TESTING 1
+#define TESTING 1
+//#define FLURRY_LOC
 
 #import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>

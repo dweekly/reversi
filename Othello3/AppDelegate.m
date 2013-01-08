@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "Flurry.h"
 
+#import <CoreLocation/CoreLocation.h>
+
 @implementation AppDelegate
 
 
@@ -16,22 +18,35 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+    
 #ifdef FLURRY
-    // Add Flurry analytics.
+# ifdef FLURRY_LOC
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    [locationManager startUpdatingLocation];
+    CLLocation *location = locationManager.location;
+
+    [Flurry setLatitude:location.coordinate.latitude
+              longitude:location.coordinate.longitude
+     horizontalAccuracy:location.horizontalAccuracy
+       verticalAccuracy:location.verticalAccuracy];
+# endif
+# ifdef TESTING
+    [Flurry setDebugLogEnabled:true];
+# else
+    [Flurry setSecureTransportEnabled:true];
+# endif
     [Flurry startSession:@"5XRJ5TGT3DMQTYHH5VVS"];
 #endif
+  
     
 #ifdef CRASHLYTICS
-    // Add Crashlytics
     [Crashlytics startWithAPIKey:@"1832bc892086bfad3ad1d6f83d5deba876746cb1"];
 #endif
 
 #ifdef TESTFLIGHT
-    // Add TestFlight
-#ifdef  TESTING
+# ifdef  TESTING
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#endif
+# endif
     [TestFlight takeOff:@"7f8e5fb9bd5c08bfd5157d9014b2e510_MTY2ODg5MjAxMi0xMi0xNiAwMjo0ODo0MC40NzIwNDU"];
 #endif
     
@@ -69,6 +84,7 @@
     // let game object know about the board view so it can refresh the board as needed.
     _game.boardViewController = self.gameBoardViewController;
     
+#ifdef GAMECENTER
     // Now authenticate the local user and set up our turn-based delegate
     // (we might have been launched in order to handle a turn-based event!
     [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) {
@@ -81,6 +97,7 @@
             [[GKTurnBasedEventHandler sharedTurnBasedEventHandler] setDelegate:_game];
         }
     }];
+#endif
     
     return YES;
 }
