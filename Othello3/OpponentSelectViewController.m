@@ -8,64 +8,44 @@
 
 #import "OpponentSelectViewController.h"
 
-@interface OpponentSelectViewController ()
-
-@end
 
 @implementation OpponentSelectViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     _app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // ensure we observe any activity on the payment queue (for IAPs)
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
-- (void)startGame
+- (void)startComputerGameWithAI:(AIType)ai
 {
-    [_app.game newGame];
+    _app.game->userSide = kOthelloWhite; // let the user go first.
+    [_app.game newGameVersusAI:ai];
     _app.gameBoardViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:_app.gameBoardViewController animated:YES completion:NULL];
 }
 
-
 - (IBAction)playEasyComputer:(id)sender {
-    [_app.game switchToAI:kAIFirstValid];
-    [self startGame];
+    CLS_LOG(@"Starting EASY match");
+    [self startComputerGameWithAI:kAIFirstValid];
 }
 
 - (IBAction)playMediumComputer:(id)sender {
-    [_app.game switchToAI:kAISimpleGreedy];
-    [self startGame];
+    CLS_LOG(@"Starting MEDIUM match");
+    [self startComputerGameWithAI:kAISimpleGreedy];
 }
 
 - (IBAction)playHardComputer:(id)sender {
     // TODO: check for / perform paid upgrade.
-    [_app.game switchToAI:kAIMinimax];
-    [self startGame];
+    CLS_LOG(@"Starting HARD match");
+    [self startComputerGameWithAI:kAIMinimax];
 }
 
 - (IBAction)backToMenu:(id)sender {
+    CLS_LOG(@"Headed back to menu");
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -77,50 +57,34 @@
 
 ////////// GAMECENTER MATCHING //////////
 
-// Delegate callback: the player quit the match
-- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match
-{
-    CLS_LOG(@"The player has quit this match. %@",match);
-    [self dismissViewControllerAnimated:YES completion:nil];
-    // set outcome for player
-    // call participantQuitInTurnWithOutcome:nextParticipant:matchData:completionHandler:
-    
-}
-
-// Delegate callback: a match was found!
-- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match
-{
-    CLS_LOG(@"We found a match, yay! %@",match);
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //_match = match;
-}
-
-// Delegate callback: we failed to find a match.
-- (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error
-{
-    CLS_LOG(@"Issue with setting up gamecenter match: %@",error);
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-// Delegate callback: the user cancelled setting up a match.
-- (void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController
-{
-    CLS_LOG(@"User cancelled setting up gamecenter match.");
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 // UI button press: the user has indicated they'd like to play against a human
 - (IBAction)playHuman:(id)sender {
     CLS_LOG(@"User requested new gamecenter match.");
     
+    // we're probably GC authe'ed already because of the init in AppDelegate, but let's double-check.
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    if(!localPlayer.authenticated){
+        CLS_LOG(@"User wanted to play human but didn't auth. Ignoring?"); // TODO FIXME reattempt GC login?
+        return;
+    }
+
+    // fire off new request for two-player match
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     request.minPlayers = 2;
     request.maxPlayers = 2;
-    
-    GKTurnBasedMatchmakerViewController *mmvc = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
-    mmvc.turnBasedMatchmakerDelegate = self;
-    
-    [self presentViewController:mmvc animated:YES completion:nil];
+    [GKTurnBasedMatch findMatchForRequest:request withCompletionHandler:
+        ^(GKTurnBasedMatch *match, NSError *error) {
+            if(error){
+                CLS_LOG(@"Issue finding new Game Center match: %@", error);
+            } else {
+                CLS_LOG(@"Found a Game Center match!");
+                [_app.gameBoardViewController view]; // force viewDidLoad
+                [_app.game loadGameFromMatch:match];
+                _app.gameBoardViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                [self presentViewController:_app.gameBoardViewController animated:YES completion:nil];
+            }
+    }];
 }
 
 
@@ -151,8 +115,8 @@
                 [tmp show];
                 
                 // Actually unlock the minimax AI
-                AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [app.game unlockAI:kAIMinimax];
+                // AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                // [app.game unlockAI:kAIMinimax];
                 
                 // once we've delivered/stored the purchase,
                 // finalize the transaction and remove it from the queue

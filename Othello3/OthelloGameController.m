@@ -13,8 +13,8 @@
 #import "AI_SimpleGreedy.h"
 #import "AI_Minimax.h"
 
-@implementation OthelloGameController
 
+@implementation OthelloGameController
 
 // fetch a playable object for a sound file
 - (AVAudioPlayer *)getPlayerForSound:(NSString *)soundFile
@@ -40,25 +40,47 @@
 }
 
 
+// get the list of participants to go next, in a format suitable for passing to Game Center
+- (NSArray *) nextParticipants
+{
+    assert(_match);
+    NSUInteger currentIndex = [_match.participants indexOfObject:_match.currentParticipant];
+    GKTurnBasedParticipant *nextParticipant = [_match.participants objectAtIndex: ((currentIndex + 1) % [_match.participants count])];
+    return @[nextParticipant];
+}
+
+// return the opponent
+- (GKTurnBasedParticipant *) opponentParticipant
+{
+    return [self nextParticipants][0];
+}
+
+
+// retrieve the match data in a format suitable for passing to Game Center
+- (NSData *) matchData
+{
+    return [NSData dataWithBytes:&gameState length:sizeof(gameState)];
+}
+
+
 // initialize the board to a "beginning game" state
 - (void)initBoard
 {
     int i, j;
     for(i=0;i<8;i++){
         for(j=0;j<8;j++){
-            _boardState[i][j] = kOthelloNone;
+            gameState.board[i][j] = kOthelloNone;
         }
     }
-    _boardState[3][3] = kOthelloWhite;
-    _boardState[4][4] = kOthelloWhite;
-    _boardState[3][4] = kOthelloBlack;
-    _boardState[4][3] = kOthelloBlack;
+    gameState.board[3][3] = kOthelloWhite;
+    gameState.board[4][4] = kOthelloWhite;
+    gameState.board[3][4] = kOthelloBlack;
+    gameState.board[4][3] = kOthelloBlack;
     
-    _currentPlayer = kOthelloWhite;
+    gameState.currentPlayer = kOthelloWhite; // white always starts the game.
     
-    [_boardViewController.statusLabel setText:@"Your turn!"];
-
-    [_boardViewController.othelloBoard setNeedsDisplay];
+    [self setStatus:@"Your turn!"];
+    [self refreshBoard];
 }
 
 
@@ -107,7 +129,7 @@
     assert(whoseMove == kOthelloWhite || whoseMove == kOthelloBlack);
     
     // if the proposed space is already occupied, bail.
-    if(_boardState[i][j] != kOthelloNone){
+    if(gameState.board[i][j] != kOthelloNone){
         return false;
     }
     
@@ -128,7 +150,7 @@
                 // if the ray has gone out of bounds, give up
                 if(ray_i < 0 || ray_i >= 8 || ray_j < 0 || ray_j >= 8){ break; }
                 
-                OthelloSideType ray_cell = _boardState[ray_i][ray_j];
+                OthelloSideType ray_cell = gameState.board[ray_i][ray_j];
                 
                 // if we hit a blank cell before terminating a sequence, give up
                 if(ray_cell == kOthelloNone){ break; }
@@ -140,7 +162,7 @@
                         totalCaptured += steps - 1;
                         if(doMove) { // okay, let's actually execute on this
                             while(steps--){
-                                _boardState[i + (dx*steps)][j + (dy*steps)] = whoseMove;
+                                gameState.board[i + (dx*steps)][j + (dy*steps)] = whoseMove;
                             };
                         }
                     }
@@ -156,143 +178,19 @@
 // after the game is acknowledged as being over, this is called and a new game is started.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    assert([alertView tag] == kOthelloAlertGameOver);
-    
+    assert([alertView tag] == kOthelloAlertGameOver);    
     CLSLog(@"Game confirmed ended, returning to opponent selection screen.");
-    
-    // dismiss the game to return to the opponent selection screen.
-    [_boardViewController dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissBoard];
 }
 
-// start a new game.
-- (void) newGame
+
+// start a new game against the computer.
+- (void) newGameVersusAI:(AIType)ai
 {
     [_audioNewGamePlayer play];
-    [self initBoard];
-}
-
-
-// the game is over, as nobody can move. calculate respective scores to see who won!
-- (void) gameOver
-{
-    int black = 0;
-    int white = 0;
-    for(int i=0; i<8; i++){
-        for(int j=0; j<8; j++){
-            if(_boardState[i][j] == kOthelloBlack){ black++; }
-            if(_boardState[i][j] == kOthelloWhite){ white++; }
-        }
-    }
-    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    NSString *msg;
-    if(black > white){
-        msg = @"The computer won!";
-        [_audioYouLostPlayer play];
-    }
-    if(white > black){
-        msg = @"You beat the computer!";
-        [_audioComputerLostPlayer play];
-    }
-    if(white == black){
-        msg = @"You tied with the computer!";
-        [_audioTiePlayer play];
-    }
-    [TestFlight passCheckpoint:@"Completed a game!"];
+    userSide = kOthelloWhite;
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert setTag:kOthelloAlertGameOver];
-    [alert show];
-}
-
-
-// someone just finished their move. check to see whose move is next or if the game is over.
-- (void)nextTurn
-{
-    [_boardViewController.othelloBoard setNeedsDisplay];
-    
-    // if the human just went...
-    if(_currentPlayer == kOthelloWhite){
-        // and the computer can't move...
-        if(![self canMove:kOthelloBlack]){
-            // AND the human can't make another move...
-            if(![self canMove:kOthelloWhite]){
-                // the game is over, since nobody can move.
-                CLS_LOG(@"Game over, no moves left.");
-                [_boardViewController.statusLabel setText:@"Game over."];
-                [self gameOver];
-                return;
-            } else {
-                // skip the computer move, let the human move again.
-                CLS_LOG(@"Computer cannot move, skipping robot move. :'(");
-                [_boardViewController.statusLabel setText:@"I can't move; go again!"];
-                [_audioBooPlayer play];
-            }
-        } else {
-            // the computer CAN move. let it make a decision.
-            _currentPlayer = kOthelloBlack;
-            // in 800ms, calculate the computer's move. for now, show the user's move.
-            [_boardViewController.statusLabel setText:@"I'm thinking..."];
-            [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(computerTurn) userInfo:nil repeats:NO];
-        }
-    } else { // the computer just went.
-        // ...and the human can't move
-        if(![self canMove:kOthelloWhite]){
-            // and the computer can't make another move.
-            if(![self canMove:kOthelloBlack]){
-                CLS_LOG(@"Game over, no moves left.");
-                [_boardViewController.statusLabel setText:@"Game over."];
-                [self gameOver];
-                return;
-            } else {
-                CLS_LOG(@"Human can't move, skipping the mortal. :-D");
-                [_boardViewController.statusLabel setText:@"You can't move; my turn again!"];
-                [_audioYayPlayer play];
-                // in 800ms, calculate the computer's move. for now, show the user's move.
-                [NSTimer scheduledTimerWithTimeInterval:.8 target:self selector:@selector(computerTurn) userInfo:nil repeats:NO];
-            }
-        } else {
-            // the human can move, let them do so.
-            _currentPlayer = kOthelloWhite;
-            [_boardViewController.statusLabel setText:@"Your turn!"];
-        }
-    }
-}
-
-
-// The user has attempted a move, it may or may not be legal or their turn.
-- (bool)attemptPlayerMove:(int)i col:(int)j
-{
-    // first, let's check to see if it's the user's turn right now
-    if(_currentPlayer != kOthelloWhite){
-        CLS_LOG(@"Player attempted to move at %d, %d but wasn't player's turn.", i, j);
-        [_boardViewController.statusLabel setText:@"Not your turn yet!"];
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        [_audioHoldOnPlayer play];
-        return false;
-    }
-    
-    // attempt to actually make the move.
-    int captured = [self testMove:kOthelloWhite row:i col:j doMove:true];
-    if(captured == 0){
-        // the projected move is inadmissable / would capture no pieces.
-        CLS_LOG(@"Player attempted to move at %d, %d but move was not permitted.", i, j);
-        [_boardViewController.statusLabel setText:@"You can't move there."];
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-        [_audioNOPlayer play];
-        return false;
-    }
-    
-    // the move is admissable and was made, make the next turn happen
-    CLS_LOG(@"Player moved successfully at %d, %d capturing %d pieces.", i, j, captured);
-    [_audioThppPlayer play];
-    [self nextTurn];
-    return true;
-}
-
-- (void)switchToAI:(AIType)name
-{
-    _ai = nil;
-    switch(name){
+    switch(ai){
         case kAIFirstValid: {
             _ai = [[AI_FirstValid alloc] initWithGame:self];
             break;
@@ -307,36 +205,383 @@
             break;
         }
         default: {
-            CLS_LOG(@"Asked to switch to unknown AI %d", name);
+            CLS_LOG(@"Asked to switch to unknown AI %d", ai);
             assert(false);
+        }
+    }
+
+    [self initBoard];
+}
+
+
+- (void) loadGameFromMatch:(GKTurnBasedMatch *)match
+{
+    // save the match object to be able to register moves & end-of-game
+    _match = match;
+    
+    if(match.matchData.length == 0) {
+        // no existing match data, so we're first.
+        userSide = kOthelloWhite; // white (us) starts the match.
+        [self initBoard];
+        return;
+    }
+    
+    // joining an existing match, so let's load the match state
+    [match.matchData getBytes:&gameState length:sizeof(gameState)];
+    
+    // check to see whose turn it is
+    GKPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    if([match.currentParticipant.playerID isEqualToString:localPlayer.playerID]){
+        // we're the current player.
+        userSide = gameState.currentPlayer;
+        [self setStatus:@"Your turn!"];
+    } else {
+        // we're the other player
+        userSide = (gameState.currentPlayer == kOthelloBlack) ? kOthelloWhite : kOthelloBlack;
+        [self setStatus:@"Waiting for opponent..."];
+    }
+    
+    // display labels for the sides.
+    OthelloSideType opponentSide = (userSide == kOthelloBlack) ? kOthelloWhite : kOthelloBlack;
+    [self nameSide:userSide as:@"You!"];
+
+    // Display opponent's name (TODO: CACHE THIS?)
+    if(match.currentParticipant.playerID){
+        [GKPlayer loadPlayersForIdentifiers:[self nextParticipants] withCompletionHandler:
+         ^(NSArray *players, NSError *error) {
+             if(error){
+                 CLS_LOG(@"Game Center error fetching info about opponent: %@", error);
+             } else {
+                 GKPlayer *opponent = players[0]; // only one other participant
+                 [self nameSide:opponentSide as:opponent.displayName];
+             }
+         }];
+    } else {
+        // we don't have a named opponent yet. TODO: when we do, fill in the label!
+        [self nameSide:opponentSide as:@"Human Opponent"];
+    }
+    
+    // we've updated the board state, so let's refresh the board view.
+    [self refreshBoard];
+}
+
+
+// the game is over, as nobody can move. calculate respective scores to see who won!
+- (void) gameOver
+{
+    // shake the device in glee - the game's done!
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    NSString *msg;
+    GKTurnBasedMatchOutcome userOutcome = GKTurnBasedMatchOutcomeNone;
+    GKTurnBasedMatchOutcome opponentOutcome;
+    
+    if(_match){
+        GKTurnBasedParticipant *opponent = [self opponentParticipant];
+        if(opponent.matchOutcome == GKTurnBasedMatchOutcomeQuit){
+            CLS_LOG(@"We won the game by the other side forfeiting!");
+            userOutcome = GKTurnBasedMatchOutcomeWon;
+            msg = @"You win! Your opponent forfeits.";
+        }
+        if(opponent.matchOutcome == GKTurnBasedMatchOutcomeTimeExpired){
+            CLS_LOG(@"We won the game by the other side's time expiring!");
+            userOutcome = GKTurnBasedMatchOutcomeWon;
+            msg = @"You win! Your opponent ran out of time.";
+        }
+        opponentOutcome = opponent.matchOutcome;
+    }
+    
+
+    // If the user didn't automatically win, let's see who has more pieces on the board to determine a winner.
+    if(userOutcome == GKTurnBasedMatchOutcomeNone){
+        // count the pieces
+        int userPieces = 0;
+        int opponentPieces = 0;
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                if(gameState.board[i][j] == userSide){
+                    userPieces++;
+                } else if (gameState.board[i][j] != kOthelloNone){
+                    opponentPieces++;
+                }
+            }
+        }
+        
+        // determine a winner
+        if(opponentPieces > userPieces){
+            msg = @"Your opponent won!";
+            userOutcome = GKTurnBasedMatchOutcomeLost;
+            opponentOutcome = GKTurnBasedMatchOutcomeWon;
+            if(!_match) [_audioYouLostPlayer play];
+        } else if(userPieces > opponentPieces) {
+            msg = @"You win!";
+            userOutcome = GKTurnBasedMatchOutcomeWon;
+            opponentOutcome = GKTurnBasedMatchOutcomeLost;
+            if(!_match) [_audioComputerLostPlayer play];
+        } else {
+            msg = @"You tied.";
+            userOutcome = GKTurnBasedMatchOutcomeTied;
+            opponentOutcome = GKTurnBasedMatchOutcomeTied;
+            if(!_match) [_audioTiePlayer play];
+        }
+    }
+        
+    // If in a Game Center match, tell Game Center who won and who lost.
+    if(_match){
+        CLS_LOG(@"Game is over, committing match outcome data to Game Center.");
+        _match.currentParticipant.matchOutcome = userOutcome;
+        GKTurnBasedParticipant *opponent = [self opponentParticipant];
+        if(opponent.matchOutcome == GKTurnBasedMatchOutcomeNone) { // opponent may have e.g. quit.
+            opponent.matchOutcome = opponentOutcome;
+        }
+        
+        [_match endMatchInTurnWithMatchData:[self matchData] completionHandler:^(NSError *error) {
+            if(error){
+                CLS_LOG(@"Game Center error marking match completed: %@", error);
+            } else {
+                [TestFlight passCheckpoint:@"Completed a game against a human opponent!"];
+                // TODO: delete old match?
+                
+            }
+        }];
+        
+        // TODO: prompt for rematch?
+        
+    } else {
+        // TODO: note locally whether the user won or lost vs which A.I.
+        [TestFlight passCheckpoint:@"Completed a game against an AI opponent!"];
+    }
+    
+    // Popup to display the results of the game before we transition back to opponent selection.
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert setTag:kOthelloAlertGameOver];
+    [alert show];
+}
+
+
+// user wishes to resign the current game (auto-loses)
+- (void) resign
+{
+    if(_match) {
+        if(userSide == gameState.currentPlayer){
+            [_match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit nextParticipants:[self nextParticipants] turnTimeout:GKTurnTimeoutDefault matchData:[self matchData] completionHandler:
+             ^(NSError *error) {
+                 if(error){
+                     CLS_LOG(@"Game Center error resigning in turn: %@", error);
+                 }
+             }];
+        } else {
+            // we quit out-of-turn.
+            [_match participantQuitOutOfTurnWithOutcome:GKTurnBasedMatchOutcomeQuit withCompletionHandler:
+             ^(NSError *error) {
+                 if(error) {
+                     CLS_LOG(@"Game Center error resigning out of turn: %@", error);
+                 }
+            }];
+        }
+    } else {
+        // TODO: note loss/resignation to A.I. opponent
+    }
+    
+    // punt back to opponent selection screen
+    [self dismissBoard];
+}
+
+
+- (void) opponentMove
+{
+    [self setStatus:@"Waiting for opponent..."];
+    if(_match) {
+        // commit current match data to Game Center and pass the turn to the human opponent
+        [_match endTurnWithNextParticipants:[self nextParticipants] turnTimeout:GKTurnTimeoutDefault matchData:[self matchData] completionHandler:
+            ^(NSError *error){
+                if(error){
+                    CLS_LOG(@"Error ending turn: %@", error);
+                }
+            }
+         ];
+    } else {
+        // Delay 700ms before letting computer compute move in order to be less disorienting.
+        [self setStatus:@"I'm thinking..."];
+        [NSTimer scheduledTimerWithTimeInterval:.7 target:self selector:@selector(computerTurn) userInfo:nil repeats:NO];
+    }
+}
+
+
+// Someone just finished their move. check to see whose move is next or if the game is over.
+- (void) nextTurn
+{
+    [self refreshBoard];
+    
+    OthelloSideType otherSide = (userSide == kOthelloWhite)? kOthelloBlack : kOthelloWhite;
+    
+    // if we just went...
+    if(gameState.currentPlayer == userSide){
+        // and the other side can't move...
+        if(![self canMove:otherSide]){
+            // AND the human can't make another move...
+            if(![self canMove:userSide]){
+                // the game is over, since nobody can move.
+                CLS_LOG(@"Game over, no moves left.");
+                [self gameOver];
+                return;
+            } else {
+                // skip the other side's move, let the user move again.
+                CLS_LOG(@"Computer cannot move, skipping robot move. :'(");
+                [self setStatus:@"Go again!"];
+                [_audioBooPlayer play];
+            }
+        } else {
+            // the other side CAN move. let it make a decision.
+            gameState.currentPlayer = otherSide;
+            [self opponentMove];
+        }
+    } else { // the other side just went.
+        // ...and the user can't move
+        if(![self canMove:userSide]){
+            // and the other side can't make another move.
+            if(![self canMove:otherSide]){
+                CLS_LOG(@"Game over, no moves left.");
+                [self gameOver];
+                return;
+            } else {
+                CLS_LOG(@"User can't move, skipping");
+                [self setStatus:@"My turn again!"];
+                [_audioYayPlayer play];
+                [self opponentMove];
+            }
+        } else {
+            // the human can move, let them do so.
+            gameState.currentPlayer = userSide;
+            [self setStatus:@"Your turn!"];
         }
     }
 }
 
-// enables a given (premium/unlockable) AI.
-- (void)unlockAI:(AIType)name
+
+// The user has attempted a move, it may or may not be legal or their turn.
+- (bool) attemptPlayerMove:(int)i col:(int)j
 {
-    CLS_LOG(@"Unlocking AI %d", name);
-
-    // TODO: store permanently that the given AI is now allowed!
-
-    // switch to that AI right now
-    [self switchToAI:name];
+    // first, let's check to see if it's the user's turn right now
+    if(gameState.currentPlayer != userSide){
+        CLS_LOG(@"Player attempted to move at %d, %d but wasn't player's turn.", i, j);
+        [self setStatus:@"Not your turn yet!"];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [_audioHoldOnPlayer play];
+        return false;
+    }
+    
+    // attempt to actually make the move.
+    int captured = [self testMove:userSide row:i col:j doMove:true];
+    if(captured == 0){
+        // the projected move is inadmissable / would capture no pieces.
+        CLS_LOG(@"Player attempted to move at %d, %d but move was not permitted.", i, j);
+        [self setStatus:@"You can't move there."];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        [_audioNOPlayer play];
+        return false;
+    }
+    
+    // the move is admissable and was made, make the next turn happen
+    CLS_LOG(@"Player moved successfully at %d, %d capturing %d pieces.", i, j, captured);
+    [_audioThppPlayer play];
+    [self nextTurn];
+    return true;
 }
+
+
+// label a given side with a string
+- (void) nameSide:(OthelloSideType)side as:(NSString *)label
+{
+    AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(side == kOthelloWhite){
+        [app.gameBoardViewController.whiteLabel setText:label];
+    } else {
+        [app.gameBoardViewController.blackLabel setText:label];
+    }
+}
+
+
+// update the status on the board
+- (void) setStatus:(NSString *)status
+{
+    AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app.gameBoardViewController.statusLabel setText:status];
+}
+
+
+// refresh the board view
+- (void) refreshBoard
+{
+    AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app.gameBoardViewController.othelloBoard setNeedsDisplay];
+}
+
+
+// dismiss the game board to return to opponent selection
+- (void) dismissBoard
+{
+    AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app.gameBoardViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+
+/////////// GKTurnBasedEventHandlerDelegate Section ///////////
+
+// We've been invited to join a match!
+- (void) handleInviteFromGameCenter:(NSArray *)playersToInvite
+{
+    // XXX FIXME TODO: Ask the user if they want to forfeit their current (e.g. vs AI) match
+    // to accept the invite??
+    
+    // For now, decline all invites.
+    CLS_LOG(@"Received new invite from Game Center, auto-declining because we're dumb.");
+    [_match declineInviteWithCompletionHandler:^(NSError *error) {
+        if(error){
+            CLS_LOG(@"Error declining invite: %@", error);
+        }
+    }];
+    
+    /*
+     GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.minPlayers = 2;
+    request.maxPlayers = 2;
+    request.playersToInvite = playersToInvite;
+    */
+}
+
+
+// Game Center thinks the match has ended.
+- (void) handleMatchEnded:(GKTurnBasedMatch *)match
+{
+    assert(match.status == GKTurnBasedMatchStatusEnded);
+    
+    // load the game state from match data & refresh the board
+    _match = match;
+    [match.matchData getBytes:&gameState length:sizeof(gameState)];
+    [self refreshBoard];
+    
+    // ...and calculate who won/lost
+    [self gameOver];
+}
+
+
+// Game Center thinks it's time for us to make a move.
+- (void) handleTurnEventForMatch:(GKTurnBasedMatch *)match didBecomeActive:(BOOL)didBecomeActive
+{
+    assert(match.status == GKTurnBasedMatchStatusOpen);
+    [self loadGameFromMatch:match];
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////
 
 - (id)init
 {
     self = [super init];
-    
-    // fetch the game board view controller from the app.
-    AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    _boardViewController = app.gameBoardViewController;
-
-    // TODO: check to see if we have access to the Minimax AI
-    // ...if yes, fire it up and set it as our AI.
-    
-    // pick which A.I. we're going to use
-    [self switchToAI:kAISimpleGreedy];
     
     _audioWelcomePlayer = [self getPlayerForSound:@"welcome"];
     _audioThppPlayer = [self getPlayerForSound:@"thpp"];
@@ -349,12 +594,6 @@
     _audioYouLostPlayer = [self getPlayerForSound:@"youlost"];
     _audioComputerLostPlayer = [self getPlayerForSound:@"computerlost"];
     _audioNewGamePlayer = [self getPlayerForSound:@"newgame"];
-
-    // welcome the player
-  //  [_audioWelcomePlayer play];
-    
-    // start the board empty
-    [self initBoard];
 
     return self;
 };

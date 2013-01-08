@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import <GameKit/GameKit.h>
+
 #import "OthelloBoardView.h"
 #import "GameBoardViewController.h"
 
@@ -38,19 +40,26 @@ typedef enum {
     kAIMinimax = 3
 } AIType;
 
-@interface OthelloGameController : NSObject <UIAlertViewDelegate>
+struct GameState {
+    OthelloSideType board[8][8];
+    OthelloSideType currentPlayer;
+};
+
+
+@interface OthelloGameController : NSObject <UIAlertViewDelegate, GKTurnBasedEventHandlerDelegate>
 {
-    @public OthelloSideType _boardState[8][8];
-    @public OthelloSideType _currentPlayer;
-    id <AIDelegate> _ai;
+    @public struct GameState gameState; // this structure encapsulates the current state of the game.
+    @public OthelloSideType userSide; // what side is the user on?
+    id<AIDelegate> _ai;
 }
 
 - (bool)attemptPlayerMove:(int)i col:(int)j;
 - (int)testMove:(OthelloSideType)whoseMove row:(int)i col:(int)j doMove:(bool)doMove;
-- (void)unlockAI:(AIType)name;
-- (void)switchToAI:(AIType)name;
-- (void)newGame;
+- (void)newGameVersusAI:(AIType)name;
+- (void)resign;
+- (void)loadGameFromMatch:(GKTurnBasedMatch *)match;
 
+@property (retain) GKTurnBasedMatch *match;
 @property (readwrite) GameBoardViewController *boardViewController;
 @property (strong, nonatomic) AVAudioPlayer *audioWelcomePlayer;
 @property (strong, nonatomic) AVAudioPlayer *audioThppPlayer;

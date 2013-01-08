@@ -8,37 +8,22 @@
 
 #import "GameBoardViewController.h"
 
-@interface GameBoardViewController ()
-
-@end
-
 @implementation GameBoardViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self.statusLabel setText:@"Your turn!"];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 // the user has resigned the match.
 - (IBAction)resign:(id)sender {
-    // TODO: send "mark game as lost" to gamecenter or to AI game score / count as applicable
-    // TODO: clear board / state
     CLS_LOG(@"User resigned match");
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    [app.game resign];
 }
 
 
 - (void)viewDidUnload {
-    [self setOpponentLabel:nil];
     [self setStatusLabel:nil];
+    [self setWhiteLabel:nil];
+    [self setBlackLabel:nil];
     [super viewDidUnload];
 }
+
 @end

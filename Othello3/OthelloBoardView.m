@@ -81,7 +81,7 @@
 
         // render piece in this square
         for(j=0;j<8;j++){
-            OthelloSideType space = _app.game->_boardState[i][j];
+            OthelloSideType space = _app.game->gameState.board[i][j];
             if(space == kOthelloWhite){
                 [_whitepiece drawAtPoint:CGPointMake(_cellSize * i, _cellSize * j) blendMode:kCGBlendModeNormal alpha:1.0];
             }

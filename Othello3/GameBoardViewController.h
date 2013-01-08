@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
 
+#import "AppDelegate.h"
 #import "OthelloBoardView.h"
 
 @class OthelloBoardView;
@@ -21,7 +22,9 @@
 - (IBAction)resign:(id)sender;
 
 @property (weak, nonatomic) IBOutlet OthelloBoardView *othelloBoard;
-@property (weak, nonatomic) IBOutlet UILabel *opponentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *whiteLabel;
+@property (weak, nonatomic) IBOutlet UILabel *blackLabel;
+
 
 @end

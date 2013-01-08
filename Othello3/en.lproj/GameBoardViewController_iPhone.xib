@@ -60,7 +60,7 @@
 					<object class="IBUIImageView" id="920216602">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{52, 508}, {40, 40}}</string>
+						<string key="NSFrame">{{21, 415}, {40, 40}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="147564068"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -74,7 +74,7 @@
 					<object class="IBUIImageView" id="147564068">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{228, 508}, {40, 40}}</string>
+						<string key="NSFrame">{{259, 415}, {40, 40}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -87,7 +87,7 @@
 					<object class="IBUILabel" id="51348567">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{51, 486}, {42, 21}}</string>
+						<string key="NSFrame">{{20, 393}, {42, 21}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="395790749"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -121,7 +121,7 @@
 					<object class="IBUILabel" id="395790749">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{227, 486}, {42, 21}}</string>
+						<string key="NSFrame">{{258, 393}, {42, 21}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="920216602"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -175,10 +175,10 @@
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIButton" id="530352302">
+					<object class="IBUIButton" id="555444650">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{123, 393}, {75, 44}}</string>
+						<string key="NSFrame">{{123, 412}, {75, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -260,14 +260,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">opponentLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="395790749"/>
-					</object>
-					<int key="connectionID">139</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">statusLabel</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="943993708"/>
@@ -275,9 +267,25 @@
 					<int key="connectionID">141</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">whiteLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="51348567"/>
+					</object>
+					<int key="connectionID">147</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">blackLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="395790749"/>
+					</object>
+					<int key="connectionID">148</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">resign:</string>
-						<reference key="source" ref="530352302"/>
+						<reference key="source" ref="555444650"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -310,10 +318,10 @@
 							<reference ref="810468398"/>
 							<reference ref="943993708"/>
 							<reference ref="920216602"/>
-							<reference ref="147564068"/>
 							<reference ref="51348567"/>
+							<reference ref="147564068"/>
 							<reference ref="395790749"/>
-							<reference ref="530352302"/>
+							<reference ref="555444650"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">gameView</string>
@@ -350,7 +358,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">145</int>
-						<reference key="object" ref="530352302"/>
+						<reference key="object" ref="555444650"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 				</array>
@@ -379,7 +387,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">146</int>
+			<int key="maxID">148</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

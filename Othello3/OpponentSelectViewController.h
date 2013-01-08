@@ -15,7 +15,7 @@
 
 @class AppDelegate;
 
-@interface OpponentSelectViewController : UIViewController <GKTurnBasedMatchmakerViewControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
+@interface OpponentSelectViewController : UIViewController <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @property (readwrite) AppDelegate *app;
 

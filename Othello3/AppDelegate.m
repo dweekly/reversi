@@ -60,11 +60,27 @@
     self.window.rootViewController = self.welcomeViewController;
     [self.window makeKeyAndVisible];
 
+    // we're not currently in a match, so zero that out for now.
+    self->match = nil;
+    
     // create the game object!
     _game = [[OthelloGameController alloc] init];
     
     // let game object know about the board view so it can refresh the board as needed.
     _game.boardViewController = self.gameBoardViewController;
+    
+    // Now authenticate the local user and set up our turn-based delegate
+    // (we might have been launched in order to handle a turn-based event!
+    [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) {
+        if (error) {
+            // User isn't logged into GC?
+            CLS_LOG(@"Error on init logging into Game Center: %@", error);
+        } else {
+            // Set delegate for turn based events immediately after player authentication, per Apple docs:
+            // http://developer.apple.com/library/ios/#documentation/GameKit/Reference/GKTurnBasedEventHandler_Ref
+            [[GKTurnBasedEventHandler sharedTurnBasedEventHandler] setDelegate:_game];
+        }
+    }];
     
     return YES;
 }

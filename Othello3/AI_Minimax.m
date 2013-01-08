@@ -77,7 +77,7 @@
     OthelloSideType initBoardState[64];
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            initBoardState[i*8 + j] = _game->_boardState[i][j];
+            initBoardState[i*8 + j] = _game->gameState.board[i][j];
         }
     }
     
