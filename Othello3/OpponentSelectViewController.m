@@ -17,12 +17,15 @@
     [super viewDidLoad];
     _app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+
+    // TODO: visually change the appearance of self.playHardComputerButton to indicate payment will be required?
 }
 
 
 - (void)startComputerGameWithAI:(AIType)ai
 {
     _app.game->userSide = kOthelloWhite; // let the user go first.
+    [_app.gameBoardViewController view]; // force view to load
     [_app.game newGameVersusAI:ai];
     _app.gameBoardViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:_app.gameBoardViewController animated:YES completion:NULL];
@@ -39,9 +42,14 @@
 }
 
 - (IBAction)playHardComputer:(id)sender {
-    // TODO: check for / perform paid upgrade.
-    CLS_LOG(@"Starting HARD match");
-    [self startComputerGameWithAI:kAIMinimax];
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]){
+        CLS_LOG(@"Starting HARD match");
+        [self startComputerGameWithAI:kAIMinimax];
+    } else {
+        CLS_LOG(@"User selected difficult AI but not yet purchased.");
+        // TODO: auto-attempt restore if that hasn't been done yet?
+        [self upgrade];
+    }
 }
 
 - (IBAction)backToMenu:(id)sender {
@@ -50,6 +58,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setPlayHardComputerButton:nil];
     [super viewDidUnload];
 }
 
@@ -106,6 +115,12 @@
                 
                 CLS_LOG(@"In-app purchase completed!!!");
                 
+                // Save the fact that the advanced AI is now unlocked.
+                [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"AI_Minimax"];
+
+                // mark the transaction completed.
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                
                 UIAlertView *tmp = [[UIAlertView alloc]
                                     initWithTitle:@"AI Unlocked"
                                     message:@"You have unlocked the more sophisticated AI!"
@@ -113,14 +128,9 @@
                                     cancelButtonTitle:nil
                                     otherButtonTitles:@"Ok", nil];
                 [tmp show];
+
+                [self startComputerGameWithAI:kAIMinimax];
                 
-                // Actually unlock the minimax AI
-                // AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                // [app.game unlockAI:kAIMinimax];
-                
-                // once we've delivered/stored the purchase,
-                // finalize the transaction and remove it from the queue
-                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             }
                 
@@ -128,8 +138,11 @@
                 // unlock is in transaction.originalTransaction.payment.productIdentifier
                 assert([transaction.originalTransaction.payment.productIdentifier isEqualToString:@"com.gastonlabs.isreveR.AI_Minimax"]);
                 
+                CLS_LOG(@"In-app purchase restored.");
+                [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"AI_Minimax"];
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                // remove wait view here?
+                [self startComputerGameWithAI:kAIMinimax];
+
                 break;
             }
                 
@@ -139,13 +152,16 @@
                 } else {
                     CLS_LOG(@"Surprise payment error %@", transaction.error);
                     
-                    UIAlertView *tmp = [[UIAlertView alloc]
-                                        initWithTitle:@"Upgrade Error"
-                                        message:@"There was an error with your purchase, apologies."
-                                        delegate:nil
-                                        cancelButtonTitle:nil
-                                        otherButtonTitles:@"Ok", nil];
-                    [tmp show];
+                    // only bother the user with an error popup if an upgrade hasn't yet gone through.
+                    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]){
+                        UIAlertView *tmp = [[UIAlertView alloc]
+                                            initWithTitle:@"Upgrade Error"
+                                            message:@"There was an error with your purchase, apologies."
+                                            delegate:nil
+                                            cancelButtonTitle:nil
+                                            otherButtonTitles:@"Ok", nil];
+                        [tmp show];
+                    }
 
                 }
                 
@@ -187,8 +203,10 @@
 
 
 // The user wants to upgrade our AI with an in-app purchase!
-- (IBAction)upgrade:(id)sender
+- (void)upgrade
 {
+    assert(![[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]);
+    
     // are we allowed to make a purchase?
     if ([SKPaymentQueue canMakePayments]) {
         // PURCHASE STEP #1: let's ask to make the purchase!

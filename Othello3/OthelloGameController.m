@@ -193,15 +193,18 @@
     switch(ai){
         case kAIFirstValid: {
             _ai = [[AI_FirstValid alloc] initWithGame:self];
+            [self nameSide:kOthelloBlack as:@"Easy AI"];
             break;
         }
         case kAISimpleGreedy: {
             _ai = [[AI_SimpleGreedy alloc] initWithGame:self];
+            [self nameSide:kOthelloBlack as:@"Medium AI"];
             break;
         }
         case kAIMinimax: {
-            // verify we're allowed to use minimax / is unlocked
+            assert([[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]);
             _ai = [[AI_Minimax alloc] initWithGame:self];
+            [self nameSide:kOthelloBlack as:@"Expert AI"];
             break;
         }
         default: {
@@ -210,6 +213,7 @@
         }
     }
 
+    [self setStatus:@"Your turn!"];
     [self initBoard];
 }
 

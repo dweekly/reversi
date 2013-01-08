@@ -71,6 +71,8 @@
 // TODO: actually implement proper algorithm here. ^_^ derp derp
 - (int)computerTurn:(int *)best_i j:(int *)best_j
 {
+    // since this is a premium algorithm, ensure that we've been IAP enabled
+    assert([[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]);
     
     // first, let's capture the current game's board state, so we can return it to how we found it
     // after we're done modelling possibilities.

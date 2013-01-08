@@ -18,6 +18,7 @@
 @interface OpponentSelectViewController : UIViewController <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @property (readwrite) AppDelegate *app;
+@property (weak, nonatomic) IBOutlet UIButton *playHardComputerButton;
 
 - (IBAction)playHuman:(id)sender;
 - (IBAction)playEasyComputer:(id)sender;
