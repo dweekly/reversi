@@ -26,7 +26,7 @@
 //   - when I have a lot of pieces on the board
 //   - when I have a lot of potential moves
 //   (and the converse of the above for my opponent)
-- (int)evalBoard:(int[64])board forSide:(OthelloSideType)side
+- (int)evalBoard:(struct GameState *)state forSide:(OthelloSideType)side
 {
     int kCornerPieceScoreMe = 10;
     int kCornerPieceScoreOther = -10;
@@ -41,7 +41,7 @@
     
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            OthelloSideType piece = board[i*8 + j];
+            OthelloSideType piece = state->board[i][j];
             if(piece == kOthelloNone){
                 // in theory we could test whether we could move here,
                 // but this function's just is just to evaluate the score
@@ -74,21 +74,14 @@
     // since this is a premium algorithm, ensure that we've been IAP enabled
     assert([[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]);
     
-    // first, let's capture the current game's board state, so we can return it to how we found it
-    // after we're done modelling possibilities.
-    OthelloSideType initBoardState[64];
-    for(int i=0; i<8; i++){
-        for(int j=0; j<8; j++){
-            initBoardState[i*8 + j] = _game->gameState.board[i][j];
-        }
-    }
+    // Copy the game state from the current board.
+    struct GameState gs;
+    memcpy(&gs, &_game->gameState, sizeof(gs));
     
-    // for every permissible move on the board, calculate the number of pieces captured.
-    // simple algorithm weights # pieces captured (TODO: extra weight for sides + corners)
     int best_captured = 0;
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            int here_captured = [_game testMove:kOthelloBlack row:i col:j doMove:false];
+            int here_captured = [OthelloGameController testMove:&gs row:i col:j doMove:false];
             if(here_captured > 0){
                 if (here_captured > best_captured) {
                     best_captured = here_captured;

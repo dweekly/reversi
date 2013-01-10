@@ -25,7 +25,7 @@
     // very silly AI that simply immediately returns once it's found a valid move.
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            int here_captured = [_game testMove:kOthelloBlack row:i col:j doMove:false];
+            int here_captured = [OthelloGameController testMove:&(_game->gameState) row:i col:j doMove:false];
             if(here_captured > 0){
                 *best_i = i;
                 *best_j = j;

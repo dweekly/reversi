@@ -53,8 +53,10 @@ struct GameState {
     id<AIDelegate> _ai;
 }
 
++ (int)testMove:(struct GameState *)state row:(int)i col:(int)j doMove:(bool)doMove;
++ (AVAudioPlayer *)getPlayerForSound:(NSString *)soundFile;
+
 - (bool)attemptPlayerMove:(int)i col:(int)j;
-- (int)testMove:(OthelloSideType)whoseMove row:(int)i col:(int)j doMove:(bool)doMove;
 - (void)newGameVersusAI:(AIType)name;
 - (void)resign;
 - (void)loadGameFromMatch:(GKTurnBasedMatch *)match;

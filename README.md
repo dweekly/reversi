@@ -48,12 +48,20 @@ v0.08 (Dec 18, 2012)
  - Apply MP3 compression to reduce overall bundle size (23M -> 17M)
  - Target iOS 5.0 to cover a wider range of users
  - Update screenshots
+ 
+v0.09 (Jan 8, 2013)
+ - New visual flow to select an opponent/AI
+ - Visual status on turn
+ - Add half-functioning Game Center matching and play (disabled)
 
 TODOs:
- - Allow for user selection of different AIs
- - Visual feedback on move status, turn, upgrading of AI
- - welcome screen with instructions
- - support rotation
- - animations
- - GameCenter / multiplayer
+ - actually implement minimax (expert) algorithm
+ - beautiful Tamiko skins?
+ - gameplay instructions
+ - support rotation?
+ - animations?
+ - alter modal views to regular sliding views?
+ - keep tally of wins/losses
+ - fix Game Center / multiplayer
+ - add achievements
  - Allow for 3rd parties to sell AIs(!)

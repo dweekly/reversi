@@ -17,8 +17,64 @@
 
 @implementation OthelloGameController
 
+
+// compute whether a given move is valid, and, possibly, do it.
++ (int)testMove:(struct GameState *)state row:(int)i col:(int)j doMove:(bool)doMove
+{
+    assert(i >= 0);
+    assert(i < 8);
+    assert(j >= 0);
+    assert(j < 8);
+    
+    // if the proposed space is already occupied, bail.
+    if(state->board[i][j] != kOthelloNone){
+        return false;
+    }
+    
+    // explore whether any of the eight 'rays' extending from the current piece
+    // have a line of at least one opponent piece terminating in one of our own pieces.
+    int dx, dy;
+    int totalCaptured = 0;
+    for(dx = -1; dx <= 1; dx++){
+        for(dy = -1; dy <= 1; dy++){
+            // (skip the null movement case)
+            if(dx == 0 && dy == 0){ continue; }
+            
+            // explore the ray for potential captures.
+            for(int steps = 1; steps < 8; steps++){
+                int ray_i = i + (dx*steps);
+                int ray_j = j + (dy*steps);
+                
+                // if the ray has gone out of bounds, give up
+                if(ray_i < 0 || ray_i >= 8 || ray_j < 0 || ray_j >= 8){ break; }
+                
+                OthelloSideType ray_cell = state->board[ray_i][ray_j];
+                
+                // if we hit a blank cell before terminating a sequence, give up
+                if(ray_cell == kOthelloNone){ break; }
+                
+                // if we hit a piece that's our own, let's capture the sequence
+                if(ray_cell == state->currentPlayer){
+                    if(steps > 1){
+                        // we've gone at least one step, capture the ray.
+                        totalCaptured += steps - 1;
+                        if(doMove) { // okay, let's actually execute on this
+                            while(steps--){
+                                state->board[i + (dx*steps)][j + (dy*steps)] = state->currentPlayer;
+                            };
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    }
+    return totalCaptured;
+}
+
+
 // fetch a playable object for a sound file
-- (AVAudioPlayer *)getPlayerForSound:(NSString *)soundFile
++ (AVAudioPlayer *)getPlayerForSound:(NSString *)soundFile
 {
     AVAudioPlayer *p;
     NSString *path = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"mp3"];
@@ -39,6 +95,8 @@
     }
     return p;
 }
+
+/////////////////////////////////////////////////////////////
 
 
 // get the list of participants to go next, in a format suitable for passing to Game Center
@@ -86,11 +144,11 @@
 
 
 // check to see if ANY move is permissible by a given player.
-- (bool) canMove:(OthelloSideType)player
+- (bool) canMove
 {
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            if([self testMove:player row:i col:j doMove:false]) {
+            if([OthelloGameController testMove:&(gameState) row:i col:j doMove:false]) {
                 return true; // yes, some move is possible.
             }
         }
@@ -111,70 +169,13 @@
     // make the move and ensure it was actually valid.
     assert(best_i >= 0 && best_i < 8);
     assert(best_j >= 0 && best_j < 8);
-    int captured = [self testMove:kOthelloBlack row:best_i col:best_j doMove:true];
+    int captured = [OthelloGameController testMove:&(gameState) row:best_i col:best_j doMove:true];
     assert(captured);
     
     // okay, we're all done with our turn now.
     [_audioWhoopPlayer play];
     [self nextTurn];
 }
-
-
-// compute whether a given move is valid, and, possibly, do it.
-- (int)testMove:(OthelloSideType)whoseMove row:(int)i col:(int)j doMove:(bool)doMove
-{
-    assert(i >= 0);
-    assert(i < 8);
-    assert(j >= 0);
-    assert(j < 8);
-    assert(whoseMove == kOthelloWhite || whoseMove == kOthelloBlack);
-    
-    // if the proposed space is already occupied, bail.
-    if(gameState.board[i][j] != kOthelloNone){
-        return false;
-    }
-    
-    // explore whether any of the eight 'rays' extending from the current piece
-    // have a line of at least one opponent piece terminating in one of our own pieces.
-    int dx, dy;
-    int totalCaptured = 0;
-    for(dx = -1; dx <= 1; dx++){
-        for(dy = -1; dy <= 1; dy++){
-            // (skip the null movement case)
-            if(dx == 0 && dy == 0){ continue; }
-            
-            // explore the ray for potential captures.
-            for(int steps = 1; steps < 8; steps++){
-                int ray_i = i + (dx*steps);
-                int ray_j = j + (dy*steps);
-                
-                // if the ray has gone out of bounds, give up
-                if(ray_i < 0 || ray_i >= 8 || ray_j < 0 || ray_j >= 8){ break; }
-                
-                OthelloSideType ray_cell = gameState.board[ray_i][ray_j];
-                
-                // if we hit a blank cell before terminating a sequence, give up
-                if(ray_cell == kOthelloNone){ break; }
-                
-                // if we hit a piece that's our own, let's capture the sequence
-                if(ray_cell == whoseMove){
-                    if(steps > 1){
-                        // we've gone at least one step, capture the ray.
-                        totalCaptured += steps - 1;
-                        if(doMove) { // okay, let's actually execute on this
-                            while(steps--){
-                                gameState.board[i + (dx*steps)][j + (dy*steps)] = whoseMove;
-                            };
-                        }
-                    }
-                    break;
-                }
-            }
-        }
-    }
-    return totalCaptured;
-}
-
 
 // after the game is acknowledged as being over, this is called and a new game is started.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -434,10 +435,12 @@
     
     // if we just went...
     if(gameState.currentPlayer == userSide){
+        gameState.currentPlayer = otherSide;
         // and the other side can't move...
-        if(![self canMove:otherSide]){
+        if(![self canMove]){
+            gameState.currentPlayer = userSide;
             // AND the human can't make another move...
-            if(![self canMove:userSide]){
+            if(![self canMove]){
                 // the game is over, since nobody can move.
                 CLS_LOG(@"Game over, no moves left.");
                 [self gameOver];
@@ -454,10 +457,12 @@
             [self opponentMove];
         }
     } else { // the other side just went.
+        gameState.currentPlayer = userSide;
         // ...and the user can't move
-        if(![self canMove:userSide]){
+        if(![self canMove]){
+            gameState.currentPlayer = otherSide;
             // and the other side can't make another move.
-            if(![self canMove:otherSide]){
+            if(![self canMove]){
                 CLS_LOG(@"Game over, no moves left.");
                 [self gameOver];
                 return;
@@ -469,7 +474,6 @@
             }
         } else {
             // the human can move, let them do so.
-            gameState.currentPlayer = userSide;
             [self setStatus:@"Your turn!"];
         }
     }
@@ -489,7 +493,7 @@
     }
     
     // attempt to actually make the move.
-    int captured = [self testMove:userSide row:i col:j doMove:true];
+    int captured = [OthelloGameController testMove:&(gameState) row:i col:j doMove:true];
     if(captured == 0){
         // the projected move is inadmissable / would capture no pieces.
         CLS_LOG(@"Player attempted to move at %d, %d but move was not permitted.", i, j);
@@ -546,26 +550,19 @@
 
 /////////// GKTurnBasedEventHandlerDelegate Section ///////////
 
-// We've been invited to join a match!
+// We are inviting someone else to a match (only from the gamecenter matching view, which we've torn out, so probably not relevant.
 - (void) handleInviteFromGameCenter:(NSArray *)playersToInvite
 {
     // XXX FIXME TODO: Ask the user if they want to forfeit their current (e.g. vs AI) match
     // to accept the invite??
     
     // For now, decline all invites.
-    CLS_LOG(@"Received new invite from Game Center, auto-declining because we're dumb.");
+    CLS_LOG(@"User invited someone to a new match from Game Center, auto-declining because this can't happen???");
     [_match declineInviteWithCompletionHandler:^(NSError *error) {
         if(error){
             CLS_LOG(@"Error declining invite: %@", error);
         }
     }];
-    
-    /*
-     GKMatchRequest *request = [[GKMatchRequest alloc] init];
-    request.minPlayers = 2;
-    request.maxPlayers = 2;
-    request.playersToInvite = playersToInvite;
-    */
 }
 
 
@@ -600,17 +597,17 @@
 {
     self = [super init];
     
-    _audioWelcomePlayer = [self getPlayerForSound:@"welcome"];
-    _audioThppPlayer = [self getPlayerForSound:@"thpp"];
-    _audioWhoopPlayer = [self getPlayerForSound:@"whoop"];
-    _audioYayPlayer = [self getPlayerForSound:@"yay"];
-    _audioBooPlayer = [self getPlayerForSound:@"boo"];
-    _audioNOPlayer = [self getPlayerForSound:@"no"];
-    _audioHoldOnPlayer = [self getPlayerForSound:@"holdon"];
-    _audioTiePlayer = [self getPlayerForSound:@"tie"];
-    _audioYouLostPlayer = [self getPlayerForSound:@"youlost"];
-    _audioComputerLostPlayer = [self getPlayerForSound:@"computerlost"];
-    _audioNewGamePlayer = [self getPlayerForSound:@"newgame"];
+    _audioWelcomePlayer = [OthelloGameController getPlayerForSound:@"welcome"];
+    _audioThppPlayer = [OthelloGameController getPlayerForSound:@"thpp"];
+    _audioWhoopPlayer = [OthelloGameController getPlayerForSound:@"whoop"];
+    _audioYayPlayer = [OthelloGameController getPlayerForSound:@"yay"];
+    _audioBooPlayer = [OthelloGameController getPlayerForSound:@"boo"];
+    _audioNOPlayer = [OthelloGameController getPlayerForSound:@"no"];
+    _audioHoldOnPlayer = [OthelloGameController getPlayerForSound:@"holdon"];
+    _audioTiePlayer = [OthelloGameController getPlayerForSound:@"tie"];
+    _audioYouLostPlayer = [OthelloGameController getPlayerForSound:@"youlost"];
+    _audioComputerLostPlayer = [OthelloGameController getPlayerForSound:@"computerlost"];
+    _audioNewGamePlayer = [OthelloGameController getPlayerForSound:@"newgame"];
 
     return self;
 };
