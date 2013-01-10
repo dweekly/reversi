@@ -10,6 +10,7 @@
 // of pieces permissible on the board.
 
 #import "AI_SimpleGreedy.h"
+#import "OthelloGameController.h"
 
 @implementation AI_SimpleGreedy
 
@@ -20,14 +21,14 @@
     return self;
 }
 
-- (int)computerTurn:(int *)best_i j:(int *)best_j
+- (void)computerTurn:(int *)best_i j:(int *)best_j
 {
     // for every permissible move on the board, calculate the number of pieces captured.
     // simple algorithm weights # pieces captured (TODO: extra weight for sides + corners)
     int best_captured = 0;
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            int here_captured = [OthelloGameController testMove:&(_game->gameState) row:i col:j doMove:false];
+            int here_captured = [Othello testMove:&(_game->gameState) row:i col:j doMove:false];
             if(here_captured > 0){
                 if (here_captured > best_captured) {
                     best_captured = here_captured;
@@ -40,7 +41,6 @@
     
     // ensure a valid move exists (we shouldn't have been allowed to move otherwise)
     assert(best_captured);
-    return best_captured;
 }
 
 @end

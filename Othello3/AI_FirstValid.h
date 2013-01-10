@@ -9,8 +9,7 @@
 // This AI implements the crudest possible Othello strategy:
 // make the first valid move you come across.
 
-#import <Foundation/Foundation.h>
-#import "OthelloGameController.h"
+#import "AI.h"
 
 @interface AI_FirstValid : NSObject <AIDelegate>
 {

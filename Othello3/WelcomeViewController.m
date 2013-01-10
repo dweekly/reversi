@@ -24,10 +24,14 @@
     [self presentViewController:_app.opponentViewController animated:YES completion:NULL];
 }
 
+
 // The user wishes to provide feedback
 - (IBAction)feedback:(id)sender {
+#ifdef TESTFLIGHT
     [TestFlight openFeedbackView];
+#endif
 }
+
 
 // Show the About view.
 - (IBAction)about:(id)sender {

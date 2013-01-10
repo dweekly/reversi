@@ -70,6 +70,7 @@
 		DBCE59B116717B8A0022E0A0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */; };
 		DBCE59B316717BB00022E0A0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DBF4689B169C817F0078B709 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF4689A169C817F0078B709 /* CoreLocation.framework */; };
+		DBF468A1169E4CBD0078B709 /* Othello.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF468A0169E4CBD0078B709 /* Othello.m */; };
 		DBFC7AC616716C5600629011 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBFC7AC516716C5600629011 /* README.md */; };
 		DBFE50E2167FE3D1009B8C16 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */; };
 		DBFE50F5168171AC009B8C16 /* computerlost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFE50F4168171AC009B8C16 /* computerlost.mp3 */; };
@@ -180,6 +181,9 @@
 		DBCE59AF16717B8A0022E0A0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		DBF4689A169C817F0078B709 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DBF4689E169E4C0D0078B709 /* AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI.h; sourceTree = "<group>"; };
+		DBF4689F169E4CBD0078B709 /* Othello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Othello.h; sourceTree = "<group>"; };
+		DBF468A0169E4CBD0078B709 /* Othello.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Othello.m; sourceTree = "<group>"; };
 		DBFC7AC516716C5600629011 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		DBFE50F4168171AC009B8C16 /* computerlost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = computerlost.mp3; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 		DB2F0706167E62A100A22C8E /* ai */ = {
 			isa = PBXGroup;
 			children = (
+				DBF4689E169E4C0D0078B709 /* AI.h */,
 				DB2F06FF167E590400A22C8E /* AI_FirstValid.h */,
 				DB2F0700167E590400A22C8E /* AI_FirstValid.m */,
 				DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */,
@@ -373,6 +378,8 @@
 		DB35E203169B7AEA00B4393B /* logic */ = {
 			isa = PBXGroup;
 			children = (
+				DBF4689F169E4CBD0078B709 /* Othello.h */,
+				DBF468A0169E4CBD0078B709 /* Othello.m */,
 				DB1208A8167D8A2E0068FD6A /* OthelloGameController.h */,
 				DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */,
 			);
@@ -706,6 +713,7 @@
 				DB35E1EA169A826000B4393B /* WelcomeViewController.m in Sources */,
 				DB35E1F5169A9AA100B4393B /* AboutViewController.m in Sources */,
 				DB35E1FD169B73F000B4393B /* OpponentSelectViewController.m in Sources */,
+				DBF468A1169E4CBD0078B709 /* Othello.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

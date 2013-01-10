@@ -10,6 +10,7 @@
 
 
 #import "AI_Minimax.h"
+#import "OthelloGameController.h"
 
 @implementation AI_Minimax
 
@@ -20,13 +21,14 @@
     return self;
 }
 
-// A board scores highly for a given side:
+// An Othello board scores highly for a given side:
 //   - when I occupy many corners
 //   - when I occupy sides
 //   - when I have a lot of pieces on the board
 //   - when I have a lot of potential moves
+//   - when my best capture will capture lots more pieces
 //   (and the converse of the above for my opponent)
-- (int)evalBoard:(struct GameState *)state forSide:(OthelloSideType)side
+- (int)evalBoard:(struct GameState *)state
 {
     int kCornerPieceScoreMe = 10;
     int kCornerPieceScoreOther = -10;
@@ -34,67 +36,91 @@
     int kSidePieceScoreOther = -4;
     int kPieceScoreMe = 1;
     int kPieceScoreOther = -1;
-    int kMulForNumPlacesCanMove = 1;
+    int kMulForNumPlacesCanMove = 4; // highly weight having a lot of places to move!
 
     int boardScore = 0;
-    int numPlacesICouldMove = 0;
+    int numPlacesCouldMove = 0;
+    int bestCapture = 0;
     
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
             OthelloSideType piece = state->board[i][j];
             if(piece == kOthelloNone){
-                // in theory we could test whether we could move here,
-                // but this function's just is just to evaluate the score
-                // for a given board.
+                int capture = [Othello testMove:state row:i col:j doMove:false];
+                if(capture > 0) numPlacesCouldMove++;
+                if(capture > bestCapture) bestCapture = capture;
+                // TODO: perform lookahead to see the value of the pieces captured for better
+                // heuristic weighting? effectively would buy us another ply
             } else {
-                // evaluate the value of the piece here
                 if( (i==0 && (j==0 || j==7)) || (i==7 && (j==0 || j==7)) ) { // corner piece
-                    boardScore += (piece == side)? kCornerPieceScoreMe : kCornerPieceScoreOther;
-                } else {
-                    if(i==0 || i==7 || j==0 || j==7){
-                        // edge piece that is not corner piece
-                        boardScore += (piece == side)? kSidePieceScoreMe : kSidePieceScoreOther;
-                    } else {
-                        // just a regular piece here.
-                        boardScore += (piece == side)? kPieceScoreMe : kPieceScoreOther;
+                    boardScore += (piece == state->currentPlayer)? kCornerPieceScoreMe : kCornerPieceScoreOther;
+                } else if(i==0 || i==7 || j==0 || j==7){ // edge piece
+                    boardScore += (piece == state->currentPlayer)? kSidePieceScoreMe : kSidePieceScoreOther;
+                } else { // regular piece
+                    boardScore += (piece == state->currentPlayer)? kPieceScoreMe : kPieceScoreOther;
+                }
+            }
+        }
+    }
+    
+    boardScore += kMulForNumPlacesCanMove * numPlacesCouldMove;
+    boardScore += bestCapture;
+    return boardScore;
+}
+
+#define NUM_PLY 4
+
+- (int)negamax:(struct GameState *)initgs i:(int *)best_i j:(int *)best_j ply:(int)ply
+{
+    assert(ply >= 0);
+    if(ply == 0) { // we've gone as deep as we can, so just return the score for this node.
+        return [self evalBoard:initgs];
+    }
+    
+    int alpha = INT_MIN;
+    OthelloSideType otherSide = (initgs->currentPlayer == kOthelloWhite)? kOthelloBlack : kOthelloWhite;
+    
+    // TODO: handle case where other side cannot move?
+    
+    // TODO: we need to order possible moves by desirability first, or alpha-beta doesn't actually save time!
+    // evaluate each possible legal move, for each side
+    for(int i=0; i<8; i++){
+        for(int j=0; j<8; j++){
+            if(initgs->board[i][j] == kOthelloNone && [Othello testMove:initgs row:i col:j doMove:false]) {
+                struct GameState gs;
+                memcpy(&gs, initgs, sizeof(gs)); // copy the current game state...
+                [Othello testMove:&gs row:i col:j doMove:true]; // make the move...
+                gs.currentPlayer = otherSide; // ...and switch sides.
+                int childWeight = -([self negamax:&gs i:best_i j:best_j ply:(ply-1)]);
+                if(childWeight > alpha) {
+                    alpha = childWeight;
+                    if(ply == NUM_PLY) {
+                        *best_i = i;
+                        *best_j = j;
                     }
                 }
             }
         }
     }
     
-    boardScore += kMulForNumPlacesCanMove * numPlacesICouldMove;
-    return boardScore;
+    // if we just couldn't move, just try other side?
+    if(alpha == INT_MIN){
+        struct GameState gs;
+        memcpy(&gs, initgs, sizeof(gs)); // copy the current game state...
+        gs.currentPlayer = otherSide; // ...and switch sides.
+        return -([self negamax:&gs i:best_i j:best_j ply:(ply-1)]);
+    }
+
+    return alpha;
 }
 
 
-// TODO: actually implement proper algorithm here. ^_^ derp derp
-- (int)computerTurn:(int *)best_i j:(int *)best_j
+- (void)computerTurn:(int *)best_i j:(int *)best_j
 {
     // since this is a premium algorithm, ensure that we've been IAP enabled
     assert([[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]);
-    
-    // Copy the game state from the current board.
-    struct GameState gs;
-    memcpy(&gs, &_game->gameState, sizeof(gs));
-    
-    int best_captured = 0;
-    for(int i=0; i<8; i++){
-        for(int j=0; j<8; j++){
-            int here_captured = [OthelloGameController testMove:&gs row:i col:j doMove:false];
-            if(here_captured > 0){
-                if (here_captured > best_captured) {
-                    best_captured = here_captured;
-                    *best_i = i;
-                    *best_j = j;
-                }
-            }
-        }
-    }
-    
-    // ensure a valid move exists (we shouldn't have been allowed to move otherwise)
-    assert(best_captured);
-    return best_captured;
+    assert(_game->gameState.currentPlayer == kOthelloBlack); // computer should always be black in current setup
+    [self negamax:&(_game->gameState) i:best_i j:best_j ply:NUM_PLY];
 }
 
 @end

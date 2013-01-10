@@ -10,6 +10,7 @@
 // make the first valid move you come across.
 
 #import "AI_FirstValid.h"
+#import "OthelloGameController.h"
 
 @implementation AI_FirstValid
 
@@ -20,22 +21,19 @@
     return self;
 }
 
-- (int)computerTurn:(int *)best_i j:(int *)best_j
+- (void)computerTurn:(int *)best_i j:(int *)best_j
 {
     // very silly AI that simply immediately returns once it's found a valid move.
     for(int i=0; i<8; i++){
         for(int j=0; j<8; j++){
-            int here_captured = [OthelloGameController testMove:&(_game->gameState) row:i col:j doMove:false];
+            int here_captured = [Othello testMove:&(_game->gameState) row:i col:j doMove:false];
             if(here_captured > 0){
                 *best_i = i;
                 *best_j = j;
-                return here_captured;
+                return;
             }
         }
     }
-    
-    // we should have been able to find SOME move!
-    CLS_LOG(@"WTH, couldn't find a move.");
     assert(false);
 }
 
