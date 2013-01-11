@@ -530,6 +530,8 @@
     _audioYouLostPlayer = [Othello getPlayerForSound:@"youlost"];
     _audioComputerLostPlayer = [Othello getPlayerForSound:@"computerlost"];
     _audioNewGamePlayer = [Othello getPlayerForSound:@"newgame"];
+    
+    [_audioWelcomePlayer play];
 
     return self;
 };

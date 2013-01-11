@@ -68,7 +68,7 @@
     return boardScore;
 }
 
-#define NUM_PLY 4
+#define NUM_PLY 3
 
 - (int)negamax:(struct GameState *)initgs i:(int *)best_i j:(int *)best_j ply:(int)ply
 {
@@ -79,8 +79,6 @@
     
     int alpha = INT_MIN;
     OthelloSideType otherSide = (initgs->currentPlayer == kOthelloWhite)? kOthelloBlack : kOthelloWhite;
-    
-    // TODO: handle case where other side cannot move?
     
     // TODO: we need to order possible moves by desirability first, or alpha-beta doesn't actually save time!
     // evaluate each possible legal move, for each side

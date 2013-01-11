@@ -54,8 +54,11 @@ v0.09 (Jan 8, 2013)
  - Visual status on turn
  - Add half-functioning Game Center matching and play (disabled)
 
+v0.10 (Jan 10, 2013)
+ - Minimax (expert) AI actually implemented!
+
+
 TODOs:
- - actually implement minimax (expert) algorithm
  - beautiful Tamiko skins?
  - gameplay instructions
  - support rotation?
