@@ -57,14 +57,26 @@ v0.09 (Jan 8, 2013)
 v0.10 (Jan 10, 2013)
  - Minimax (expert) AI actually implemented!
 
+v0.11 (Jan 11, 2013)
+ - Incorporated more sophisticated board evaluation function for superior expert play.
+
+v0.12 (Feb 4, 2013)
+ - Removed GameCenter play in order to prep for MVP launch 
+
 
 TODOs:
+ - fix Game Center / multiplayer
  - beautiful Tamiko skins?
+ - visual indicator of permissible moves
  - gameplay instructions
  - support rotation?
  - animations?
  - alter modal views to regular sliding views?
  - keep tally of wins/losses
- - fix Game Center / multiplayer
  - add achievements
  - Allow for 3rd parties to sell AIs(!)
+ - update negamax to negascout, add more plys, add move search ordering, transposition tables
+ - incorporate opening move tables
+ - use genetic algorithms to fine-tune evaluation function
+ - incorporate edax for ULTRA difficulty level (note: GPL)
+ - incorporate TD-Lambda? http://www.research.ibm.com/massive/tdl.html

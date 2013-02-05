@@ -87,6 +87,9 @@
 #ifdef GAMECENTER
     // Now authenticate the local user and set up our turn-based delegate
     // (we might have been launched in order to handle a turn-based event!
+    
+    // TODO: this method is actually deprecated as of iOS6, but we need to do things this way for IOS5
+    // unless we want to implement both methods. Poop. (iOS6 GC shows a nice login if they're not logged in)
     [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) {
         if (error) {
             // User isn't logged into GC?
@@ -95,6 +98,29 @@
             // Set delegate for turn based events immediately after player authentication, per Apple docs:
             // http://developer.apple.com/library/ios/#documentation/GameKit/Reference/GKTurnBasedEventHandler_Ref
             [[GKTurnBasedEventHandler sharedTurnBasedEventHandler] setDelegate:_game];
+            
+#define NUKE_ALL_EXISTING_MATCHES 1
+            
+#ifdef NUKE_ALL_EXISTING_MATCHES
+            CLS_LOG(@"NUKING ALL EXISTING GAME CENTER MATCHES");
+            [GKTurnBasedMatch loadMatchesWithCompletionHandler:
+             ^(NSArray *nukeMatches, NSError *error){
+                 if(error){
+                     CLS_LOG(@"Error loading matches to nuke: %@", error);
+                 } else {
+                     for (GKTurnBasedMatch *nukeMatch in nukeMatches) {
+                         CLS_LOG(@"Nuking match %@", nukeMatch.matchID);
+                         [nukeMatch removeWithCompletionHandler:^(NSError *error){
+                             if(error){
+                                 CLS_LOG(@"Error nuking match %@: %@", nukeMatch, error);
+                             } else {
+                                 CLS_LOG(@"Nuked match %@", nukeMatch);
+                             }
+                         }];
+                     }
+                 }
+             }];
+#endif
         }
     }];
 #endif

@@ -151,6 +151,7 @@
     if(match.matchData.length == 0) {
         // no existing match data, so we're first.
         userSide = kOthelloWhite; // white (us) starts the match.
+        [self nameSide:kOthelloBlack as:@"Human Opponent"]; // the other side is a (yet unnamed) opponent
         [self initBoard];
         return;
     }

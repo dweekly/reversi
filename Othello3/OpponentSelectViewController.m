@@ -19,8 +19,19 @@
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
 
     paymentInProgress = false;
+    
+    // If the user's not Game Center authenticated, disable playing against a human.
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    if(!localPlayer.authenticated){
+        CLS_LOG(@"User not logged in via Game Center, so disabling playing against humans.");
+        [self.playHumanButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [self.playHumanButton setEnabled:false];
+    }
 
-    // TODO: visually change the appearance of self.playHardComputerButton to indicate payment will be required?
+    // The user hasn't paid to unlock Hard level yet, show text in green
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]){
+        [self.playHardComputerButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+    }
 }
 
 
@@ -71,6 +82,7 @@
 
 - (void)viewDidUnload {
     [self setPlayHardComputerButton:nil];
+    [self setPlayHumanButton:nil];
     [super viewDidUnload];
 }
 
