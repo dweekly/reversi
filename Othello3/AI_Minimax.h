@@ -12,4 +12,7 @@
 {
     OthelloGameController *_game;
 }
+
++ (int)negamax:(struct GameState *)initgs i:(int *)best_i j:(int *)best_j ply:(int)ply maxply:(int)maxply;
+
 @end

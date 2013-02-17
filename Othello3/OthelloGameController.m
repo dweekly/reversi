@@ -10,8 +10,8 @@
 #import "Flurry.h"
 
 // add our AIs!
-#import "AI_FirstValid.h"
 #import "AI_SimpleGreedy.h"
+#import "AI_SimpleHeuristic.h"
 #import "AI_Minimax.h"
 
 
@@ -112,15 +112,15 @@
     userSide = kOthelloWhite;
     
     switch(ai){
-        case kAIFirstValid: {
+        case kAISimpleGreedy: {
             [Flurry logEvent:@"Easy AI Match"];
-            _ai = [[AI_FirstValid alloc] initWithGame:self];
+            _ai = [[AI_SimpleGreedy alloc] initWithGame:self];
             [self nameSide:kOthelloBlack as:@"Easy AI"];
             break;
         }
-        case kAISimpleGreedy: {
+        case kAISimpleHeuristic: {
             [Flurry logEvent:@"Medium AI Match"];
-            _ai = [[AI_SimpleGreedy alloc] initWithGame:self];
+            _ai = [[AI_SimpleHeuristic alloc] initWithGame:self];
             [self nameSide:kOthelloBlack as:@"Medium AI"];
             break;
         }

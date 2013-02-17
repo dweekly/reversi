@@ -29,11 +29,11 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         _whitepiece = [UIImage imageNamed:@"whitestone-85"];
         _blackpiece = [UIImage imageNamed:@"blackstone-85"];
-        _felt = [UIImage imageNamed:@"felt-iPad"];
+        _felt = [UIImage imageNamed:@"felt-iPad.jpg"];
     } else {
         _whitepiece = [UIImage imageNamed:@"whitestone-40"];
         _blackpiece = [UIImage imageNamed:@"blackstone-40"];
-        _felt = [UIImage imageNamed:@"felt"];
+        _felt = [UIImage imageNamed:@"felt.jpg"];
     }
     
     // fetch the app so we get get at the game object.

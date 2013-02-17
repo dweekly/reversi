@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB1208A1167D69950068FD6A /* felt-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1208A0167D69950068FD6A /* felt-iPad.png */; };
-		DB1208A3167D69AC0068FD6A /* felt-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1208A2167D69AC0068FD6A /* felt-iPad@2x.png */; };
 		DB1208AA167D8A2E0068FD6A /* OthelloGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */; };
 		DB1208AE167D9DBB0068FD6A /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208AD167D9DBB0068FD6A /* libFlurry.a */; };
 		DB1208B0167DAB2A0068FD6A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */; };
@@ -16,7 +14,6 @@
 		DB1208B6167DB8650068FD6A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208B5167DB8650068FD6A /* libz.dylib */; };
 		DB184E2816A05C2900F998D9 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = DB184E2616A05C2900F998D9 /* iTunesArtwork */; };
 		DB184E2916A05C2900F998D9 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = DB184E2716A05C2900F998D9 /* iTunesArtwork@2x */; };
-		DB2F0701167E590400A22C8E /* AI_FirstValid.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0700167E590400A22C8E /* AI_FirstValid.m */; };
 		DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */; };
 		DB2F0709167E630300A22C8E /* AI_Minimax.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0708167E630300A22C8E /* AI_Minimax.m */; };
 		DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2F070A167E78C400A22C8E /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -29,6 +26,11 @@
 		DB35E1FD169B73F000B4393B /* OpponentSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB35E1FB169B73F000B4393B /* OpponentSelectViewController.m */; };
 		DB35E1FE169B73F000B4393B /* OpponentSelectViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35E1FC169B73F000B4393B /* OpponentSelectViewController_iPhone.xib */; };
 		DB35E201169B742300B4393B /* OpponentSelectViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB35E200169B742300B4393B /* OpponentSelectViewController_iPad.xib */; };
+		DB64582E16D05B1900BE191D /* felt-iPad@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB64582D16D05B1900BE191D /* felt-iPad@2x.jpg */; };
+		DB64583016D05B2300BE191D /* felt-iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB64582F16D05B2300BE191D /* felt-iPad.jpg */; };
+		DB64583216D05B6500BE191D /* felt@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB64583116D05B6500BE191D /* felt@2x.jpg */; };
+		DB64583416D05B6B00BE191D /* felt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB64583316D05B6B00BE191D /* felt.jpg */; };
+		DB64583716D05F3C00BE191D /* AI_SimpleHeuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64583616D05F3C00BE191D /* AI_SimpleHeuristic.m */; };
 		DB8A3FA01670074A00AF45F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3F9F1670074A00AF45F9 /* UIKit.framework */; };
 		DB8A3FA21670074A00AF45F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA11670074A00AF45F9 /* Foundation.framework */; };
 		DB8A3FA41670074A00AF45F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA31670074A00AF45F9 /* CoreGraphics.framework */; };
@@ -55,8 +57,6 @@
 		DB8A401E1670643900AF45F9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A401D1670643900AF45F9 /* Icon@2x.png */; };
 		DB8A40201670645500AF45F9 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A401F1670645500AF45F9 /* Icon-72.png */; };
 		DB8A40221670645A00AF45F9 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A40211670645A00AF45F9 /* Icon-72@2x.png */; };
-		DB8A4025167067DB00AF45F9 /* felt.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A4023167067DB00AF45F9 /* felt.png */; };
-		DB8A4026167067DB00AF45F9 /* felt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A4024167067DB00AF45F9 /* felt@2x.png */; };
 		DB8A402916706E9800AF45F9 /* blackstone-40.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A402716706E9800AF45F9 /* blackstone-40.png */; };
 		DB8A402A16706E9800AF45F9 /* blackstone-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A402816706E9800AF45F9 /* blackstone-40@2x.png */; };
 		DB8A402D16706F6800AF45F9 /* whitestone-40.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8A402B16706F6800AF45F9 /* whitestone-40.png */; };
@@ -67,8 +67,6 @@
 		DB991CCC167D5D7B006CED4E /* whitestone-85@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB991CCA167D5D7B006CED4E /* whitestone-85@2x.png */; };
 		DBA31E871684FE490026AFE9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB991CCF167D61B0006CED4E /* Default-568h@2x.png */; };
 		DBCE59AD167179350022E0A0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE59AC167179350022E0A0 /* CFNetwork.framework */; };
-		DBCE59B116717B8A0022E0A0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */; };
-		DBCE59B316717BB00022E0A0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DBF4689B169C817F0078B709 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF4689A169C817F0078B709 /* CoreLocation.framework */; };
 		DBF468A1169E4CBD0078B709 /* Othello.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF468A0169E4CBD0078B709 /* Othello.m */; };
 		DBF468A2169F97AD0078B709 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB991CD1167D631A006CED4E /* Default@2x.png */; };
@@ -104,8 +102,6 @@
 /* Begin PBXFileReference section */
 		DB12089B167D65270068FD6A /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		DB12089E167D652B0068FD6A /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		DB1208A0167D69950068FD6A /* felt-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "felt-iPad.png"; sourceTree = "<group>"; };
-		DB1208A2167D69AC0068FD6A /* felt-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "felt-iPad@2x.png"; sourceTree = "<group>"; };
 		DB1208A4167D81E00068FD6A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DB1208A8167D8A2E0068FD6A /* OthelloGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OthelloGameController.h; sourceTree = "<group>"; };
 		DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OthelloGameController.m; sourceTree = "<group>"; };
@@ -117,8 +113,6 @@
 		DB1208B5167DB8650068FD6A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB184E2616A05C2900F998D9 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		DB184E2716A05C2900F998D9 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
-		DB2F06FF167E590400A22C8E /* AI_FirstValid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_FirstValid.h; sourceTree = "<group>"; };
-		DB2F0700167E590400A22C8E /* AI_FirstValid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_FirstValid.m; sourceTree = "<group>"; };
 		DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_SimpleGreedy.h; sourceTree = "<group>"; };
 		DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_SimpleGreedy.m; sourceTree = "<group>"; };
 		DB2F0707167E630300A22C8E /* AI_Minimax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_Minimax.h; sourceTree = "<group>"; };
@@ -136,6 +130,12 @@
 		DB35E1FB169B73F000B4393B /* OpponentSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpponentSelectViewController.m; sourceTree = "<group>"; };
 		DB35E1FC169B73F000B4393B /* OpponentSelectViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpponentSelectViewController_iPhone.xib; sourceTree = "<group>"; };
 		DB35E200169B742300B4393B /* OpponentSelectViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpponentSelectViewController_iPad.xib; sourceTree = "<group>"; };
+		DB64582D16D05B1900BE191D /* felt-iPad@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "felt-iPad@2x.jpg"; sourceTree = "<group>"; };
+		DB64582F16D05B2300BE191D /* felt-iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "felt-iPad.jpg"; sourceTree = "<group>"; };
+		DB64583116D05B6500BE191D /* felt@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "felt@2x.jpg"; sourceTree = "<group>"; };
+		DB64583316D05B6B00BE191D /* felt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = felt.jpg; sourceTree = "<group>"; };
+		DB64583516D05F3C00BE191D /* AI_SimpleHeuristic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_SimpleHeuristic.h; sourceTree = "<group>"; };
+		DB64583616D05F3C00BE191D /* AI_SimpleHeuristic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_SimpleHeuristic.m; sourceTree = "<group>"; };
 		DB8A3F9B1670074A00AF45F9 /* isreveR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isreveR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8A3F9F1670074A00AF45F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DB8A3FA11670074A00AF45F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -169,8 +169,6 @@
 		DB8A401D1670643900AF45F9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		DB8A401F1670645500AF45F9 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		DB8A40211670645A00AF45F9 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
-		DB8A4023167067DB00AF45F9 /* felt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = felt.png; sourceTree = "<group>"; };
-		DB8A4024167067DB00AF45F9 /* felt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "felt@2x.png"; sourceTree = "<group>"; };
 		DB8A402716706E9800AF45F9 /* blackstone-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackstone-40.png"; sourceTree = "<group>"; };
 		DB8A402816706E9800AF45F9 /* blackstone-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackstone-40@2x.png"; sourceTree = "<group>"; };
 		DB8A402B16706F6800AF45F9 /* whitestone-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitestone-40.png"; sourceTree = "<group>"; };
@@ -182,8 +180,6 @@
 		DB991CCF167D61B0006CED4E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DB991CD1167D631A006CED4E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DBCE59AC167179350022E0A0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		DBCE59AF16717B8A0022E0A0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		DBF4689A169C817F0078B709 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DBF4689E169E4C0D0078B709 /* AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI.h; sourceTree = "<group>"; };
 		DBF4689F169E4CBD0078B709 /* Othello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Othello.h; sourceTree = "<group>"; };
@@ -291,10 +287,10 @@
 			isa = PBXGroup;
 			children = (
 				DBF4689E169E4C0D0078B709 /* AI.h */,
-				DB2F06FF167E590400A22C8E /* AI_FirstValid.h */,
-				DB2F0700167E590400A22C8E /* AI_FirstValid.m */,
 				DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */,
 				DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */,
+				DB64583516D05F3C00BE191D /* AI_SimpleHeuristic.h */,
+				DB64583616D05F3C00BE191D /* AI_SimpleHeuristic.m */,
 				DB2F0707167E630300A22C8E /* AI_Minimax.h */,
 				DB2F0708167E630300A22C8E /* AI_Minimax.m */,
 			);
@@ -343,7 +339,6 @@
 			children = (
 				DB1208B4167DB3E00068FD6A /* TestFlight */,
 				DB1208AB167D9DBB0068FD6A /* Flurry */,
-				DBCE59B216717B8E0022E0A0 /* AudioStreamer */,
 			);
 			name = 3rdparty;
 			sourceTree = "<group>";
@@ -476,16 +471,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DBCE59B216717B8E0022E0A0 /* AudioStreamer */ = {
-			isa = PBXGroup;
-			children = (
-				DBCE59AF16717B8A0022E0A0 /* AudioStreamer.h */,
-				DBCE59B016717B8A0022E0A0 /* AudioStreamer.m */,
-			);
-			name = AudioStreamer;
-			path = Othello3;
-			sourceTree = "<group>";
-		};
 		DBFC7AC316716C0900629011 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,10 +518,10 @@
 				DB8A402816706E9800AF45F9 /* blackstone-40@2x.png */,
 				DB991CC4167D5C37006CED4E /* blackstone-85.png */,
 				DB991CC5167D5C37006CED4E /* blackstone-85@2x.png */,
-				DB8A4023167067DB00AF45F9 /* felt.png */,
-				DB8A4024167067DB00AF45F9 /* felt@2x.png */,
-				DB1208A0167D69950068FD6A /* felt-iPad.png */,
-				DB1208A2167D69AC0068FD6A /* felt-iPad@2x.png */,
+				DB64583316D05B6B00BE191D /* felt.jpg */,
+				DB64583116D05B6500BE191D /* felt@2x.jpg */,
+				DB64582F16D05B2300BE191D /* felt-iPad.jpg */,
+				DB64582D16D05B1900BE191D /* felt-iPad@2x.jpg */,
 			);
 			name = board;
 			sourceTree = "<group>";
@@ -624,8 +609,6 @@
 				DB8A401E1670643900AF45F9 /* Icon@2x.png in Resources */,
 				DB8A40201670645500AF45F9 /* Icon-72.png in Resources */,
 				DB8A40221670645A00AF45F9 /* Icon-72@2x.png in Resources */,
-				DB8A4025167067DB00AF45F9 /* felt.png in Resources */,
-				DB8A4026167067DB00AF45F9 /* felt@2x.png in Resources */,
 				DB8A402916706E9800AF45F9 /* blackstone-40.png in Resources */,
 				DB8A402A16706E9800AF45F9 /* blackstone-40@2x.png in Resources */,
 				DB8A402D16706F6800AF45F9 /* whitestone-40.png in Resources */,
@@ -635,8 +618,6 @@
 				DB991CC7167D5C37006CED4E /* blackstone-85@2x.png in Resources */,
 				DB991CCB167D5D7B006CED4E /* whitestone-85.png in Resources */,
 				DB991CCC167D5D7B006CED4E /* whitestone-85@2x.png in Resources */,
-				DB1208A1167D69950068FD6A /* felt-iPad.png in Resources */,
-				DB1208A3167D69AC0068FD6A /* felt-iPad@2x.png in Resources */,
 				DBFE50F5168171AC009B8C16 /* computerlost.mp3 in Resources */,
 				DBFE50F7168171BD009B8C16 /* holdon.mp3 in Resources */,
 				DBFE50FA168171D8009B8C16 /* newgame.mp3 in Resources */,
@@ -661,6 +642,10 @@
 				DBF468A5169F97FD0078B709 /* Default-Portrait@2x~ipad.png in Resources */,
 				DB184E2816A05C2900F998D9 /* iTunesArtwork in Resources */,
 				DB184E2916A05C2900F998D9 /* iTunesArtwork@2x in Resources */,
+				DB64582E16D05B1900BE191D /* felt-iPad@2x.jpg in Resources */,
+				DB64583016D05B2300BE191D /* felt-iPad.jpg in Resources */,
+				DB64583216D05B6500BE191D /* felt@2x.jpg in Resources */,
+				DB64583416D05B6B00BE191D /* felt.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,19 +694,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBCE59B316717BB00022E0A0 /* AudioStreamer.m in Sources */,
 				DB8A3FAC1670074A00AF45F9 /* main.m in Sources */,
 				DB8A3FB01670074A00AF45F9 /* AppDelegate.m in Sources */,
 				DB8A3FB91670074A00AF45F9 /* GameBoardViewController.m in Sources */,
 				DB8A3FE1167009E200AF45F9 /* OthelloBoardView.m in Sources */,
 				DB1208AA167D8A2E0068FD6A /* OthelloGameController.m in Sources */,
-				DB2F0701167E590400A22C8E /* AI_FirstValid.m in Sources */,
 				DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */,
 				DB2F0709167E630300A22C8E /* AI_Minimax.m in Sources */,
 				DB35E1EA169A826000B4393B /* WelcomeViewController.m in Sources */,
 				DB35E1F5169A9AA100B4393B /* AboutViewController.m in Sources */,
 				DB35E1FD169B73F000B4393B /* OpponentSelectViewController.m in Sources */,
 				DBF468A1169E4CBD0078B709 /* Othello.m in Sources */,
+				DB64583716D05F3C00BE191D /* AI_SimpleHeuristic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,7 +714,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB8A3FD41670074A00AF45F9 /* isreveRTests.m in Sources */,
-				DBCE59B116717B8A0022E0A0 /* AudioStreamer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

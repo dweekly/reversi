@@ -61,8 +61,15 @@ v0.11 (Jan 11, 2013)
  - Incorporated more sophisticated board evaluation function for superior expert play.
 
 v0.12 (Feb 4, 2013)
- - Removed GameCenter play in order to prep for MVP launch 
+ - Removed GameCenter play in order to prep for MVP launch
+ - This version launched in the App Store!
 
+v0.13 (Feb 16, 2013)
+ - Easy and Medium modes are now substantially more challenging.
+ - Recompressed board assets (PNG->JPG) to reduce app size from 12MB to 5MB
+ - Removed unused AudioStreamer library
+ - Fully disable GameCenter to prevent a rare crash (and we weren't really using GC anyhow)
+ - Make green text much easier to read for upgrade
 
 TODOs:
  - fix Game Center / multiplayer

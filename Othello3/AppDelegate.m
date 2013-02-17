@@ -49,14 +49,6 @@
 # endif
     [TestFlight takeOff:@"7f8e5fb9bd5c08bfd5157d9014b2e510_MTY2ODg5MjAxMi0xMi0xNiAwMjo0ODo0MC40NzIwNDU"];
 #endif
-    
-    
-    /*
-    // let's kick off some music!
-    NSURL *url = [NSURL URLWithString:@"http://live.streamhosting.ch:8010/"];
-	_streamer = [[AudioStreamer alloc] initWithURL:url];
-    [_streamer start];
-     */
 
      
     // load the root view controller and show it.

@@ -11,8 +11,6 @@
 
 #import "Othello.h"
 
-#import "AudioStreamer.h"
-
 #import "OthelloGameController.h"
 #import "WelcomeViewController.h"
 #import "AboutViewController.h"
@@ -30,7 +28,6 @@
     @public GKTurnBasedMatch *match;
 }
 
-@property (readonly) AudioStreamer *streamer;
 @property (readonly) OthelloGameController *game;
 @property (strong, nonatomic) UIWindow *window;
 

@@ -9,9 +9,6 @@
 // Implements an N-step lookahead that tries to maximize board control.
 
 
-#define NUM_PLY 5
-
-
 #import "AI_Minimax.h"
 #import "OthelloGameController.h"
 
@@ -71,7 +68,7 @@
 }
 
 
-+ (int)negamax:(struct GameState *)initgs i:(int *)best_i j:(int *)best_j ply:(int)ply
++ (int)negamax:(struct GameState *)initgs i:(int *)best_i j:(int *)best_j ply:(int)ply maxply:(int)maxply
 {
     assert(ply >= 0);
     if(ply == 0) { // we've gone as deep as we can, so just return the score for this node.
@@ -89,10 +86,10 @@
                 memcpy(&gs, initgs, sizeof(gs)); // copy the current game state...
                 [Othello testMove:&gs row:i col:j doMove:true]; // make the move...
                 gs.currentPlayer = otherSide; // ...and switch sides.
-                int childWeight = -([AI_Minimax negamax:&gs i:best_i j:best_j ply:(ply-1)]);
+                int childWeight = -([AI_Minimax negamax:&gs i:best_i j:best_j ply:(ply-1) maxply:maxply]);
                 if(childWeight > alpha) {
                     alpha = childWeight;
-                    if(ply == NUM_PLY) {
+                    if(ply == maxply) {
                         *best_i = i;
                         *best_j = j;
                     }
@@ -106,7 +103,7 @@
         struct GameState gs;
         memcpy(&gs, initgs, sizeof(gs)); // copy the current game state...
         gs.currentPlayer = otherSide; // ...and switch sides.
-        return -([AI_Minimax negamax:&gs i:best_i j:best_j ply:(ply-1)]);
+        return -([AI_Minimax negamax:&gs i:best_i j:best_j ply:(ply-1) maxply:maxply]);
     }
 
     return alpha;
@@ -118,7 +115,9 @@
     // since this is a premium algorithm, ensure that we've been IAP enabled
     assert([[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]);
     assert(_game->gameState.currentPlayer == kOthelloBlack); // computer should always be black in current setup
-    [AI_Minimax negamax:&(_game->gameState) i:best_i j:best_j ply:NUM_PLY];
+    
+    // okay let's do a 5-ply lookahead
+    [AI_Minimax negamax:&(_game->gameState) i:best_i j:best_j ply:5 maxply:5];
 }
 
 @end

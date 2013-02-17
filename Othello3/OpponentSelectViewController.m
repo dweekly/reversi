@@ -30,7 +30,7 @@
 
     // The user hasn't paid to unlock Hard level yet, show text in green
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]){
-        [self.playHardComputerButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+        [self.playHardComputerButton setTitleColor:[UIColor colorWithRed:0.1 green:0.6 blue:0.1 alpha:1.0] forState:UIControlStateNormal];
     }
 }
 
@@ -51,12 +51,12 @@
 
 - (IBAction)playEasyComputer:(id)sender {
     CLS_LOG(@"Starting EASY match");
-    [self startComputerGameWithAI:kAIFirstValid];
+    [self startComputerGameWithAI:kAISimpleGreedy];
 }
 
 - (IBAction)playMediumComputer:(id)sender {
     CLS_LOG(@"Starting MEDIUM match");
-    [self startComputerGameWithAI:kAISimpleGreedy];
+    [self startComputerGameWithAI:kAISimpleHeuristic];
 }
 
 - (IBAction)playHardComputer:(id)sender {

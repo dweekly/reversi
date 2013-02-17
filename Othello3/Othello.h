@@ -11,7 +11,7 @@
 
 #define CRASHLYTICS 1
 #define FLURRY 1
-#define GAMECENTER
+// #define GAMECENTER 1
 #define TESTFLIGHT 1
 //#define TESTING 1
 //#define FLURRY_LOC
@@ -34,8 +34,8 @@ typedef enum {
 } OthelloSideType;
 
 typedef enum {
-    kAIFirstValid = 1,
-    kAISimpleGreedy = 2,
+    kAISimpleGreedy = 1,
+    kAISimpleHeuristic = 2,
     kAIMinimax = 3
 } AIType;
 
