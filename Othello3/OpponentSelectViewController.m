@@ -7,7 +7,7 @@
 //
 
 #import "OpponentSelectViewController.h"
-#import "Flurry.h"
+// #import "Flurry.h"
 
 @implementation OpponentSelectViewController
 
@@ -148,7 +148,7 @@
                 
                 paymentInProgress = false;
 
-                [Flurry logEvent:@"Minimax IAP Complete"];
+                //[Flurry logEvent:@"Minimax IAP Complete"];
                 
                 UIAlertView *tmp = [[UIAlertView alloc]
                                     initWithTitle:@"AI Unlocked"
@@ -167,7 +167,7 @@
                 // unlock is in transaction.originalTransaction.payment.productIdentifier
                 assert([transaction.originalTransaction.payment.productIdentifier isEqualToString:@"com.gastonlabs.isreveR.AI_Minimax"]);
 
-                [Flurry logEvent:@"Minimax IAP Restore"];
+                //[Flurry logEvent:@"Minimax IAP Restore"];
 
                 CLS_LOG(@"PURCHASE - restored!");
                 paymentInProgress = false;
@@ -181,10 +181,10 @@
             case SKPaymentTransactionStateFailed: {
                 if(transaction.error.code == SKErrorPaymentCancelled){
                     CLS_LOG(@"User chickened out of in-app purchase :(");
-                    [Flurry logEvent:@"Minimax IAP Cancel"];
+                    //[Flurry logEvent:@"Minimax IAP Cancel"];
                 } else {
                     CLS_LOG(@"Surprise payment error %@", transaction.error);
-                    [Flurry logEvent:@"Minimax IAP Error"];
+                    //[Flurry logEvent:@"Minimax IAP Error"];
                     
                     // only bother the user with an error popup if an upgrade hasn't yet gone through.
                     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"AI_Minimax"]){
@@ -207,7 +207,7 @@
             }
                 
             default: {
-                CLS_LOG(@"Unknown transaction state: %d",transaction.transactionState);
+                CLS_LOG(@"Unknown transaction state: %ld",transaction.transactionState);
                 break;
             }
         }
@@ -218,7 +218,7 @@
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
     // ensure we got back exactly one product back.
-    int count = [response.products count];
+    NSUInteger count = [response.products count];
     if (count == 0) {
         CLS_LOG(@"Looks like we didn't have anything more to buy?");
         paymentInProgress = false;
@@ -248,13 +248,13 @@
     // are we allowed to make a purchase?
     if ([SKPaymentQueue canMakePayments]) {
         CLS_LOG(@"PURCHASE STEP #1 - Fetching valid product list from StoreKit.");
-        [Flurry logEvent:@"Minimax IAP Begin"];
+        //[Flurry logEvent:@"Minimax IAP Begin"];
         SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:@"com.gastonlabs.isreveR.AI_Minimax"]];
         request.delegate = self;
         [request start];
     } else {
         CLS_LOG(@"Aw, they wanted to buy but payments disabled (e.g. parental controls)");
-        [Flurry logEvent:@"Minimax IAP Payments Disabled"];
+        //[Flurry logEvent:@"Minimax IAP Payments Disabled"];
         paymentInProgress = false;
         UIAlertView *tmp = [[UIAlertView alloc]
                             initWithTitle:@"Prohibited"

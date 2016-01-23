@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		DB1208AA167D8A2E0068FD6A /* OthelloGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */; };
-		DB1208AE167D9DBB0068FD6A /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208AD167D9DBB0068FD6A /* libFlurry.a */; };
 		DB1208B0167DAB2A0068FD6A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */; };
-		DB1208B3167DB3DB0068FD6A /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208B1167DB3DB0068FD6A /* libTestFlight.a */; };
-		DB1208B6167DB8650068FD6A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1208B5167DB8650068FD6A /* libz.dylib */; };
 		DB184E2816A05C2900F998D9 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = DB184E2616A05C2900F998D9 /* iTunesArtwork */; };
 		DB184E2916A05C2900F998D9 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = DB184E2716A05C2900F998D9 /* iTunesArtwork@2x */; };
+		DB21954A1C533D8B00C1AF7C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2195471C533D8B00C1AF7C /* Security.framework */; };
+		DB21954B1C533D8B00C1AF7C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2195481C533D8B00C1AF7C /* Fabric.framework */; };
+		DB21954C1C533D8B00C1AF7C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2195491C533D8B00C1AF7C /* Crashlytics.framework */; };
+		DB21954E1C533E4000C1AF7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DB21954D1C533E4000C1AF7C /* libz.tbd */; };
+		DB2195501C533E4D00C1AF7C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DB21954F1C533E4D00C1AF7C /* libc++.tbd */; };
+		DB2195521C53424900C1AF7C /* Flurry in Resources */ = {isa = PBXBuildFile; fileRef = DB2195511C53424900C1AF7C /* Flurry */; };
 		DB2F0705167E5EAD00A22C8E /* AI_SimpleGreedy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */; };
 		DB2F0709167E630300A22C8E /* AI_Minimax.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F0708167E630300A22C8E /* AI_Minimax.m */; };
 		DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2F070A167E78C400A22C8E /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -40,7 +43,6 @@
 		DB8A3FB91670074A00AF45F9 /* GameBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A3FB81670074A00AF45F9 /* GameBoardViewController.m */; };
 		DB8A3FBC1670074A00AF45F9 /* GameBoardViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBA1670074A00AF45F9 /* GameBoardViewController_iPhone.xib */; };
 		DB8A3FBF1670074A00AF45F9 /* GameBoardViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FBD1670074A00AF45F9 /* GameBoardViewController_iPad.xib */; };
-		DB8A3FC71670074A00AF45F9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */; };
 		DB8A3FC81670074A00AF45F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3F9F1670074A00AF45F9 /* UIKit.framework */; };
 		DB8A3FC91670074A00AF45F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8A3FA11670074A00AF45F9 /* Foundation.framework */; };
 		DB8A3FD11670074A00AF45F9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB8A3FCF1670074A00AF45F9 /* InfoPlist.strings */; };
@@ -74,7 +76,6 @@
 		DBF468A4169F97E90078B709 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DB12089B167D65270068FD6A /* Default-Portrait~ipad.png */; };
 		DBF468A5169F97FD0078B709 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DB12089E167D652B0068FD6A /* Default-Portrait@2x~ipad.png */; };
 		DBFC7AC616716C5600629011 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBFC7AC516716C5600629011 /* README.md */; };
-		DBFE50E2167FE3D1009B8C16 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */; };
 		DBFE50F5168171AC009B8C16 /* computerlost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFE50F4168171AC009B8C16 /* computerlost.mp3 */; };
 		DBFE50F7168171BD009B8C16 /* holdon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFE50F6168171BD009B8C16 /* holdon.mp3 */; };
 		DBFE50FA168171D8009B8C16 /* newgame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFE50F8168171D8009B8C16 /* newgame.mp3 */; };
@@ -105,14 +106,15 @@
 		DB1208A4167D81E00068FD6A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DB1208A8167D8A2E0068FD6A /* OthelloGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OthelloGameController.h; sourceTree = "<group>"; };
 		DB1208A9167D8A2E0068FD6A /* OthelloGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OthelloGameController.m; sourceTree = "<group>"; };
-		DB1208AC167D9DBB0068FD6A /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		DB1208AD167D9DBB0068FD6A /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		DB1208B1167DB3DB0068FD6A /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		DB1208B2167DB3DB0068FD6A /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		DB1208B5167DB8650068FD6A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DB184E2616A05C2900F998D9 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		DB184E2716A05C2900F998D9 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
+		DB2195471C533D8B00C1AF7C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DB2195481C533D8B00C1AF7C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		DB2195491C533D8B00C1AF7C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		DB21954D1C533E4000C1AF7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		DB21954F1C533E4D00C1AF7C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		DB2195511C53424900C1AF7C /* Flurry */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Flurry; sourceTree = "<group>"; };
 		DB2F0703167E5EAD00A22C8E /* AI_SimpleGreedy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_SimpleGreedy.h; sourceTree = "<group>"; };
 		DB2F0704167E5EAD00A22C8E /* AI_SimpleGreedy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI_SimpleGreedy.m; sourceTree = "<group>"; };
 		DB2F0707167E630300A22C8E /* AI_Minimax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI_Minimax.h; sourceTree = "<group>"; };
@@ -148,10 +150,7 @@
 		DB8A3FAF1670074A00AF45F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DB8A3FB71670074A00AF45F9 /* GameBoardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameBoardViewController.h; sourceTree = "<group>"; };
 		DB8A3FB81670074A00AF45F9 /* GameBoardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameBoardViewController.m; sourceTree = "<group>"; };
-		DB8A3FBB1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GameBoardViewController_iPhone.xib; sourceTree = "<group>"; };
-		DB8A3FBE1670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GameBoardViewController_iPad.xib; sourceTree = "<group>"; };
 		DB8A3FC51670074A00AF45F9 /* isreveRTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = isreveRTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DB8A3FCE1670074A00AF45F9 /* isreveRTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "isreveRTests-Info.plist"; sourceTree = "<group>"; };
 		DB8A3FD01670074A00AF45F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB8A3FD21670074A00AF45F9 /* isreveRTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = isreveRTests.h; sourceTree = "<group>"; };
@@ -173,6 +172,8 @@
 		DB8A402816706E9800AF45F9 /* blackstone-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackstone-40@2x.png"; sourceTree = "<group>"; };
 		DB8A402B16706F6800AF45F9 /* whitestone-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitestone-40.png"; sourceTree = "<group>"; };
 		DB8A402C16706F6800AF45F9 /* whitestone-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitestone-40@2x.png"; sourceTree = "<group>"; };
+		DB9339241C533A3000587012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GameBoardViewController_iPhone.xib; sourceTree = "<group>"; };
+		DB9339251C533A3000587012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GameBoardViewController_iPad.xib; sourceTree = "<group>"; };
 		DB991CC4167D5C37006CED4E /* blackstone-85.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackstone-85.png"; sourceTree = "<group>"; };
 		DB991CC5167D5C37006CED4E /* blackstone-85@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackstone-85@2x.png"; sourceTree = "<group>"; };
 		DB991CC9167D5D7B006CED4E /* whitestone-85.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitestone-85.png"; sourceTree = "<group>"; };
@@ -185,7 +186,6 @@
 		DBF4689F169E4CBD0078B709 /* Othello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Othello.h; sourceTree = "<group>"; };
 		DBF468A0169E4CBD0078B709 /* Othello.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Othello.m; sourceTree = "<group>"; };
 		DBFC7AC516716C5600629011 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		DBFE50F4168171AC009B8C16 /* computerlost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = computerlost.mp3; sourceTree = "<group>"; };
 		DBFE50F6168171BD009B8C16 /* holdon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = holdon.mp3; sourceTree = "<group>"; };
 		DBFE50F8168171D8009B8C16 /* newgame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = newgame.mp3; sourceTree = "<group>"; };
@@ -205,21 +205,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB2195501C533E4D00C1AF7C /* libc++.tbd in Frameworks */,
+				DB21954E1C533E4000C1AF7C /* libz.tbd in Frameworks */,
 				DBF4689B169C817F0078B709 /* CoreLocation.framework in Frameworks */,
 				DBFE511416818589009B8C16 /* GameKit.framework in Frameworks */,
 				DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */,
-				DB1208B6167DB8650068FD6A /* libz.dylib in Frameworks */,
 				DB1208B0167DAB2A0068FD6A /* SystemConfiguration.framework in Frameworks */,
 				DBCE59AD167179350022E0A0 /* CFNetwork.framework in Frameworks */,
 				DB8A40021670353F00AF45F9 /* AudioToolbox.framework in Frameworks */,
+				DB21954C1C533D8B00C1AF7C /* Crashlytics.framework in Frameworks */,
 				DB8A40001670353500AF45F9 /* MessageUI.framework in Frameworks */,
 				DB8A3FFC167034C100AF45F9 /* AVFoundation.framework in Frameworks */,
+				DB21954B1C533D8B00C1AF7C /* Fabric.framework in Frameworks */,
 				DB8A3FA01670074A00AF45F9 /* UIKit.framework in Frameworks */,
 				DB8A3FA21670074A00AF45F9 /* Foundation.framework in Frameworks */,
+				DB21954A1C533D8B00C1AF7C /* Security.framework in Frameworks */,
 				DB8A3FA41670074A00AF45F9 /* CoreGraphics.framework in Frameworks */,
-				DB1208AE167D9DBB0068FD6A /* libFlurry.a in Frameworks */,
-				DB1208B3167DB3DB0068FD6A /* libTestFlight.a in Frameworks */,
-				DBFE50E2167FE3D1009B8C16 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +228,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB8A3FC71670074A00AF45F9 /* SenTestingKit.framework in Frameworks */,
 				DB8A3FC81670074A00AF45F9 /* UIKit.framework in Frameworks */,
 				DB8A3FC91670074A00AF45F9 /* Foundation.framework in Frameworks */,
 			);
@@ -260,26 +260,6 @@
 				DB8A3FAD1670074A00AF45F9 /* isreveR-Prefix.pch */,
 			);
 			name = project;
-			path = Othello3;
-			sourceTree = "<group>";
-		};
-		DB1208AB167D9DBB0068FD6A /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				DB1208AC167D9DBB0068FD6A /* Flurry.h */,
-				DB1208AD167D9DBB0068FD6A /* libFlurry.a */,
-			);
-			name = Flurry;
-			path = Othello3/Flurry;
-			sourceTree = "<group>";
-		};
-		DB1208B4167DB3E00068FD6A /* TestFlight */ = {
-			isa = PBXGroup;
-			children = (
-				DB1208B1167DB3DB0068FD6A /* libTestFlight.a */,
-				DB1208B2167DB3DB0068FD6A /* TestFlight.h */,
-			);
-			name = TestFlight;
 			path = Othello3;
 			sourceTree = "<group>";
 		};
@@ -337,8 +317,9 @@
 		DB35E1F1169A84E700B4393B /* 3rdparty */ = {
 			isa = PBXGroup;
 			children = (
-				DB1208B4167DB3E00068FD6A /* TestFlight */,
-				DB1208AB167D9DBB0068FD6A /* Flurry */,
+				DB2195511C53424900C1AF7C /* Flurry */,
+				DB2195481C533D8B00C1AF7C /* Fabric.framework */,
+				DB2195491C533D8B00C1AF7C /* Crashlytics.framework */,
 			);
 			name = 3rdparty;
 			sourceTree = "<group>";
@@ -388,6 +369,8 @@
 		DB8A3F901670074A00AF45F9 = {
 			isa = PBXGroup;
 			children = (
+				DB21954F1C533E4D00C1AF7C /* libc++.tbd */,
+				DB21954D1C533E4000C1AF7C /* libz.tbd */,
 				DBFC7AC516716C5600629011 /* README.md */,
 				DB1208A7167D82C50068FD6A /* project */,
 				DB8A3FA61670074A00AF45F9 /* assets */,
@@ -413,9 +396,9 @@
 		DB8A3F9E1670074A00AF45F9 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB2195471C533D8B00C1AF7C /* Security.framework */,
 				DBF4689A169C817F0078B709 /* CoreLocation.framework */,
 				DBFE511316818589009B8C16 /* GameKit.framework */,
-				DBFE50E1167FE3D1009B8C16 /* Crashlytics.framework */,
 				DB2F070A167E78C400A22C8E /* StoreKit.framework */,
 				DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */,
 				DBCE59AC167179350022E0A0 /* CFNetwork.framework */,
@@ -425,8 +408,6 @@
 				DB8A3F9F1670074A00AF45F9 /* UIKit.framework */,
 				DB8A3FA11670074A00AF45F9 /* Foundation.framework */,
 				DB8A3FA31670074A00AF45F9 /* CoreGraphics.framework */,
-				DB8A3FC61670074A00AF45F9 /* SenTestingKit.framework */,
-				DB1208B5167DB8650068FD6A /* libz.dylib */,
 			);
 			name = frameworks;
 			sourceTree = "<group>";
@@ -564,7 +545,7 @@
 			name = isreveRTests;
 			productName = Othello3Tests;
 			productReference = DB8A3FC51670074A00AF45F9 /* isreveRTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -572,8 +553,19 @@
 		DB8A3F921670074A00AF45F9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastTestingUpgradeCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "David E. Weekly";
+				TargetAttributes = {
+					DB8A3F9A1670074A00AF45F9 = {
+						DevelopmentTeam = X9353536F4;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = DB8A3F951670074A00AF45F9 /* Build configuration list for PBXProject "isreveR" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -581,6 +573,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = DB8A3F901670074A00AF45F9;
 			productRefGroup = DB8A3F9C1670074A00AF45F9 /* products */;
@@ -621,6 +614,7 @@
 				DBFE50F5168171AC009B8C16 /* computerlost.mp3 in Resources */,
 				DBFE50F7168171BD009B8C16 /* holdon.mp3 in Resources */,
 				DBFE50FA168171D8009B8C16 /* newgame.mp3 in Resources */,
+				DB2195521C53424900C1AF7C /* Flurry in Resources */,
 				DBFE50FB168171D8009B8C16 /* no.mp3 in Resources */,
 				DBFE50FD168171ED009B8C16 /* thpp.mp3 in Resources */,
 				DBFE50FF168171F7009B8C16 /* tie.mp3 in Resources */,
@@ -685,7 +679,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 1832bc892086bfad3ad1d6f83d5deba876746cb1";
+			shellScript = "./Fabric.framework/run 1832bc892086bfad3ad1d6f83d5deba876746cb1 97a577940d2d93da828405b36c3b2d4e31f07d18cc085a0cea50f17d8713968c";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -739,7 +733,7 @@
 		DB8A3FBA1670074A00AF45F9 /* GameBoardViewController_iPhone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DB8A3FBB1670074A00AF45F9 /* en */,
+				DB9339241C533A3000587012 /* Base */,
 			);
 			name = GameBoardViewController_iPhone.xib;
 			sourceTree = "<group>";
@@ -747,7 +741,7 @@
 		DB8A3FBD1670074A00AF45F9 /* GameBoardViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DB8A3FBE1670074A00AF45F9 /* en */,
+				DB9339251C533A3000587012 /* Base */,
 			);
 			name = GameBoardViewController_iPad.xib;
 			sourceTree = "<group>";
@@ -774,6 +768,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -785,7 +780,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -807,7 +802,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -818,23 +813,25 @@
 		DB8A3FD81670074A00AF45F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Weekly (XPCNQ9499C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Weekly (XPCNQ9499C)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Othello3/isreveR-Prefix.pch";
 				INFOPLIST_FILE = "Othello3/isreveR-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Othello3/Flurry\"",
 					"\"$(SRCROOT)/Othello3\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gastonlabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = isreveR;
-				PROVISIONING_PROFILE = "3FB03113-6D02-496D-B60D-229C0D4F9A23";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3FB03113-6D02-496D-B60D-229C0D4F9A23";
 				WRAPPER_EXTENSION = app;
 			};
@@ -843,23 +840,25 @@
 		DB8A3FD91670074A00AF45F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Weekly";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Weekly";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Othello3/isreveR-Prefix.pch";
 				INFOPLIST_FILE = "Othello3/isreveR-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Othello3/Flurry\"",
 					"\"$(SRCROOT)/Othello3\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gastonlabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = isreveR;
-				PROVISIONING_PROFILE = "902C06BB-E898-4DDB-9E84-CA5BB6254690";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "902C06BB-E898-4DDB-9E84-CA5BB6254690";
 				WRAPPER_EXTENSION = app;
 			};
@@ -876,6 +875,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Othello3/Othello3-Prefix.pch";
 				INFOPLIST_FILE = "Othello3Tests/isreveRTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gastonlabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = isreveRTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -893,6 +893,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Othello3/Othello3-Prefix.pch";
 				INFOPLIST_FILE = "Othello3Tests/isreveRTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gastonlabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = isreveRTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;

@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "Flurry.h"
+// #import "Flurry.h"
 
 #import <CoreLocation/CoreLocation.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -38,9 +40,10 @@
     [Flurry startSession:@"5XRJ5TGT3DMQTYHH5VVS"];
 #endif
   
+    [Fabric with:@[[Crashlytics class]]];
     
 #ifdef CRASHLYTICS
-    [Crashlytics startWithAPIKey:@"1832bc892086bfad3ad1d6f83d5deba876746cb1"];
+//    [Crashlytics startWithAPIKey:@"1832bc892086bfad3ad1d6f83d5deba876746cb1"];
 #endif
 
 #ifdef TESTFLIGHT
