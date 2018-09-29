@@ -1,0 +1,7 @@
+# David's .gitignore
+
+# ignore emacs temp files
+*~
+
+# ignore downloaded pods; will have to "pod install" if you want to build.
+Pods/
