@@ -19,10 +19,10 @@
     self = [super initWithCoder:coder];
     
     // calculate the size of each cell in our view
-    _cellSize = [self bounds].size.height / 8.0;
+    //_cellSize = [self bounds].size.height / 8.0;
 
     // assert we're a square view.
-    assert([self bounds].size.height == [self bounds].size.width);
+    //assert([self bounds].size.height == [self bounds].size.width);
     
     
     // load piece images for display
@@ -62,6 +62,8 @@
 {
     // render the lovely felt background.
     [_felt drawAtPoint:CGPointMake(0.0, 0.0)];
+    assert(rect.size.width == rect.size.height); // ensure square board!
+    _cellSize = rect.size.width / 8.0;
     
     // set up graphics context for drawing gridlines
     CGContextRef context = UIGraphicsGetCurrentContext();
