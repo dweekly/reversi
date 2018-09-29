@@ -7,23 +7,13 @@
 //
 
 #import "GameBoardViewController.h"
-
 @implementation GameBoardViewController
-
 
 // the user has resigned the match.
 - (IBAction)resign:(id)sender {
     CLS_LOG(@"User resigned match");
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     [app.game resign];
-}
-
-
-- (void)viewDidUnload {
-    [self setStatusLabel:nil];
-    [self setWhiteLabel:nil];
-    [self setBlackLabel:nil];
-    [super viewDidUnload];
 }
 
 @end

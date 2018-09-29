@@ -22,7 +22,7 @@
     _cellSize = [self bounds].size.height / 8.0;
 
     // assert we're a square view.
-    //assert([self bounds].size.height == [self bounds].size.width);
+    assert([self bounds].size.height == [self bounds].size.width);
     
     
     // load piece images for display
