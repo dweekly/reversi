@@ -395,7 +395,6 @@
 				DB8A3FA61670074A00AF45F9 /* assets */,
 				DB2F0706167E62A100A22C8E /* ai */,
 				DB35E1F0169A84C700B4393B /* views */,
-				DB8A3FA51670074A00AF45F9 /* src */,
 				DB8A3FCC1670074A00AF45F9 /* tests */,
 				DB8A3F9E1670074A00AF45F9 /* frameworks */,
 				DB8A3F9C1670074A00AF45F9 /* products */,
@@ -430,14 +429,6 @@
 				DB8A3FA31670074A00AF45F9 /* CoreGraphics.framework */,
 			);
 			name = frameworks;
-			sourceTree = "<group>";
-		};
-		DB8A3FA51670074A00AF45F9 /* src */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = src;
-			path = Othello3;
 			sourceTree = "<group>";
 		};
 		DB8A3FA61670074A00AF45F9 /* assets */ = {

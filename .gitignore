@@ -5,3 +5,6 @@
 
 # ignore downloaded pods; will have to "pod install" if you want to build.
 Pods/
+
+# ignore user settings
+isreveR.xcworkspace/xcuserdata/
