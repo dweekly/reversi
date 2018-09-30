@@ -24,17 +24,20 @@
     // assert we're a square view.
     //assert([self bounds].size.height == [self bounds].size.width);
     
-    
+    /*
     // load piece images for display
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        _whitepiece = [UIImage imageNamed:@"whitestone-85"];
-        _blackpiece = [UIImage imageNamed:@"blackstone-85"];
         _felt = [UIImage imageNamed:@"felt-iPad.jpg"];
     } else {
         _whitepiece = [UIImage imageNamed:@"whitestone-40"];
         _blackpiece = [UIImage imageNamed:@"blackstone-40"];
         _felt = [UIImage imageNamed:@"felt.jpg"];
     }
+    */
+    
+    _whitepiece = [UIImage imageNamed:@"whitestone-85"];
+    _blackpiece = [UIImage imageNamed:@"blackstone-85"];
+    _felt = [UIImage imageNamed:@"felt-iPad.jpg"];
     
     // fetch the app so we get get at the game object.
     _app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -84,11 +87,16 @@
         // render piece in this square
         for(j=0;j<8;j++){
             OthelloSideType space = _app.game->gameState.board[i][j];
+            CGRect pieceRect;
+            pieceRect.origin.x = (_cellSize * i) + 1;
+            pieceRect.origin.y = (_cellSize * j) + 1;
+            pieceRect.size.width = _cellSize - 2;
+            pieceRect.size.height = _cellSize - 2;
             if(space == kOthelloWhite){
-                [_whitepiece drawAtPoint:CGPointMake(_cellSize * i, _cellSize * j) blendMode:kCGBlendModeNormal alpha:1.0];
+                [_whitepiece drawInRect:pieceRect blendMode:kCGBlendModeNormal alpha:1.0];
             }
             if(space == kOthelloBlack){
-                [_blackpiece drawAtPoint:CGPointMake(_cellSize * i, _cellSize * j) blendMode:kCGBlendModeNormal alpha:1.0];
+                [_blackpiece drawInRect:pieceRect blendMode:kCGBlendModeNormal alpha:1.0];
             }
         }
     }

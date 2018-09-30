@@ -40,7 +40,7 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="whitestone-40.png" translatesAutoresizingMaskIntoConstraints="NO" id="132">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="whitestone-85.png" translatesAutoresizingMaskIntoConstraints="NO" id="132">
                     <rect key="frame" x="55" y="802" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="132" secondAttribute="height" multiplier="1:1" id="KLp-QS-Yem"/>
@@ -64,7 +64,7 @@
                         <action selector="resign:" destination="-1" eventType="touchUpInside" id="146"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackstone-40.png" translatesAutoresizingMaskIntoConstraints="NO" id="133">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackstone-85.png" translatesAutoresizingMaskIntoConstraints="NO" id="133">
                     <rect key="frame" x="309" y="802" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="133" secondAttribute="height" multiplier="1:1" id="kmm-fu-b01"/>
@@ -121,7 +121,7 @@
         </view>
     </objects>
     <resources>
-        <image name="blackstone-40.png" width="40" height="40"/>
-        <image name="whitestone-40.png" width="40" height="40"/>
+        <image name="blackstone-85.png" width="85" height="85"/>
+        <image name="whitestone-85.png" width="85" height="85"/>
     </resources>
 </document>
