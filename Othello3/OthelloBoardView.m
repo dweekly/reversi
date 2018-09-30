@@ -64,7 +64,7 @@
 - (void)drawRect:(CGRect)rect
 {
     // render the lovely felt background.
-    [_felt drawAtPoint:CGPointMake(0.0, 0.0)];
+    [_felt drawInRect:rect];
     assert(rect.size.width == rect.size.height); // ensure square board!
     _cellSize = rect.size.width / 8.0;
     

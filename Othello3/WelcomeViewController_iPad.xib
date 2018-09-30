@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,17 +19,13 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="isreveR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3">
-                    <rect key="frame" x="252" y="125" width="264" height="131"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="80"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20">
-                    <rect key="frame" x="654" y="941" width="94" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20">
+                    <rect key="frame" x="548" y="924" width="200" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Y4H-IG-gTO"/>
+                        <constraint firstAttribute="width" constant="200" id="vTM-J5-R6L"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="25"/>
                     <state key="normal" title="Feedback">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -40,10 +36,13 @@
                         <action selector="feedback:" destination="-1" eventType="touchUpInside" id="32"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25">
-                    <rect key="frame" x="20" y="941" width="68" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25">
+                    <rect key="frame" x="20" y="924" width="200" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="Z6c-Nu-Gh5"/>
+                        <constraint firstAttribute="height" constant="60" id="w0f-FS-7hW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="24"/>
                     <state key="normal" title="About">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -54,10 +53,9 @@
                         <action selector="about:" destination="-1" eventType="touchUpInside" id="31"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50">
-                    <rect key="frame" x="230" y="449" width="309" height="106"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="32"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50">
+                    <rect key="frame" x="260" y="476" width="248" height="72"/>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="50"/>
                     <state key="normal" title="New Game">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -68,11 +66,29 @@
                         <action selector="newGame:" destination="-1" eventType="touchUpInside" id="55"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="isreveR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3">
+                    <rect key="frame" x="260" y="135" width="248" height="95"/>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="80"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3" firstAttribute="top" secondItem="rHq-Tn-jpq" secondAttribute="top" constant="115" id="1hQ-5S-4oh"/>
+                <constraint firstItem="rHq-Tn-jpq" firstAttribute="bottom" secondItem="20" secondAttribute="bottom" constant="20" id="55T-ha-Qs5"/>
+                <constraint firstItem="rHq-Tn-jpq" firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20" id="G6L-4A-YX3"/>
+                <constraint firstItem="25" firstAttribute="leading" secondItem="rHq-Tn-jpq" secondAttribute="leading" constant="20" id="JfW-YS-NEt"/>
+                <constraint firstItem="rHq-Tn-jpq" firstAttribute="bottom" secondItem="25" secondAttribute="bottom" constant="20" id="cir-Tr-9gZ"/>
+                <constraint firstItem="50" firstAttribute="centerY" secondItem="rHq-Tn-jpq" secondAttribute="centerY" id="iaI-YJ-pM1"/>
+                <constraint firstItem="rHq-Tn-jpq" firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20" id="lsf-yW-oNh"/>
+                <constraint firstItem="50" firstAttribute="centerX" secondItem="rHq-Tn-jpq" secondAttribute="centerX" id="uyw-2i-q8S"/>
+                <constraint firstItem="3" firstAttribute="centerX" secondItem="rHq-Tn-jpq" secondAttribute="centerX" id="yrc-Cd-eSg"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="rHq-Tn-jpq"/>
+            <point key="canvasLocation" x="19.921875" y="23.718887262079061"/>
         </view>
     </objects>
 </document>

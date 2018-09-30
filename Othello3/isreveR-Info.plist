@@ -38,12 +38,14 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>Launch Screen</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Reversi uses the microphone to record your optional audio notes in a crash report.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Reversi uses your photo library to include screen shots of the app in crash reports.</string>
+	<key>UILaunchStoryboardName</key>
+	<string>WelcomeViewController_iPhone</string>
+	<key>UIMainStoryboardName~ipad</key>
+	<string>WelcomeViewController_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>gamekit</string>

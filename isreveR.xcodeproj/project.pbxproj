@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -64,7 +64,6 @@
 		DB991CCB167D5D7B006CED4E /* whitestone-85.png in Resources */ = {isa = PBXBuildFile; fileRef = DB991CC9167D5D7B006CED4E /* whitestone-85.png */; };
 		DB991CCC167D5D7B006CED4E /* whitestone-85@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB991CCA167D5D7B006CED4E /* whitestone-85@2x.png */; };
 		DBCE59AD167179350022E0A0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE59AC167179350022E0A0 /* CFNetwork.framework */; };
-		DBF20E372160BFE40061C961 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF20E362160BFE30061C961 /* Launch Screen.storyboard */; };
 		DBF4689B169C817F0078B709 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF4689A169C817F0078B709 /* CoreLocation.framework */; };
 		DBF468A1169E4CBD0078B709 /* Othello.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF468A0169E4CBD0078B709 /* Othello.m */; };
 		DBFC7AC616716C5600629011 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBFC7AC516716C5600629011 /* README.md */; };
@@ -166,7 +165,6 @@
 		DB991CC9167D5D7B006CED4E /* whitestone-85.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitestone-85.png"; sourceTree = "<group>"; };
 		DB991CCA167D5D7B006CED4E /* whitestone-85@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitestone-85@2x.png"; sourceTree = "<group>"; };
 		DBCE59AC167179350022E0A0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		DBF20E362160BFE30061C961 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DBF4689A169C817F0078B709 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DBF4689E169E4C0D0078B709 /* AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI.h; sourceTree = "<group>"; };
 		DBF4689F169E4CBD0078B709 /* Othello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Othello.h; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 		DB1208A6167D82840068FD6A /* screens */ = {
 			isa = PBXGroup;
 			children = (
-				DBF20E362160BFE30061C961 /* Launch Screen.storyboard */,
 			);
 			name = screens;
 			path = ..;
@@ -554,7 +551,7 @@
 				};
 			};
 			buildConfigurationList = DB8A3F951670074A00AF45F9 /* Build configuration list for PBXProject "isreveR" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -608,7 +605,6 @@
 				DBFE510B16817267009B8C16 /* welcome.mp3 in Resources */,
 				DB35E1EB169A826000B4393B /* WelcomeViewController_iPhone.xib in Resources */,
 				DB35E1ED169A82F400B4393B /* WelcomeViewController_iPad.xib in Resources */,
-				DBF20E372160BFE40061C961 /* Launch Screen.storyboard in Resources */,
 				DB35E1F6169A9AA100B4393B /* AboutViewController_iPhone.xib in Resources */,
 				DB35E1F9169A9AE700B4393B /* AboutViewController_iPad.xib in Resources */,
 				DB35E1FE169B73F000B4393B /* OpponentSelectViewController_iPhone.xib in Resources */,
