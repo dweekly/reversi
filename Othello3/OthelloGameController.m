@@ -97,15 +97,6 @@
     [self nextTurn];
 }
 
-// after the game is acknowledged as being over, this is called and a new game is started.
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    assert([alertView tag] == kOthelloAlertGameOver);    
-    NSLog(@"Game confirmed ended, returning to opponent selection screen.");
-    [self dismissBoard];
-}
-
-
 // start a new game against the computer.
 - (void) newGameVersusAI:(AIType)ai
 {
@@ -288,22 +279,21 @@
         [TestFlight passCheckpoint:@"Completed a game against an AI opponent!"];
 #endif
     }
-
-    //[Flurry endTimedEvent:@"Match" withParameters:nil];
-    
-    // Popup to display the results of the game before we transition back to opponent selection.
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert setTag:kOthelloAlertGameOver];
-    [alert show];
+    AppDelegate *app =  (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Game Over" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                         {
+                             NSLog(@"Game confirmed ended, returning to opponent selection screen.");
+                             [self dismissBoard];
+                         }];
+    [alert addAction:ok];
+    [app.gameBoardViewController presentViewController:alert animated:YES completion:nil];
 }
 
 
 // user wishes to resign the current game (auto-loses)
 - (void) resign
 {
-    //[Flurry logEvent:@"Game resigned"];
-    //[Flurry endTimedEvent:@"Match" withParameters:nil];
-
     if(_match) {
         if(userSide == gameState.currentPlayer){
             [_match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit nextParticipants:[self nextParticipants] turnTimeout:GKTurnTimeoutDefault matchData:[self matchData] completionHandler:
