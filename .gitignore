@@ -8,3 +8,7 @@ Pods/
 
 # ignore user settings
 isreveR.xcworkspace/xcuserdata/
+
+.DS_Store
+
+.firebase/

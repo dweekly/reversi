@@ -9,24 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-// #define CRASHLYTICS 1
-// #define FLURRY 1
-// #define GAMECENTER 1
-// #define TESTFLIGHT 1
-//#define TESTING 1
-//#define FLURRY_LOC
-
-
-#ifdef CRASHLYTICS
-#import <Crashlytics/Crashlytics.h>
-#else
-#define CLS_LOG NSLog
-#endif
-
-#ifdef TESTFLIGHT
-#import "TestFlight.h"
-#endif
-
 typedef enum {
     kOthelloNone,
     kOthelloWhite,

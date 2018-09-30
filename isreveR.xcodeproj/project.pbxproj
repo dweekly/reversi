@@ -78,7 +78,6 @@
 		DBFE510716817226009B8C16 /* youlost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFE510616817226009B8C16 /* youlost.mp3 */; };
 		DBFE510916817250009B8C16 /* boo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFE510816817250009B8C16 /* boo.mp3 */; };
 		DBFE510B16817267009B8C16 /* welcome.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DBFE510A16817267009B8C16 /* welcome.mp3 */; };
-		DBFE511416818589009B8C16 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFE511316818589009B8C16 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,7 +180,6 @@
 		DBFE510616817226009B8C16 /* youlost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = youlost.mp3; sourceTree = "<group>"; };
 		DBFE510816817250009B8C16 /* boo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boo.mp3; sourceTree = "<group>"; };
 		DBFE510A16817267009B8C16 /* welcome.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = welcome.mp3; sourceTree = "<group>"; };
-		DBFE511316818589009B8C16 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		E6FB07F7BCC21C54F9F2E196 /* Pods-isreveRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-isreveRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-isreveRTests/Pods-isreveRTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +191,6 @@
 				DB2195501C533E4D00C1AF7C /* libc++.tbd in Frameworks */,
 				DB21954E1C533E4000C1AF7C /* libz.tbd in Frameworks */,
 				DBF4689B169C817F0078B709 /* CoreLocation.framework in Frameworks */,
-				DBFE511416818589009B8C16 /* GameKit.framework in Frameworks */,
 				DB2F070B167E78C400A22C8E /* StoreKit.framework in Frameworks */,
 				DB1208B0167DAB2A0068FD6A /* SystemConfiguration.framework in Frameworks */,
 				DBCE59AD167179350022E0A0 /* CFNetwork.framework in Frameworks */,
@@ -390,7 +387,6 @@
 			children = (
 				DB2195471C533D8B00C1AF7C /* Security.framework */,
 				DBF4689A169C817F0078B709 /* CoreLocation.framework */,
-				DBFE511316818589009B8C16 /* GameKit.framework */,
 				DB2F070A167E78C400A22C8E /* StoreKit.framework */,
 				DB1208AF167DAB2A0068FD6A /* SystemConfiguration.framework */,
 				DBCE59AC167179350022E0A0 /* CFNetwork.framework */,

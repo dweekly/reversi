@@ -71,20 +71,16 @@
     AVAudioPlayer *p;
     NSString *path = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"mp3"];
     if(!path){
-        CLS_LOG(@"Couldn't find MP3 for %@, looking for .wav", soundFile);
         path = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"wav"];
     }
     if(!path){
-        CLS_LOG(@"Couldn't find WAV resource either!!");
         assert(false);
         return nil;
     }
     NSURL *url = [NSURL fileURLWithPath:path];
     NSError *error;
     p = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    if(!p){
-        CLS_LOG(@"Error in getPlayerForSound: %@ %@", error, [error userInfo]);
-    }
+    assert(p);
     return p;
 }
 

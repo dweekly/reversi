@@ -18,7 +18,6 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [FIRApp configure];
-    [Instabug startWithToken:@"738dbcc9022b5f15b297ff00dcdce2c9" invocationEvents: IBGInvocationEventShake | IBGInvocationEventScreenshot];
     
     // load the root view controller and show it.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -85,6 +84,12 @@
         }
     }];
 #endif
+    
+    // instatiate Instabug, but only after shake (not after screenshot)
+    [Instabug startWithToken:@"738dbcc9022b5f15b297ff00dcdce2c9" invocationEvents: IBGInvocationEventShake];
+    // turn off prompt after 10 seconds
+    [Instabug setWelcomeMessageMode:IBGWelcomeMessageModeDisabled];
+
     
     return YES;
 }

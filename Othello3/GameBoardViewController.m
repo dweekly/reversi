@@ -11,7 +11,6 @@
 
 // the user has resigned the match.
 - (IBAction)resign:(id)sender {
-    CLS_LOG(@"User resigned match");
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     [app.game resign];
 }

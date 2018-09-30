@@ -47,9 +47,7 @@
 	<key>UIMainStoryboardName~ipad</key>
 	<string>WelcomeViewController_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>gamekit</string>
-	</array>
+	<array/>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>

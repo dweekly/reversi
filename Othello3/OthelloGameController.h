@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <GameKit/GameKit.h>
 
 #import "AI.h"
 #import "OthelloBoardView.h"
@@ -23,7 +22,7 @@ typedef enum {
 @class GameBoardViewController;
 
 
-@interface OthelloGameController : NSObject <UIAlertViewDelegate, GKTurnBasedEventHandlerDelegate>
+@interface OthelloGameController : NSObject <UIAlertViewDelegate>
 {
     @public struct GameState gameState; // this structure encapsulates the current state of the game.
     @public OthelloSideType userSide; // what side is the user on?
@@ -33,9 +32,7 @@ typedef enum {
 - (bool)attemptPlayerMove:(int)i col:(int)j;
 - (void)newGameVersusAI:(AIType)name;
 - (void)resign;
-- (void)loadGameFromMatch:(GKTurnBasedMatch *)match;
 
-@property (retain) GKTurnBasedMatch *match;
 @property (readwrite) GameBoardViewController *boardViewController;
 
 @property (strong, nonatomic) AVAudioPlayer *audioWelcomePlayer;
