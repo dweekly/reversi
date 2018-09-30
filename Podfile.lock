@@ -65,6 +65,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.0)
+  - Instabug (8.0.14)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - Fabric (~> 1.7.11)
   - Firebase/Core
   - Firebase/Performance
+  - Instabug
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -91,6 +93,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
+    - Instabug
     - nanopb
     - Protobuf
 
@@ -106,9 +109,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GoogleUtilities: 760ccb53b7c7f40f9c02d8c241f76f841a7a6162
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
+  Instabug: c47ed58a9a70d37bc8310376535818cbcfb2b57e
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
 
-PODFILE CHECKSUM: 4b27cf33b202fcba52d9ee9691e091cdbdfdeaed
+PODFILE CHECKSUM: 8f289c24a109b66ae7c989ccbe007de9e7df3f6b
 
 COCOAPODS: 1.5.3

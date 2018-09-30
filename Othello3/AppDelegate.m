@@ -7,19 +7,18 @@
 //
 
 #import "AppDelegate.h"
-
 #import <CoreLocation/CoreLocation.h>
 
 @import Firebase;
+@import Instabug;
 
 @implementation AppDelegate
-
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [FIRApp configure];
+    [Instabug startWithToken:@"738dbcc9022b5f15b297ff00dcdce2c9" invocationEvents: IBGInvocationEventShake | IBGInvocationEventScreenshot];
     
     // load the root view controller and show it.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

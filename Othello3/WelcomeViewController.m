@@ -7,6 +7,7 @@
 //
 
 #import "WelcomeViewController.h"
+@import Instabug;
 @implementation WelcomeViewController
 
 - (void)viewDidLoad
@@ -23,9 +24,7 @@
 
 // The user wishes to provide feedback
 - (IBAction)feedback:(id)sender {
-#ifdef TESTFLIGHT
-    [TestFlight openFeedbackView];
-#endif
+    [IBGBugReporting invoke];
 }
 
 // Show the About view.

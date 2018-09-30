@@ -499,6 +499,7 @@
 				DB8A3F971670074A00AF45F9 /* Sources */,
 				DB8A3F981670074A00AF45F9 /* Frameworks */,
 				DB8A3F991670074A00AF45F9 /* Resources */,
+				30BEB82D7429950CFBAC3856 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -535,6 +536,9 @@
 		DB8A3F921670074A00AF45F9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastTestingUpgradeCheck = 0720;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "David E. Weekly";
@@ -543,7 +547,7 @@
 						DevelopmentTeam = X9353536F4;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -628,6 +632,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		30BEB82D7429950CFBAC3856 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-isreveR/Pods-isreveR-frameworks.sh",
+				"${PODS_ROOT}/Instabug/Instabug.framework",
+				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-isreveR/Pods-isreveR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3C9D0CAE7F025B16AC0CA015 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

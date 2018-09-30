@@ -8,8 +8,6 @@
 	<string>isreveR</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -42,9 +40,12 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Reversi uses the microphone to record your optional audio notes in a crash report.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Reversi uses your photo library to include screen shots of the app in crash reports.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
 		<string>gamekit</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>

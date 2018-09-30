@@ -6,6 +6,7 @@ target 'isreveR' do
   # use_frameworks!
 
   # Pods for isreveR
+  pod 'Instabug'
   pod 'Firebase/Core'
   pod 'Firebase/Performance'
   pod 'Fabric', '~> 1.7.11'
