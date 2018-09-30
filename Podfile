@@ -7,6 +7,7 @@ target 'isreveR' do
 
   # Pods for isreveR
   pod 'Firebase/Core'
+  pod 'Firebase/Performance'
   pod 'Fabric', '~> 1.7.11'
   pod 'Crashlytics', '~> 3.10.7'
 end
