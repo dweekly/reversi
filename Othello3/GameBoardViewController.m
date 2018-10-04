@@ -11,7 +11,7 @@
 
 // the user has resigned the match.
 - (IBAction)resign:(id)sender {
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [app.game resign];
 }
 

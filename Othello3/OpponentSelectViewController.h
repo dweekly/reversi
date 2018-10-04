@@ -22,9 +22,7 @@
 
 @property (readwrite) AppDelegate *app;
 @property (weak, nonatomic) IBOutlet UIButton *playHardComputerButton;
-@property (weak, nonatomic) IBOutlet UIButton *playHumanButton;
 
-- (IBAction)playHuman:(id)sender;
 - (IBAction)playEasyComputer:(id)sender;
 - (IBAction)playMediumComputer:(id)sender;
 - (IBAction)playHardComputer:(id)sender;

@@ -186,15 +186,14 @@
         [request start];
     } else {
         paymentInProgress = false;
-        UIAlertView *tmp = [[UIAlertView alloc]
-                            initWithTitle:@"Prohibited"
-                            message:@"Parental Control is enabled, cannot make a purchase!"
-                            delegate:nil
-                            cancelButtonTitle:nil
-                            otherButtonTitles:@"Ok", nil];
-        [tmp show];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Prohibited" message:@"Parental Control is enabled, cannot make a purchase!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                             {
+                             }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
-
 
 @end
